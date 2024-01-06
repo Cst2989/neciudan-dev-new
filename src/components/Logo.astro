@@ -2,6 +2,33 @@
 import { SITE } from '~/utils/config';
 ---
 
-<span class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white">
-  🚀 {SITE?.name}
-</span>
+<span
+  class="logo-link self-center ml-2 rtl:ml-0 rtl:mr-2 text2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"
+>
+  <div class="logo"></div> {SITE?.name}</span
+>
+<style>
+  .logo-link {
+    text-decoration: none;
+    padding-left: 20px;;
+  }
+  .logo-link:hover .logo {
+    background-size: 130%;
+    background-position: center;
+  }
+  .logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--main-color);
+    position: relative;
+    display: inline-block;
+    top: 17px;
+    left:0px;
+    background-image: url(/images/logo.png);
+    background-size: 100%;
+    background-position: center;
+    transition: all 0.4s ease-in-out;
+    position: absolute;
+  }
+</style>

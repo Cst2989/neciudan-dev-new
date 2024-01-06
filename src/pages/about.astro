@@ -1,228 +1,525 @@
 ---
-import Features2 from '~/components/widgets/Features2.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
 import Layout from '~/layouts/PageLayout.astro';
-
+import WorkIcon from '~/assets/icons/work.svg';
+import CalendarIcon from '~/assets/icons/calendar.svg';
 const metadata = {
   title: 'About us',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  <div class="article-head">
+    <div class="article-head__image">
+      <img width={720} height={360} role="presentation" src="/images/about/iceland5.jpg" alt="" />
+    </div>
+    <div class="about-container">
+      <h1 class="title">Neciu Dan - Tech Lead | Software Engineer | Speaker | Writer</h1>
+    </div>
+  </div>
+  <div class="about-body">
+    <aside>
+      <div class="stick">
+        <div class="profile-image">
+          <img src="/images/about/profile_3.png" alt="" />
+        </div>
+        <ul class="social-icons">
+          <a class="twitter" href="https://twitter.com/neciudan">
+            <img width="20" src="/images/svg/logo-twitter.svg" alt="" />
+             Twitter
+          </a>
+          <a class="youtube" href="https://www.youtube.com/channel/UCdpPoxr7MmDix9AilUf8bMA">
+            <img width="20" src="/images/svg/logo-youtube.svg" alt="" />
+             Youtube
+          </a>
+          <a class="linkedin" href="https://www.linkedin.com/in/dan-neciu/">
+            <img width="20" src="/images/svg/logo-linkedin.svg" alt="" />
+             Linkedin
+          </a>
+          <a class="github" href="https://github.com/Cst2989">
+            <img width="20" src="/images/svg/logo-github.svg" alt="" />
+             Github
+          </a>
+          <a class="medium" href="https://medium.com/@neciudan">
+            <img width="20" src="/images/svg/logo-medium.svg" alt="" />
+             Medium
+          </a>
+        </ul>
+      </div>
+    </aside>
+    <article>
+      <div class="about-text">
+        <p>
+          Neciu Dan is a software engineer with a predominant focus on the front-end. He shares a passionate
+          relationship with JavaScript and has professional experience with all of the Big Three Frameworks. Among them,
+          he has a special fondness for React, despite his company's preference for Vue in many projects.
+        </p>
 
-  <Hero
-    tagline="About us"
-    image={{
-      src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Caos Image',
-    }}
-  >
-    <Fragment slot="title">
-      Elevate your online presence with our <br />
-      <span class="text-accent dark:text-white highlight"> Beautiful Website Templates</span>
-    </Fragment>
+        <p>
+          Constantly striving for excellence, Neciu Dan endeavours to strike the perfect balance. He aims to deliver
+          visually stunning user interfaces while also ensuring rapid and valuable product outcomes. At the same time,
+          he is committed to producing the cleanest and most easily maintainable code possible.
+        </p>
 
-    <Fragment slot="subtitle">
-      Donec efficitur, ipsum quis congue luctus, mauris magna convallis mauris, eu auctor nisi lectus non augue. Donec
-      quis lorem non massa vulputate efficitur ac at turpis. Sed tincidunt ex a nunc convallis, et lobortis nisi tempus.
-      Suspendisse vitae nisi eget tortor luctus maximus sed non lectus.
-    </Fragment>
-  </Hero>
+        <p>
+          In a recent endeavor, Neciu Dan co-founded an ed-tech startup, stepping into the role of a technical
+          co-founder. This new venture has allowed him to channel his expertise and passion for technology into the
+          realm of education. Embracing the challenges of the startup world, he is dedicated to leveraging his technical
+          acumen to revolutionize the educational landscape and create meaningful impacts in the sector.
+        </p>
+      </div>
 
-  <!-- Stats Widget ****************** -->
+      <h2 class="about-title">WORK EXPERIENCE</h2>
 
-  <Stats
-    title="Statistics about us"
-    stats={[
-      { title: 'Offices', amount: '4' },
-      { title: 'Employees', amount: '248' },
-      { title: 'Templates', amount: '12' },
-      { title: 'Awards', amount: '24' },
-    ]}
-  />
+      <div class="c-s-timeline">
+        <div class="c-s-timeline__item">
+          <div class="c-s-timeline__indicator">
+            <span class="c-s-timeline__icon">
+              <img class="about-icon" src={WorkIcon.src} />
+            </span>
+          </div>
+          <div class="c-s-event">
+            <h3 class="c-s-event__title">
+              <a href="https://thecareeros.com" rel="nofollow" target="_blank">Tech Lead @ CareerOS</a><span
+                class="c-s-event__tag">Current</span
+              >
+            </h3>
+            <span class="c-s-event__meta c-s-event__meta--date"> February 2023 -</span><span
+              class="c-s-event__meta c-s-event__meta--location">Barcelona, Spain</span
+            >
+          </div>
+        </div>
+        <div class="c-s-timeline__item">
+          <div class="c-s-timeline__indicator">
+            <span class="c-s-timeline__icon">
+              <img class="about-icon" src={WorkIcon.src} />
+            </span>
+          </div>
+          <div class="c-s-event">
+            <h3 class="c-s-event__title">
+              <a href="https://glovoapp.com" rel="nofollow" target="_blank">Senior Software Engineer @ Glovo</a>
+            </h3>
+            <span class="c-s-event__meta c-s-event__meta--date"> October 2020 - February 2023,</span><span
+              class="c-s-event__meta c-s-event__meta--location">Barcelona, Spain</span
+            >
+          </div>
+        </div>
+        <div class="c-s-timeline__item">
+          <div class="c-s-timeline__indicator">
+            <span class="c-s-timeline__icon">
+              <img class="about-icon" src={WorkIcon.src} />
+            </span>
+          </div>
+          <div class="c-s-event">
+            <h3 class="c-s-event__title">
+              <a href="https://adoreme.com" rel="nofollow" target="_blank">Product Engineer @ Adoreme</a>
+            </h3>
+            <span class="c-s-event__meta c-s-event__meta--date"> October 2016 - October 2020,</span><span
+              class="c-s-event__meta c-s-event__meta--location">Bucharest, Romania</span
+            >
+          </div>
+        </div>
+        <div class="c-s-timeline__item">
+          <div class="c-s-timeline__indicator">
+            <span class="c-s-timeline__icon">
+              <img class="about-icon" src={WorkIcon.src} />
+            </span>
+          </div>
+          <div class="c-s-event">
+            <h3 class="c-s-event__title">
+              <a href="https://www.webstyler.ro/" rel="nofollow" target="_blank">Web Developer @ GMP Webstyler</a>
+            </h3>
+            <span class="c-s-event__meta c-s-event__meta--date"> February 2015 - October 2016,</span><span
+              class="c-s-event__meta c-s-event__meta--location">Bucharest, Romania</span
+            >
+          </div>
+        </div>
+        <div class="c-s-timeline__item">
+          <div class="c-s-timeline__indicator">
+            <span class="c-s-timeline__icon">
+              <img class="about-icon" src={WorkIcon.src} />
+            </span>
+          </div>
+          <div class="c-s-event">
+            <h3 class="c-s-event__title"><a href="#" rel="nofollow" target="_blank">Web Developer @ Pixio</a></h3>
+            <span class="c-s-event__meta c-s-event__meta--date"> February 2013 - February 2015,</span><span
+              class="c-s-event__meta c-s-event__meta--location">Bucharest, Romania</span
+            >
+          </div>
+        </div>
+      </div>
 
-  <!-- Features3 Widget ************** -->
+      <h2 class="about-title">AREA OF EXPERTISE</h2>
 
-  <Features3
-    title="Our templates"
-    subtitle="Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod."
-    columns={3}
-    isBeforeContent={true}
-    items={[
-      {
-        title: 'Educational',
-        description:
-          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Interior Design',
-        description:
-          'Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Photography',
-        description:
-          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
-        icon: 'tabler:template',
-      },
-    ]}
-  />
+      <div class="about-tags">
+        <div class="about-tags__tag">Information & Communications Technology</div>
+        <div class="about-tags__tag">Computer Science</div>
+        <div class="about-tags__tag">Software Architecture & Design</div>
+        <div class="about-tags__tag">Company Culture & Team Management</div>
+      </div>
 
-  <!-- Features3 Widget ************** -->
+      <h2 class="about-title">TOPICS</h2>
 
-  <Features3
-    columns={3}
-    isAfterContent={true}
-    items={[
-      {
-        title: 'E-commerce',
-        description:
-          'Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Blog',
-        description:
-          'Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Business',
-        description:
-          'Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Suspendisse vitae nisi eget tortor luctus maximus sed non lectus. Cras malesuada pretium placerat. Nullam venenatis dolor a ante rhoncus.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Medical',
-        description:
-          'Vestibulum malesuada lacus id nibh posuere feugiat. Nam volutpat nulla a felis ultrices, id suscipit mauris congue. In hac habitasse platea dictumst.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus.',
-        icon: 'tabler:template',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Colorful Image',
-    }}
-  />
+      <div class="about-topics">
+        <div class="about-topics__item">Software testing</div>
+        <div class="about-topics__item">Software Engineering</div>
+        <div class="about-topics__item">JavaScript</div>
+        <div class="about-topics__item">ReactJS</div>
+        <div class="about-topics__item">Vue Js</div>
+        <div class="about-topics__item">Vuex</div>
+        <div class="about-topics__item">Testing and Quadivty</div>
+        <div class="about-topics__item">Test-Driven Development</div>
+        <div class="about-topics__item">Unit testing</div>
+        <div class="about-topics__item">UI Testing</div>
+        <div class="about-topics__item">Performance Testing</div>
+        <div class="about-topics__item">Testing</div>
+        <div class="about-topics__item">QA&amp;Testing</div>
+        <div class="about-topics__item">Accessabidivty</div>
+        <div class="about-topics__item">Web Accessibidivty</div>
+        <div class="about-topics__item">UX / Accessibidivty</div>
+        <div class="about-topics__item">React</div>
+        <div class="about-topics__item">React Native</div>
+        <div class="about-topics__item">Reactive Programming</div>
+        <div class="about-topics__item">React Web</div>
+        <div class="about-topics__item">Angular</div>
+        <div class="about-topics__item">AngularJS</div>
+      </div>
 
-  <!-- Steps2 Widget ****************** -->
+      <h2 class="about-title">EVENTS</h2>
 
-  <Steps2
-    title="Our values"
-    subtitle="Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus. Nulla facilisi. Vestibulum malesuada lacus."
-    items={[
-      {
-        title: 'Customer-centric approach',
-        description:
-          'Donec id nibh neque. Quisque et fermentum tortor. Fusce vitae dolor a mauris dignissim commodo. Ut eleifend luctus condimentum.',
-      },
-      {
-        title: 'Constant Improvement',
-        description:
-          'Phasellus laoreet fermentum venenatis. Vivamus dapibus pulvinar arcu eget mattis. Fusce eget mauris leo.',
-      },
-      {
-        title: 'Ethical Practices',
-        description:
-          'Vestibulum imperdiet libero et lectus molestie, et maximus augue porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-      },
-    ]}
-  />
-
-  <!-- Steps2 Widget ****************** -->
-
-  <Steps2
-    title="Achievements"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
-    isReversed={true}
-    callToAction={{
-      text: 'See more',
-      href: '/',
-    }}
-    items={[
-      {
-        title: 'Global reach',
-        description: 'Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.',
-        icon: 'tabler:globe',
-      },
-      {
-        title: 'Positive customer feedback and reviews',
-        description:
-          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
-        icon: 'tabler:message-star',
-      },
-      {
-        title: 'Awards and recognition as industry experts',
-        description:
-          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
-        icon: 'tabler:award',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Our locations"
-    tagline="Find us"
-    columns={4}
-    items={[
-      {
-        title: 'EE.UU',
-        description: '1234 Lorem Ipsum St, 12345, Miami',
-      },
-      {
-        title: 'Spain',
-        description: '5678 Lorem Ipsum St, 56789, Madrid',
-      },
-      {
-        title: 'Australia',
-        description: '9012 Lorem Ipsum St, 90123, Sydney',
-      },
-      {
-        title: 'Brazil',
-        description: '3456 Lorem Ipsum St, 34567, São Paulo',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Technical Support"
-    tagline="Contact us"
-    columns={2}
-    items={[
-      {
-        title: 'Chat with us',
-        description:
-          'Integer luctus laoreet libero, auctor varius purus rutrum sit amet. Ut nec molestie nisi, quis eleifend mi.',
-        icon: 'tabler:messages',
-      },
-      {
-        title: 'Call us',
-        description:
-          'Mauris faucibus finibus orci, in posuere elit viverra non. In hac habitasse platea dictumst. Cras lobortis metus a hendrerit congue.',
-        icon: 'tabler:headset',
-      },
-    ]}
-  />
+      <div class="c-s-timeline">
+        <div class="c-s-timeline__item">
+          <div class="c-s-timeline__indicator">
+            <span class="c-s-timeline__icon">
+              <img class="about-icon" src={CalendarIcon.src} alt="" />
+            </span>
+          </div>
+          <div class="c-s-event">
+            <h3 class="c-s-event__title">
+              <a href="https://reactalicante.es" rel="nofollow" target="_blank">React Alicante 2023</a><span
+                class="c-s-event__tag">Upcoming</span
+              >
+            </h3>
+            <span class="c-s-event__meta c-s-event__meta--date"> September 2023</span><span
+              class="c-s-event__meta c-s-event__meta--location">Alicante, Spain</span
+            >
+          </div>
+        </div>
+        <div class="c-s-timeline__item">
+          <div class="c-s-timeline__indicator">
+            <span class="c-s-timeline__icon">
+              <img class="about-icon" src={CalendarIcon.src} alt="" />
+            </span>
+          </div>
+          <div class="c-s-event">
+            <h3 class="c-s-event__title">
+              <a href="https://www.utahjs.com/conference" rel="nofollow" target="_blank">UtahJS Conf 2023</a><span
+                class="c-s-event__tag">Upcoming</span
+              >
+            </h3>
+            <span class="c-s-event__meta c-s-event__meta--date"> September 2023</span><span
+              class="c-s-event__meta c-s-event__meta--location">Sandy, Utah, United States</span
+            >
+          </div>
+        </div>
+        <div class="c-s-timeline__item">
+          <div class="c-s-timeline__indicator">
+            <span class="c-s-timeline__icon">
+              <img class="about-icon" src={CalendarIcon.src} alt="" />
+            </span>
+          </div>
+          <div class="c-s-event">
+            <h3 class="c-s-event__title">
+              <a href="https://handsontesting.com/" rel="nofollow" target="_blank">Hands On Testing 2023 - hybrid</a
+              ><span class="c-s-event__tag">Upcoming</span>
+            </h3>
+            <span class="c-s-event__meta c-s-event__meta--date"> September 2023</span><span
+              class="c-s-event__meta c-s-event__meta--location">Guadalajara, Mexico</span
+            >
+          </div>
+        </div>
+        <div class="c-s-timeline__item">
+          <div class="c-s-timeline__indicator">
+            <span class="c-s-timeline__icon">
+              <img class="about-icon" src={CalendarIcon.src} alt="" />
+            </span>
+          </div>
+          <div class="c-s-event">
+            <h3 class="c-s-event__title">
+              <a href="https://www.techorama.be" rel="nofollow" target="_blank">Techorama 2023 Belgium</a>
+            </h3>
+            <span class="c-s-event__meta c-s-event__meta--date"> May 2023</span><span
+              class="c-s-event__meta c-s-event__meta--location">Antwerpen, Belgium</span
+            >
+          </div>
+        </div>
+        <div class="c-s-timeline__item">
+          <div class="c-s-timeline__indicator">
+            <span class="c-s-timeline__icon">
+              <img class="about-icon" src={CalendarIcon.src} alt="" />
+            </span>
+          </div>
+          <div class="c-s-event">
+            <h3 class="c-s-event__title">
+              <a href="https://www.developerweek.com/global/conference/management/" rel="nofollow" target="_blank"
+                >DeveloperWeek Management 2023</a
+              >
+            </h3>
+            <span class="c-s-event__meta c-s-event__meta--date"> May 2023</span>
+          </div>
+        </div>
+        <div class="c-s-timeline__item">
+          <div class="c-s-timeline__indicator">
+            <span class="c-s-timeline__icon">
+              <img class="about-icon" src={CalendarIcon.src} alt="" />
+            </span>
+          </div>
+          <div class="c-s-event">
+            <h3 class="c-s-event__title">
+              <a href="https://www.scifidevcon.com/" rel="nofollow" target="_blank">SciFiDevConMayTheFourthEvent 2023</a
+              >
+            </h3>
+            <span class="c-s-event__meta c-s-event__meta--date"> May 2023</span>
+          </div>
+        </div>
+        <div class="c-s-timeline__item">
+          <div class="c-s-timeline__indicator">
+            <span class="c-s-timeline__icon">
+              <img class="about-icon" src={CalendarIcon.src} alt="" />
+            </span>
+          </div>
+          <div class="c-s-event">
+            <h3 class="c-s-event__title"><span>Soirée du test - Bordeaux - 2023</span></h3>
+            <span class="c-s-event__meta c-s-event__meta--date"> April 2023</span><span
+              class="c-s-event__meta c-s-event__meta--location">Bruges, France</span
+            >
+          </div>
+        </div>
+        <div class="c-s-timeline__item">
+          <div class="c-s-timeline__indicator">
+            <span class="c-s-timeline__icon">
+              <img class="about-icon" src={CalendarIcon.src} alt="" />
+            </span>
+          </div>
+          <div class="c-s-event">
+            <h3 class="c-s-event__title"><span>Voxxed Days Athens - 2022</span></h3>
+            <span class="c-s-event__meta c-s-event__meta--date"> September 2022</span><span
+              class="c-s-event__meta c-s-event__meta--location">Athens, Greece</span
+            >
+          </div>
+        </div>
+        <div class="c-s-timeline__item">
+          <div class="c-s-timeline__indicator">
+            <span class="c-s-timeline__icon">
+              <img class="about-icon" src={CalendarIcon.src} alt="" />
+            </span>
+          </div>
+          <div class="c-s-event">
+            <h3 class="c-s-event__title"><span>Vue Roadtrip Barcelona</span></h3>
+            <span class="c-s-event__meta c-s-event__meta--date"> July 2022</span><span
+              class="c-s-event__meta c-s-event__meta--location">Barcelona, Spain</span
+            >
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
 </Layout>
+<style>
+  .about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .about-icon {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    fill: red;
+    overflow: hidden;
+  }
+  .title {
+    font-size: 2em;
+    margin: 0.25em 0 0;
+    margin-top: -200px;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 12px;
+    border-radius: 8px;
+    position: absolute;
+    left: 392px;
+  }
+  .stick {
+    position: sticky;
+    top: 80px;
+  }
+  h2.sub-title {
+    color: var(--link);
+  }
+  hr {
+    border-top: 1px solid #ddd;
+    margin: 1rem 0;
+  }
+  .article-body {
+    display: grid;
+    grid-template-columns: 800px 1fr;
+    column-gap: 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .article-head {
+    margin-bottom: 64px;
+  }
+  .article-head__image {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+  }
+  .article-head__image img {
+    width: 100%;
+    height: auto;
+    margin-top: -900px;
+    position: relative;
+  }
+  .sub-title::after {
+    display: none;
+  }
+  aside h2 {
+    margin-top: 0;
+  }
+
+  .c-s-timeline__icon svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--main-color);
+  }
+
+  .about-tags,
+  .about-topics {
+    display: flex;
+    column-gap: 8px;
+    flex-wrap: wrap;
+    row-gap: 8px;
+    justify-content: flex-start;
+    padding-left: 0px;
+  }
+
+  .about-tags__tag,
+  .about-topics__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 18px;
+    font-size: 13px;
+    color: #fff;
+    background-color: #2d2c2c;
+  }
+  .about-tags__tag p {
+    margin-top: 3px;
+    margin-bottom: 0px;
+    font-size: 13px;
+    color: #fff;
+  }
+  .c-s-timeline__item {
+    display: flex;
+    margin-bottom: 32px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    column-gap: 8px;
+  }
+  .c-s-event__title {
+    margin-top: 0px;
+    font-weight: bold;;
+    margin-bottom: 0px;
+  }
+
+  .c-s-event__tag {
+    padding: 10px;
+    border-radius: 18px;
+    font-size: 13px;
+    color: var(--main-color);
+    background-color: #2d2c2c;
+    margin-left: 20px;
+    top: -5px;
+    position: relative;
+  }
+  .c-s-timeline__indicator {
+    margin-top: 7px;
+  }
+
+  .about-body .profile-image {
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-bottom: 16px;
+    margin-top: -300px;;
+  }
+  .about-body .profile-image img {
+    width: 100%;
+    height: auto;
+  }
+  .about-tags {
+    display: flex;
+    justify-content: flex-start;
+    column-gap: 8px;
+  }
+  .social-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 120px;
+    row-gap: 8px;
+  }
+  .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 8px;
+  }
+  .social-icons a:hover {
+    text-decoration: underline;
+  }
+  .about-title {
+    margin-top: 32px;
+    margin-bottom: 48px;
+    color: var(--main-color);
+  }
+  .c-s-event__meta {
+    margin-right: 8px;
+    color: var(--aw-color-text-muted);
+  }
+  p {
+    margin-bottom: 20px;;
+  }
+  .about-body {
+    display: flex;
+    justify-content: flex-start;
+    column-gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 24px;
+  }
+  @media (max-width: 720px) {
+    .about-body {
+      flex-direction: column;
+      margin-top: 0px;
+    }
+    .social-icons {
+      padding-left: 10px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      column-gap: 8px;
+    }
+    .about-body .profile-image {
+      border-radius: 0;
+      width: 100%;
+    }
+    article {
+      padding: 10px;
+    }
+  }
+</style>

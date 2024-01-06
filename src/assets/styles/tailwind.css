@@ -5,6 +5,13 @@
 .dd *:first-child {
   margin-top: 0;
 }
+h1.hero-title {
+  line-height: 1.3;
+  font-size: 3.15rem;
+}
+h3.blog-post-tile {
+  min-height: 95px;
+}
 
 @layer utilities {
   .bg-page {
@@ -47,7 +54,8 @@
 }
 .dark #header.scroll > div:first-child,
 #header.scroll.dark > div:first-child {
-  @apply bg-page md:bg-[#030621e6] border-b border-gray-500/20;
+  background-color: rgb(19 21 31 / 0.5) !important;
+  @apply bg-page md:bg-[#13151F] border-b border-gray-500/20;
   box-shadow: none;
 }
 /* #header.scroll > div:last-child {

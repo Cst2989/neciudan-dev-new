@@ -1,6 +1,6 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Neciu Dan
+  site: 'https://neciudan.dev'
   base: '/'
   trailingSlash: false
 
@@ -9,14 +9,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
+    default: Neciu Dan
+    template: '%s — Neciu Dan'
   description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Neciu Dan
     images:
       - url: '~/assets/images/default.png'
         width: 1200
@@ -75,8 +75,8 @@ ui:
         serif: var(--ph-font-sans)
         heading: var(--ph-font-sans)
       colors:
-        default: rgb(16 16 16)
-        heading: rgb(0 0 0)
+        default: red
+        heading: red
         muted: rgb(40 40 40)
         bgPage: rgb(255 255 255)
         primary: rgb(0 124 220)
@@ -88,11 +88,13 @@ ui:
         error: rgb(248 114 114)
         link: var(--ph-color-primary)
         linkActive: var(--ph-color-link)
+        main-color: hsl(37deg, 92%, 64%);
+        main-color-darker: hsl(28deg, 80%, 58%);
     dark:
       fonts: {}
       colors:
-        default: rgb(247, 248, 248)
-        heading: rgb(247, 248, 248)
+        default: red
+        heading: red
         muted: rgb(200, 188, 208)
         bgPage: rgb(3 6 32)
         primary: rgb(29 78 216)

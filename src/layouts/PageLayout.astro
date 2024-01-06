@@ -11,14 +11,18 @@ import type { MetaData } from '~/types';
 export interface Props {
   metadata?: MetaData;
 }
-
+const isAnnoucementActive = false;
 const { metadata } = Astro.props;
 ---
 
 <Layout metadata={metadata}>
-  <slot name="announcement">
-    <Announcement />
-  </slot>
+  {
+    isAnnoucementActive && (
+      <slot name="announcement">
+        <Announcement />
+      </slot>
+    )
+  }
   <slot name="header">
     <Header {...headerData} isSticky showRssFeed showToggleTheme />
   </slot>
