@@ -20,15 +20,15 @@ const {
     <div class="py-12 md:py-20 flex flex-col md:flex-row md:space-x-8">
       <!-- Image (Top on mobile, right side - 40% on medium screens and above) -->
       <!-- Image (Top on mobile, right side - 40% on medium screens and above) -->
-      <div class="md:w-2/5 order-1 md:order-2 mb-4 md:mb-0 flex justify-center items-center">
+      <div class="md:w-2/5 order-1 md:order-2 mb-4 md:mb-0">
         {
           image && (
-            <div class="w-full">
+            <div class="relative m-auto md:m-0 w-full">
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (
                 <Image
-                  class="rounded-md object-scale-down hero-image"
+                  class="rounded-md w-full h-auto object-contain hero-image"
                   widths={[400, 768, 1024, 2040]}
                   sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
                   loading="eager"

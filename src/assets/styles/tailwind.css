@@ -12,7 +12,9 @@ h1.hero-title {
 h3.blog-post-tile {
   min-height: 95px;
 }
-
+.hero-image {
+  height: 500px;;
+}
 @media screen and (max-width: 768px) {
   h1.hero-title {
     font-size: 2rem;
