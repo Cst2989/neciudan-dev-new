@@ -130,7 +130,9 @@ The most common vulnerable data we are sending is:
 
 Why does this happen? Because we are using query params in the URL for sensitive data.
 
-`https://your-website.com/reset-password?token=AXSNNm123`
+```
+https://your-website.com/reset-password?token=AXSNNm123
+```
 
 When this happens, our third-party o11y library of choice will log this URL as visited.
 
@@ -138,7 +140,9 @@ If an attacker gets access to your logged data, they can use these tokens to hij
 
 To prevent this it’s recommended to not use query params and use hashes instead.
 
-`https://your-website.com/reset-password#token=AXSNm123`
+```
+https://your-website.com/reset-password#token=AXSNm123
+```
 
 Hashes are normally not logged or persisted in observability tools.
 
@@ -146,7 +150,9 @@ Most importantly: it is recommended you audit your URLs and pages to make sure y
 
 For example:
 
-`https://your-website.com/order/1231233212`
+```
+https://your-website.com/order/1231233212
+```
 
 If this URL is accessed by someone other than the User who created the order, we must not show sensitive data like card information or the user's address.
 
@@ -168,7 +174,9 @@ Spoofing on the other hand is way more dangerous because it takes advantage of y
 
 Think of a page where you can add promo codes. You would probably send marketing emails to your users with an URL like:
 
-`https://your-website/promos#PROMO300`
+```
+https://your-website/promos#PROMO300
+```
 
 And on the page show the promo code in a nice way with an APPLY PROMO button.
 
@@ -178,11 +186,15 @@ By using the `v-html` tag in this situation you have opened up the Spoofing vuln
 
 A creative attacker can create a very nice-looking HTML using your URL like this:
 
-`https://your-website/promos#<div>PROMO is APXS1230 <br/> <a href="https://other-malicious-website.com">Click here to apply</a></div>`
+```
+https://your-website/promos#<div>PROMO is APXS1230 <br/> <a href="https://other-malicious-website.com">Click here to apply</a></div>
+```
 
 Of course the above looks malicious, but encoded it will look like this:
 
-`https://your-website/promos#%3Cdiv%3EPROMO%20is%20APXS1230%20%3Cbr%2F%3E%20%3Ca%20href%3D%22https%3A%2F%2Fother-malicious-website.com%22%3EClick%20here%20to%20apply%3C%2Fa%3E%3C%2Fdiv%3E`
+```
+https://your-website/promos#%3Cdiv%3EPROMO%20is%20APXS1230%20%3Cbr%2F%3E%20%3Ca%20href%3D%22https%3A%2F%2Fother-malicious-website.com%22%3EClick%20here%20to%20apply%3C%2Fa%3E%3C%2Fdiv%3E
+```
 
 Not that easy to spot it now, is it?
 

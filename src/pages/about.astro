@@ -27,9 +27,7 @@ const metadata = {
     callToAction={{ targetBlank: true, text: 'Contact me', href: 'mailto:dan.neciu.cst@gmail.com' }}
   >
     <Fragment slot="subtitle">
-      Constantly striving for excellence, Neciu Dan endeavours to strike the perfect balance. He aims to deliver
-      visually stunning user interfaces while also ensuring rapid and valuable product outcomes. At the same time, he is
-      committed to producing the cleanest and most easily maintainable code possible.
+      Consistently strives for excellence by aiming to strike the perfect balance between Product Engineering and Platform Engineering. He is dedicated to delivering visually stunning user interfaces that lead to valuable product outcomes in a short period of time but also placing a strong emphasis on producing clean and easily maintainable code.
     </Fragment>
   </Hero>
 
@@ -72,14 +70,12 @@ const metadata = {
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h3>
       <p>
-        In a recent endeavor, Neciu Dan co-founded an ed-tech startup, stepping into the role of a technical co-founder.
-        This new venture has allowed him to channel his expertise and passion for technology into the realm of
-        education. Embracing the challenges of the startup world, he is dedicated to leveraging his technical acumen to
-        revolutionize the educational landscape and create meaningful impacts in the sector.
+        Neciu Dan recently co-founded an ed-tech startup, where he serves as a technical co-founder. He is passionate about technology and education, and this new venture allows him to combine these interests. 
+
+        Despite the challenges of the startup world, he is committed to using his technical skills to transform the education industry and make a positive impact. 
       </p>
       <br />
-      <br />
-      <p>If you're curious to dive deeper into my work, you can follow me:</p>
+      <p>If you want to learn more about his work, you can follow him using the following links:</p>
     </Fragment>
 
     <Fragment slot="bg">
@@ -379,7 +375,7 @@ I was particularly impressed at Dan skills to build performance and scalable web
         },
       },
       {
-        testimonial: `Dan is a very talented engineer with a great eye for detail. He is a great team player and always willing to help others. He is a great asset to any team. Dan often thinks beyond day-to-day execution and takes full ownership of the projects. He proactively unblocks his team and foresees potential blockers ahead of time. `,
+        testimonial: `He is a very talented engineer with a great eye for detail. He is a great team player and always willing to help others. He is a great asset to any team. Dan often thinks beyond day-to-day execution and takes full ownership of the projects. He proactively unblocks his team and foresees potential blockers ahead of time. `,
         name: 'Justyna Kaluzka',
         job: 'Engineering Manager at Spotify',
         image: {
@@ -510,8 +506,14 @@ Dan has often led executive-level demos. `,
     margin-top: 0;
   }
 .c-s-timeline {
-  display: grid;
+    display: grid;
     grid-template-columns: 1fr 1fr;
+}
+@media screen and (max-width: 768px) {
+  .c-s-timeline {
+    grid-template-columns: 1fr;
+  }
+  
 }
   .c-s-timeline__icon svg {
     width: 24px;

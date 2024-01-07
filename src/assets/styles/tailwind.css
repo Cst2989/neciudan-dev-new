@@ -13,6 +13,21 @@ h3.blog-post-tile {
   min-height: 95px;
 }
 
+@media screen and (max-width: 768px) {
+  h1.hero-title {
+    font-size: 2rem;
+  }
+  .logo-link {
+    padding-left: 50px !important;
+  }
+  header div.logo {
+    left: 20px !important;
+  }
+  .hero-image {
+    width: 100%; /* or a specific larger width */
+    height: 300px; /* maintains the aspect ratio */
+  }
+}
 @layer utilities {
   .bg-page {
     background-color: var(--aw-color-bg-page);

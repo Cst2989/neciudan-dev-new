@@ -18,8 +18,32 @@ const {
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
     <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
     <div class="py-12 md:py-20 flex flex-col md:flex-row md:space-x-8">
-      <!-- Text and Buttons (Left Side - 60%) -->
-      <div class="md:w-3/5">
+      <!-- Image (Top on mobile, right side - 40% on medium screens and above) -->
+      <!-- Image (Top on mobile, right side - 40% on medium screens and above) -->
+      <div class="md:w-2/5 order-1 md:order-2 mb-4 md:mb-0 flex justify-center items-center">
+        {
+          image && (
+            <div class="w-full">
+              {typeof image === 'string' ? (
+                <Fragment set:html={image} />
+              ) : (
+                <Image
+                  class="rounded-md object-scale-down hero-image"
+                  widths={[400, 768, 1024, 2040]}
+                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+                  loading="eager"
+                  width={1024}
+                  height={576}
+                  {...image}
+                />
+              )}
+            </div>
+          )
+        }
+      </div>
+
+      <!-- Text and Buttons (Bottom on mobile, left side - 60% on medium screens and above) -->
+      <div class="md:w-3/5 order-2 md:order-1">
         {
           tagline && (
             <p
@@ -31,7 +55,7 @@ const {
         {
           title && (
             <h1
-              class="text-5xl md:text-6xl font-bold leading-snug hero-title tracking-tighter mb-4 font-heading dark:text-gray-200 text-left"
+              class="text-5xl md:text-6xl font-bold hero-title tracking-tighter mb-4 font-heading dark:text-gray-200 text-left"
               set:html={title}
             />
           )
@@ -69,31 +93,6 @@ const {
         </div>
         {content && <Fragment set:html={content} />}
       </div>
-
-      <!-- Image (Right Side - 40%) -->
-      <div class="md:w-2/5 flex md:justify-end">
-        {
-          image && (
-            <div class="relative m-auto md:m-0 w-full h-full">
-              {typeof image === 'string' ? (
-                <Fragment set:html={image} />
-              ) : (
-                <Image
-                  class="rounded-md w-full h-full object-cover object-center"
-                  widths={[400, 768, 1024, 2040]}
-                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-                  loading="eager"
-                  width={1024}
-                  height={576}
-                  {...image}
-                />
-              )}
-            </div>
-          )
-        }
-      </div>
     </div>
   </div>
 </section>
-
-
