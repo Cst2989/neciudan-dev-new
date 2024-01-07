@@ -1,334 +1,455 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import WorkIcon from '~/assets/icons/work.svg';
+import Headline from '~/components/ui/Headline.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import CalendarIcon from '~/assets/icons/calendar.svg';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 const metadata = {
-  title: 'About us',
+  title: 'Neciu Dan: Tech Lead & Co-Founder Biography',
 };
 ---
 
 <Layout metadata={metadata}>
-  <div class="article-head">
-    <div class="article-head__image">
-      <img width={720} height={360} role="presentation" src="/images/about/iceland5.jpg" alt="" />
+  <Fragment slot="announcement"></Fragment>
+
+  <!-- Hero2 Widget ******************* -->
+
+  <Hero
+    id="hero"
+    title="Neciu Dan"
+    tagline="bio"
+    callToAction={{ targetBlank: true, text: 'Contact me', href: 'mailto:dan.neciu.cst@gmail.com' }}
+  >
+    <Fragment slot="subtitle">
+      Constantly striving for excellence, Neciu Dan endeavours to strike the perfect balance. He aims to deliver
+      visually stunning user interfaces while also ensuring rapid and valuable product outcomes. At the same time, he is
+      committed to producing the cleanest and most easily maintainable code possible.
+    </Fragment>
+  </Hero>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="about"
+    columns={3}
+    items={[
+      {
+        icon: 'tabler:brand-youtube',
+        callToAction: {
+          targetBlank: true,
+          text: 'Youtube',
+          href: 'https://www.youtube.com/@NeciuDan/',
+        },
+      },
+      {
+        icon: 'tabler:brand-linkedin',
+        callToAction: {
+          targetBlank: true,
+          text: 'Linkedin',
+          href: 'https://www.linkedin.com/in/neciudan/',
+        },
+      },
+      {
+        icon: 'tabler:brand-x',
+        callToAction: {
+          targetBlank: true,
+          text: 'X',
+          href: 'https://twitter.com/neciudan',
+        },
+      },
+    ]}
+    image={{
+      src: 'images/about/profile_2.jpg',
+      alt: 'Colorful Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h3>
+      <p>
+        In a recent endeavor, Neciu Dan co-founded an ed-tech startup, stepping into the role of a technical co-founder.
+        This new venture has allowed him to channel his expertise and passion for technology into the realm of
+        education. Embracing the challenges of the startup world, he is dedicated to leveraging his technical acumen to
+        revolutionize the educational landscape and create meaningful impacts in the sector.
+      </p>
+      <br />
+      <br />
+      <p>If you're curious to dive deeper into my work, you can follow me:</p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+  <WidgetWrapper id={'events'} containerClass={`max-w-5xl`}>
+  <Headline
+    title={'Speaking Events'}
+    classes={{
+      container: 'text-left rtl:text-right',
+      title: 'text-3xl lg:text-4xl',
+    }}
+  />
+
+  <div class="c-s-timeline">
+    <div class="c-s-timeline__item">
+      <div class="c-s-timeline__indicator">
+        <span class="c-s-timeline__icon">
+          <img class="about-icon" src={CalendarIcon.src} alt="" />
+        </span>
+      </div>
+      <div class="c-s-event">
+        <h3 class="c-s-event__title">
+          <a href="https://internals.tech/2024s" rel="nofollow" target="_blank">Internals Tech 2024</a><span
+            class="c-s-event__tag">Upcoming</span
+          >
+        </h3>
+        <span class="c-s-event__meta c-s-event__meta--date"> April 2024</span><span
+          class="c-s-event__meta c-s-event__meta--location">Limassol, Cyprus</span
+        >
+      </div>
     </div>
-    <div class="about-container">
-      <h1 class="title">Neciu Dan - Tech Lead | Software Engineer | Speaker | Writer</h1>
+    <div class="c-s-timeline__item">
+      <div class="c-s-timeline__indicator">
+        <span class="c-s-timeline__icon">
+          <img class="about-icon" src={CalendarIcon.src} alt="" />
+        </span>
+      </div>
+      <div class="c-s-event">
+        <h3 class="c-s-event__title">
+          <a href="https://frontmania.com" rel="nofollow" target="_blank">Frontmania 2023</a>
+        </h3>
+        <span class="c-s-event__meta c-s-event__meta--date"> October 2023</span><span
+          class="c-s-event__meta c-s-event__meta--location">Ultrech, Netherlands</span
+        >
+      </div>
+    </div>
+   
+    <div class="c-s-timeline__item">
+      <div class="c-s-timeline__indicator">
+        <span class="c-s-timeline__icon">
+          <img class="about-icon" src={CalendarIcon.src} alt="" />
+        </span>
+      </div>
+      <div class="c-s-event">
+        <h3 class="c-s-event__title">
+          <a href="https://reactalicante.es" rel="nofollow" target="_blank">React Alicante 2023</a>
+        </h3>
+        <span class="c-s-event__meta c-s-event__meta--date"> September 2023</span><span
+          class="c-s-event__meta c-s-event__meta--location">Alicante, Spain</span
+        >
+      </div>
+    </div>
+    <div class="c-s-timeline__item">
+      <div class="c-s-timeline__indicator">
+        <span class="c-s-timeline__icon">
+          <img class="about-icon" src={CalendarIcon.src} alt="" />
+        </span>
+      </div>
+      <div class="c-s-event">
+        <h3 class="c-s-event__title">
+          <a href="https://www.utahjs.com/conference" rel="nofollow" target="_blank">UtahJS Conf 2023</a>
+        </h3>
+        <span class="c-s-event__meta c-s-event__meta--date"> September 2023</span><span
+          class="c-s-event__meta c-s-event__meta--location">Sandy, Utah, United States</span
+        >
+      </div>
+    </div>
+    <div class="c-s-timeline__item">
+      <div class="c-s-timeline__indicator">
+        <span class="c-s-timeline__icon">
+          <img class="about-icon" src={CalendarIcon.src} alt="" />
+        </span>
+      </div>
+      <div class="c-s-event">
+        <h3 class="c-s-event__title">
+          <a href="https://handsontesting.com/" rel="nofollow" target="_blank">Hands On Testing 2023 - hybrid</a
+          >
+        </h3>
+        <span class="c-s-event__meta c-s-event__meta--date"> September 2023</span><span
+          class="c-s-event__meta c-s-event__meta--location">Guadalajara, Mexico</span
+        >
+      </div>
+    </div>
+    <div class="c-s-timeline__item">
+      <div class="c-s-timeline__indicator">
+        <span class="c-s-timeline__icon">
+          <img class="about-icon" src={CalendarIcon.src} alt="" />
+        </span>
+      </div>
+      <div class="c-s-event">
+        <h3 class="c-s-event__title">
+          <a href="https://www.techorama.be" rel="nofollow" target="_blank">Techorama 2023 Belgium</a>
+        </h3>
+        <span class="c-s-event__meta c-s-event__meta--date"> May 2023</span><span
+          class="c-s-event__meta c-s-event__meta--location">Antwerpen, Belgium</span
+        >
+      </div>
+    </div>
+    <div class="c-s-timeline__item">
+      <div class="c-s-timeline__indicator">
+        <span class="c-s-timeline__icon">
+          <img class="about-icon" src={CalendarIcon.src} alt="" />
+        </span>
+      </div>
+      <div class="c-s-event">
+        <h3 class="c-s-event__title">
+          <a href="https://www.developerweek.com/global/conference/management/" rel="nofollow" target="_blank"
+            >DeveloperWeek Management 2023</a
+          >
+        </h3>
+        <span class="c-s-event__meta c-s-event__meta--date"> May 2023</span>
+      </div>
+    </div>
+    <div class="c-s-timeline__item">
+      <div class="c-s-timeline__indicator">
+        <span class="c-s-timeline__icon">
+          <img class="about-icon" src={CalendarIcon.src} alt="" />
+        </span>
+      </div>
+      <div class="c-s-event">
+        <h3 class="c-s-event__title">
+          <a href="https://www.scifidevcon.com/" rel="nofollow" target="_blank">SciFiDevConMayTheFourthEvent 2023</a
+          >
+        </h3>
+        <span class="c-s-event__meta c-s-event__meta--date"> May 2023</span>
+      </div>
+    </div>
+    <div class="c-s-timeline__item">
+      <div class="c-s-timeline__indicator">
+        <span class="c-s-timeline__icon">
+          <img class="about-icon" src={CalendarIcon.src} alt="" />
+        </span>
+      </div>
+      <div class="c-s-event">
+        <h3 class="c-s-event__title"><span>Soirée du test - Bordeaux - 2023</span></h3>
+        <span class="c-s-event__meta c-s-event__meta--date"> April 2023</span><span
+          class="c-s-event__meta c-s-event__meta--location">Bruges, France</span
+        >
+      </div>
+    </div>
+    <div class="c-s-timeline__item">
+      <div class="c-s-timeline__indicator">
+        <span class="c-s-timeline__icon">
+          <img class="about-icon" src={CalendarIcon.src} alt="" />
+        </span>
+      </div>
+      <div class="c-s-event">
+        <h3 class="c-s-event__title"><span>Voxxed Days Athens - 2022</span></h3>
+        <span class="c-s-event__meta c-s-event__meta--date"> September 2022</span><span
+          class="c-s-event__meta c-s-event__meta--location">Athens, Greece</span
+        >
+      </div>
+    </div>
+    <div class="c-s-timeline__item">
+      <div class="c-s-timeline__indicator">
+        <span class="c-s-timeline__icon">
+          <img class="about-icon" src={CalendarIcon.src} alt="" />
+        </span>
+      </div>
+      <div class="c-s-event">
+        <h3 class="c-s-event__title"><span>Vue Roadtrip Barcelona</span></h3>
+        <span class="c-s-event__meta c-s-event__meta--date"> July 2022</span><span
+          class="c-s-event__meta c-s-event__meta--location">Barcelona, Spain</span
+        >
+      </div>
     </div>
   </div>
-  <div class="about-body">
-    <aside>
-      <div class="stick">
-        <div class="profile-image">
-          <img src="/images/about/profile_3.png" alt="" />
-        </div>
-        <ul class="social-icons">
-          <a class="twitter" href="https://twitter.com/neciudan">
-            <img width="20" src="/images/svg/logo-twitter.svg" alt="" />
-             Twitter
-          </a>
-          <a class="youtube" href="https://www.youtube.com/channel/UCdpPoxr7MmDix9AilUf8bMA">
-            <img width="20" src="/images/svg/logo-youtube.svg" alt="" />
-             Youtube
-          </a>
-          <a class="linkedin" href="https://www.linkedin.com/in/dan-neciu/">
-            <img width="20" src="/images/svg/logo-linkedin.svg" alt="" />
-             Linkedin
-          </a>
-          <a class="github" href="https://github.com/Cst2989">
-            <img width="20" src="/images/svg/logo-github.svg" alt="" />
-             Github
-          </a>
-          <a class="medium" href="https://medium.com/@neciudan">
-            <img width="20" src="/images/svg/logo-medium.svg" alt="" />
-             Medium
-          </a>
-        </ul>
-      </div>
-    </aside>
-    <article>
-      <div class="about-text">
-        <p>
-          Neciu Dan is a software engineer with a predominant focus on the front-end. He shares a passionate
-          relationship with JavaScript and has professional experience with all of the Big Three Frameworks. Among them,
-          he has a special fondness for React, despite his company's preference for Vue in many projects.
-        </p>
+  </WidgetWrapper>
+  <Steps
+    id="resume"
+    title="Work experience"
+    items={[
+      {
+        title:
+          'Lead Engineer <br /> <span class="font-normal">CareerOS, Barcelona, Spain</span> <br /> <span class="text-sm font-normal">February 2023 - Present</span>',
+        description: `- Built the a greenfield project, choosing the best tools for the job <br /> - Implemented a Product Engineering Mindset to deliver the correct features to our users <br /> - Leading and Mentoring junior Engineers   <br /> - Growing the team and product to the next level`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Senior Product Engineer <br /> <span class="font-normal">Glovo, Barcelona, Spain</span> <br /> <span class="text-sm font-normal">Oct 2020 - Feb 2023</span>',
+        description: `- Improved Web Core Vitals from 50% green to 90% green in all categories. <br /> - Lead and Implemented Product Filtering in our Catalogue that Improved CVR by 3% and Organic Traffic by 20% <br/> - Added Observability Practices in the Web, custom dashboards and monitors, and reduced the errors in our app by 30% <br/> - Working on the Authentification Flow, increased Sign up Rates by 10% and reduced the Sign up time by 50% <br/> - Fixed 5 major security issues in the Web App and implemented a Security Culture in the team`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Senior Engineer <br /> <span class="font-normal">Adoreme, New York, NY</span> <br /> <span class="text-sm font-normal">Oct 2016 - Oct 2020</span>',
+        description: `- Responsible for the migration of legacy AngularJS code to StencilJs
+        <br />
+        - Implemented Design System components into e-commerce website
+        <br />
+        - Improved the filtering experience that increased CVR by 1.2%
+        <br />
+        -Responsible for the CI/CD pipeline for 4 frontend applications
+        <br />
+        -Implemented two new projects that automated 90% the technical design processes 
+        <br />
+        -Advocated for XP practices inside the team, like unit testing MOB programming and pair programming `,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Developer <br /> <span class="font-normal">GMP+WEBSTYLER, Bucharest, Romania</span> <br /> <span class="text-sm font-normal">Apr 2013 - Oct 2016</span>',
+        description: `Built various PR campaigns for clients like: Coca-Cola, Unilever, P&G, Lidl, Kaufland, Orange, Vodafone, Samsung, etc. <br />`,
+        icon: 'tabler:briefcase',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
 
-        <p>
-          Constantly striving for excellence, Neciu Dan endeavours to strike the perfect balance. He aims to deliver
-          visually stunning user interfaces while also ensuring rapid and valuable product outcomes. At the same time,
-          he is committed to producing the cleanest and most easily maintainable code possible.
-        </p>
+  <!-- Steps Widget ****************** -->
 
-        <p>
-          In a recent endeavor, Neciu Dan co-founded an ed-tech startup, stepping into the role of a technical
-          co-founder. This new venture has allowed him to channel his expertise and passion for technology into the
-          realm of education. Embracing the challenges of the startup world, he is dedicated to leveraging his technical
-          acumen to revolutionize the educational landscape and create meaningful impacts in the sector.
-        </p>
-      </div>
 
-      <h2 class="about-title">WORK EXPERIENCE</h2>
 
-      <div class="c-s-timeline">
-        <div class="c-s-timeline__item">
-          <div class="c-s-timeline__indicator">
-            <span class="c-s-timeline__icon">
-              <img class="about-icon" src={WorkIcon.src} />
-            </span>
-          </div>
-          <div class="c-s-event">
-            <h3 class="c-s-event__title">
-              <a href="https://thecareeros.com" rel="nofollow" target="_blank">Tech Lead @ CareerOS</a><span
-                class="c-s-event__tag">Current</span
-              >
-            </h3>
-            <span class="c-s-event__meta c-s-event__meta--date"> February 2023 -</span><span
-              class="c-s-event__meta c-s-event__meta--location">Barcelona, Spain</span
-            >
-          </div>
-        </div>
-        <div class="c-s-timeline__item">
-          <div class="c-s-timeline__indicator">
-            <span class="c-s-timeline__icon">
-              <img class="about-icon" src={WorkIcon.src} />
-            </span>
-          </div>
-          <div class="c-s-event">
-            <h3 class="c-s-event__title">
-              <a href="https://glovoapp.com" rel="nofollow" target="_blank">Senior Software Engineer @ Glovo</a>
-            </h3>
-            <span class="c-s-event__meta c-s-event__meta--date"> October 2020 - February 2023,</span><span
-              class="c-s-event__meta c-s-event__meta--location">Barcelona, Spain</span
-            >
-          </div>
-        </div>
-        <div class="c-s-timeline__item">
-          <div class="c-s-timeline__indicator">
-            <span class="c-s-timeline__icon">
-              <img class="about-icon" src={WorkIcon.src} />
-            </span>
-          </div>
-          <div class="c-s-event">
-            <h3 class="c-s-event__title">
-              <a href="https://adoreme.com" rel="nofollow" target="_blank">Product Engineer @ Adoreme</a>
-            </h3>
-            <span class="c-s-event__meta c-s-event__meta--date"> October 2016 - October 2020,</span><span
-              class="c-s-event__meta c-s-event__meta--location">Bucharest, Romania</span
-            >
-          </div>
-        </div>
-        <div class="c-s-timeline__item">
-          <div class="c-s-timeline__indicator">
-            <span class="c-s-timeline__icon">
-              <img class="about-icon" src={WorkIcon.src} />
-            </span>
-          </div>
-          <div class="c-s-event">
-            <h3 class="c-s-event__title">
-              <a href="https://www.webstyler.ro/" rel="nofollow" target="_blank">Web Developer @ GMP Webstyler</a>
-            </h3>
-            <span class="c-s-event__meta c-s-event__meta--date"> February 2015 - October 2016,</span><span
-              class="c-s-event__meta c-s-event__meta--location">Bucharest, Romania</span
-            >
-          </div>
-        </div>
-        <div class="c-s-timeline__item">
-          <div class="c-s-timeline__indicator">
-            <span class="c-s-timeline__icon">
-              <img class="about-icon" src={WorkIcon.src} />
-            </span>
-          </div>
-          <div class="c-s-event">
-            <h3 class="c-s-event__title"><a href="#" rel="nofollow" target="_blank">Web Developer @ Pixio</a></h3>
-            <span class="c-s-event__meta c-s-event__meta--date"> February 2013 - February 2015,</span><span
-              class="c-s-event__meta c-s-event__meta--location">Bucharest, Romania</span
-            >
-          </div>
-        </div>
-      </div>
+  <!-- Features3 Widget ************** -->
 
-      <h2 class="about-title">AREA OF EXPERTISE</h2>
+  <Features3
+    title="Skills"
+    subtitle="Discover the proficiencies that allow me to bring imagination to life."
+    columns={3}
+    defaultIcon="tabler:point-filled"
+    items={[
+      {
+        title: 'Frontend Programming',
+        description: 'Proficient in building frontend applications using any JavaScript framework: React, Vue, Angular',
+      },
+      {
+        title: 'Backend Programming',
+        description: 'Skilled at developing in a couple of backend technologies: NodeJS, PHP, Go, Python with NoSQL or SQL databases',
+      },
+      {
+        title: 'Mobile Development',
+        description: 'Experienced in building mobile applications using React Native',
+      },
+      {
+        title: 'User-centered mindset',
+        description: 'Experienced in creating user-centered processes and leading teams to deliver the best user experience',
+      },
+      {
+        title: 'Public Speaking',
+        description: 'Experienced in speaking at conferences and meetups',
+      },
+      {
+        title: 'Mentoring',
+        description: 'Experienced in mentoring junior developers',
+      },
+      {
+        title: 'Leadership',
+        description: 'Experienced in leading teams and projects',
+      },
+      {
+        title: 'Communication',
+        description: 'Experienced in communicating with stakeholders and clients',
+      },
+      {
+        title: 'Security and Privacy',
+        description: 'Experienced in implementing security and privacy best practices',
+      },
+    ]}
+  />
 
-      <div class="about-tags">
-        <div class="about-tags__tag">Information & Communications Technology</div>
-        <div class="about-tags__tag">Computer Science</div>
-        <div class="about-tags__tag">Software Architecture & Design</div>
-        <div class="about-tags__tag">Company Culture & Team Management</div>
-      </div>
+  
 
-      <h2 class="about-title">TOPICS</h2>
+  <Testimonials
+    title="Recommendations"
+    subtitle="Discover what colegues have to say about their experiences working with me."
+    testimonials={[
+      {
+        testimonial: `I can say without hesitation that Dan is among my favourite developers I have ever worked with.Fantastic technical skills: I worked with Dan on a very ambitious project to revamp Glovo's web app. This was a complex project both in terms of UI and performance. Dan led this effort while also mentoring the team. He proposed scalable solutions that helped us set a solid backbone. Dan led us to achieve a hockey stick increase`,
+        name: 'Lokesh Mahajan',
+        job: 'Principal Product Manager @ Zalando',
+        image: {
+          src: 'https://media.licdn.com/dms/image/D4D03AQHgglPjvNkG8g/profile-displayphoto-shrink_100_100/0/1698013076566?e=1710374400&v=beta&t=P4nwvKkOH7oeNwe6Wg_nAeeHZWCAqhn_3N_4FuytdIM',
+          alt: 'Lokesh Mahajan image',
+        },
+      },
+      {
+        testimonial: `Dan is an extremely talented Senior Frontend Engineer. I had the pleasure of working with Dan at Glovo on the same team and later on cross-team initiatives.
+I was particularly impressed at Dan skills to build performance and scalable web applications. Also, he puts a lot of effort into quality assurance as well as monitoring them with observability tools.`,
+        name: 'German Quinteros',
+        job: 'Senior Software Engineer @ Glovo',
+        image: {
+          src: 'https://media.licdn.com/dms/image/C4E03AQHBOk6COnF14Q/profile-displayphoto-shrink_100_100/0/1584925679534?e=1710374400&v=beta&t=RjUe3YV8_3h1WgT-CAWc9gM7s5BOIsOFsqL2-nQMseU',
+          alt: 'German Quinteros Image',
+        },
+      },
+      {
+        testimonial: `Dan is a very talented engineer with a great eye for detail. He is a great team player and always willing to help others. He is a great asset to any team. Dan often thinks beyond day-to-day execution and takes full ownership of the projects. He proactively unblocks his team and foresees potential blockers ahead of time. `,
+        name: 'Justyna Kaluzka',
+        job: 'Engineering Manager at Spotify',
+        image: {
+          src: 'https://media.licdn.com/dms/image/C5603AQF-3cKrPrxKLA/profile-displayphoto-shrink_100_100/0/1517339445156?e=1710374400&v=beta&t=DBmzHN-a_yIQC4viQBJRDwqTn-PLhsjbpr8atW7fe-c',
+          alt: 'Justyna Kaluzka Image',
+        },
+      },
+      {
+        testimonial: `Dan does not confine himself to just the technical side but engages in healthy discussions that challenge the designers and PMs to think further about the user experience. Dan also shows a keen interest in understanding the "why" behind the products that we build. He understands the business and customer implications of whatever the team builds. 
+Dan has often led executive-level demos. `,
+        name: 'Fotis Adamakis',
+        job: 'Vue Author & Influencer',
+        image: {
+          src: 'https://media.licdn.com/dms/image/D4E03AQHrXrH2ib96SQ/profile-displayphoto-shrink_100_100/0/1678897818526?e=1710374400&v=beta&t=0gdHQPkyI2JdKFFAqlT8CjTZiYDaUlGKB4V-_cGOdgc',
+          alt: 'Fotis Adamakis Image',
+        },
+      },
+      {
+        testimonial: `We hit the jackpot when we hired Dan. He is a very talented developer, with a product focused mentality. He is a great team player and always willing to help others. He is a great asset to any team. Dan often thinks beyond day-to-day execution and takes full ownership of the projects. He proactively unblocks his team and foresees potential blockers ahead of time. `,
+        name: 'Marcus Castro',
+        job: 'CEO',
+        image: {
+          src: 'https://media.licdn.com/dms/image/D4E03AQEKsqrD-y6ZaA/profile-displayphoto-shrink_100_100/0/1700232798160?e=1710374400&v=beta&t=CVlpz0EVFswM4sCj1dV0UhtmNqoyprnpjXt1n6Wq7YE',
+          alt: 'Marcus Castro Image',
+        },
+      },
+      {
+        testimonial: `Working with Dan is a pleasure. I especially appreciate his ability to see the big picture and to understand the business impact of his work. One of his biggest strengths is his ability to communicate with people from different backgrounds and to explain complex technical concepts in a simple way. Dan is a great team player and a very reliable person.  `,
+        name: 'Maximilian Stengel',
+        job: 'CEO',
+        image: {
+          src: 'https://media.licdn.com/dms/image/D4E03AQE49OWzmxmpRA/profile-displayphoto-shrink_100_100/0/1693321941884?e=1710374400&v=beta&t=LVLnA7NHNxHSZOhsbYvEzmXPCiX-A9a-bNNIXZ4VDcU',
+          alt: 'Maximilian Stengel Image',
+        },
+      },
+    ]}
+  />
 
-      <div class="about-topics">
-        <div class="about-topics__item">Software testing</div>
-        <div class="about-topics__item">Software Engineering</div>
-        <div class="about-topics__item">JavaScript</div>
-        <div class="about-topics__item">ReactJS</div>
-        <div class="about-topics__item">Vue Js</div>
-        <div class="about-topics__item">Vuex</div>
-        <div class="about-topics__item">Testing and Quadivty</div>
-        <div class="about-topics__item">Test-Driven Development</div>
-        <div class="about-topics__item">Unit testing</div>
-        <div class="about-topics__item">UI Testing</div>
-        <div class="about-topics__item">Performance Testing</div>
-        <div class="about-topics__item">Testing</div>
-        <div class="about-topics__item">QA&amp;Testing</div>
-        <div class="about-topics__item">Accessabidivty</div>
-        <div class="about-topics__item">Web Accessibidivty</div>
-        <div class="about-topics__item">UX / Accessibidivty</div>
-        <div class="about-topics__item">React</div>
-        <div class="about-topics__item">React Native</div>
-        <div class="about-topics__item">Reactive Programming</div>
-        <div class="about-topics__item">React Web</div>
-        <div class="about-topics__item">Angular</div>
-        <div class="about-topics__item">AngularJS</div>
-      </div>
+  <!-- CallToAction Widget *********** -->
 
-      <h2 class="about-title">EVENTS</h2>
+  <CallToAction
+    title="Need help with your next project?"
+    subtitle="Intrested in a workshop or speaking engagement?"
+    callToAction={{
+      text: 'Contact me',
+      href: 'mailto:dan.neciu.cst@gmail.com',
+    }}
+  />
 
-      <div class="c-s-timeline">
-        <div class="c-s-timeline__item">
-          <div class="c-s-timeline__indicator">
-            <span class="c-s-timeline__icon">
-              <img class="about-icon" src={CalendarIcon.src} alt="" />
-            </span>
-          </div>
-          <div class="c-s-event">
-            <h3 class="c-s-event__title">
-              <a href="https://reactalicante.es" rel="nofollow" target="_blank">React Alicante 2023</a><span
-                class="c-s-event__tag">Upcoming</span
-              >
-            </h3>
-            <span class="c-s-event__meta c-s-event__meta--date"> September 2023</span><span
-              class="c-s-event__meta c-s-event__meta--location">Alicante, Spain</span
-            >
-          </div>
-        </div>
-        <div class="c-s-timeline__item">
-          <div class="c-s-timeline__indicator">
-            <span class="c-s-timeline__icon">
-              <img class="about-icon" src={CalendarIcon.src} alt="" />
-            </span>
-          </div>
-          <div class="c-s-event">
-            <h3 class="c-s-event__title">
-              <a href="https://www.utahjs.com/conference" rel="nofollow" target="_blank">UtahJS Conf 2023</a><span
-                class="c-s-event__tag">Upcoming</span
-              >
-            </h3>
-            <span class="c-s-event__meta c-s-event__meta--date"> September 2023</span><span
-              class="c-s-event__meta c-s-event__meta--location">Sandy, Utah, United States</span
-            >
-          </div>
-        </div>
-        <div class="c-s-timeline__item">
-          <div class="c-s-timeline__indicator">
-            <span class="c-s-timeline__icon">
-              <img class="about-icon" src={CalendarIcon.src} alt="" />
-            </span>
-          </div>
-          <div class="c-s-event">
-            <h3 class="c-s-event__title">
-              <a href="https://handsontesting.com/" rel="nofollow" target="_blank">Hands On Testing 2023 - hybrid</a
-              ><span class="c-s-event__tag">Upcoming</span>
-            </h3>
-            <span class="c-s-event__meta c-s-event__meta--date"> September 2023</span><span
-              class="c-s-event__meta c-s-event__meta--location">Guadalajara, Mexico</span
-            >
-          </div>
-        </div>
-        <div class="c-s-timeline__item">
-          <div class="c-s-timeline__indicator">
-            <span class="c-s-timeline__icon">
-              <img class="about-icon" src={CalendarIcon.src} alt="" />
-            </span>
-          </div>
-          <div class="c-s-event">
-            <h3 class="c-s-event__title">
-              <a href="https://www.techorama.be" rel="nofollow" target="_blank">Techorama 2023 Belgium</a>
-            </h3>
-            <span class="c-s-event__meta c-s-event__meta--date"> May 2023</span><span
-              class="c-s-event__meta c-s-event__meta--location">Antwerpen, Belgium</span
-            >
-          </div>
-        </div>
-        <div class="c-s-timeline__item">
-          <div class="c-s-timeline__indicator">
-            <span class="c-s-timeline__icon">
-              <img class="about-icon" src={CalendarIcon.src} alt="" />
-            </span>
-          </div>
-          <div class="c-s-event">
-            <h3 class="c-s-event__title">
-              <a href="https://www.developerweek.com/global/conference/management/" rel="nofollow" target="_blank"
-                >DeveloperWeek Management 2023</a
-              >
-            </h3>
-            <span class="c-s-event__meta c-s-event__meta--date"> May 2023</span>
-          </div>
-        </div>
-        <div class="c-s-timeline__item">
-          <div class="c-s-timeline__indicator">
-            <span class="c-s-timeline__icon">
-              <img class="about-icon" src={CalendarIcon.src} alt="" />
-            </span>
-          </div>
-          <div class="c-s-event">
-            <h3 class="c-s-event__title">
-              <a href="https://www.scifidevcon.com/" rel="nofollow" target="_blank">SciFiDevConMayTheFourthEvent 2023</a
-              >
-            </h3>
-            <span class="c-s-event__meta c-s-event__meta--date"> May 2023</span>
-          </div>
-        </div>
-        <div class="c-s-timeline__item">
-          <div class="c-s-timeline__indicator">
-            <span class="c-s-timeline__icon">
-              <img class="about-icon" src={CalendarIcon.src} alt="" />
-            </span>
-          </div>
-          <div class="c-s-event">
-            <h3 class="c-s-event__title"><span>Soirée du test - Bordeaux - 2023</span></h3>
-            <span class="c-s-event__meta c-s-event__meta--date"> April 2023</span><span
-              class="c-s-event__meta c-s-event__meta--location">Bruges, France</span
-            >
-          </div>
-        </div>
-        <div class="c-s-timeline__item">
-          <div class="c-s-timeline__indicator">
-            <span class="c-s-timeline__icon">
-              <img class="about-icon" src={CalendarIcon.src} alt="" />
-            </span>
-          </div>
-          <div class="c-s-event">
-            <h3 class="c-s-event__title"><span>Voxxed Days Athens - 2022</span></h3>
-            <span class="c-s-event__meta c-s-event__meta--date"> September 2022</span><span
-              class="c-s-event__meta c-s-event__meta--location">Athens, Greece</span
-            >
-          </div>
-        </div>
-        <div class="c-s-timeline__item">
-          <div class="c-s-timeline__indicator">
-            <span class="c-s-timeline__icon">
-              <img class="about-icon" src={CalendarIcon.src} alt="" />
-            </span>
-          </div>
-          <div class="c-s-event">
-            <h3 class="c-s-event__title"><span>Vue Roadtrip Barcelona</span></h3>
-            <span class="c-s-event__meta c-s-event__meta--date"> July 2022</span><span
-              class="c-s-event__meta c-s-event__meta--location">Barcelona, Spain</span
-            >
-          </div>
-        </div>
-      </div>
-    </article>
-  </div>
+  <!-- BlogLatestPost Widget **************** -->
+
+  <BlogLatestPosts
+    id="blog"
+    title="Explore my insightful articles on my blog"
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </BlogLatestPosts>
 </Layout>
 <style>
   .about-container {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
+  }
+  .events {
+    width: 600px;
+    position: relative;
+    margin: 0 auto;
   }
   .about-icon {
     display: inline-block;
@@ -388,11 +509,15 @@ const metadata = {
   aside h2 {
     margin-top: 0;
   }
-
+.c-s-timeline {
+  display: grid;
+    grid-template-columns: 1fr 1fr;
+}
   .c-s-timeline__icon svg {
     width: 24px;
     height: 24px;
     fill: var(--main-color);
+   
   }
 
   .about-tags,

@@ -11,7 +11,8 @@ metadata:
   title:
     default: Neciu Dan
     template: '%s — Neciu Dan'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+  description: "\U0001F680 Neciu Dan is a software engineer with a predominant focus on the front-end. He shares a passionate
+      relationship with JavaScript and has professional experience with all of the Big Three Frameworks. "
   robots:
     index: true
     follow: true
@@ -23,8 +24,8 @@ metadata:
         height: 628
     type: website
   twitter:
-    handle: '@onwidget'
-    site: '@onwidget'
+    handle: '@neciudan'
+    site: '@neciudan'
     cardType: summary_large_image
 
 i18n:
@@ -63,7 +64,7 @@ apps:
 analytics:
   vendors:
     googleAnalytics:
-      id: null # or "G-XXXXXXXXXX"
+      id: "G-WG98014QQ3" # or "G-XXXXXXXXXX"
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
