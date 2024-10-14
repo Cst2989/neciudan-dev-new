@@ -9,9 +9,7 @@ readTime: '9 min read'
 
 ## How to be a speaker
 
-I've been asked quite a few times how I get to speak at conferences and for feedback from friends or colleagues who will speak for the first time. 
-
-I started writing advice for a friend, and it got bigger and bigger until this article came to be. It contains a quick how-to and all the advice I can think of for first-time speakers or people who want to try it.
+Recently a friend got accepted to speak at a popular tech conference and asked me for some advice. I started writing this advice for him and it got bigger and bigger until this article came to be. It contains a quick how-to and all the guidance I can think of for first-time speakers or people who want to try it.
 
 Many people think that speakers are usually invited by the conference organizers, which happens with big names like Framework creators or Open source maintainers, but in truth, people actually apply to speak at conferences, and I will discuss this later. 
 
@@ -21,17 +19,17 @@ List 10-15 tags or topics representing what you can talk about, and then create 
 
 I suggest that you don't be controversial. Some conferences like this because your content has a better reach, but it is always better to be friendly; the internet is filled with controversial content, and people who pay to attend the conference won't appreciate it.
 
-Then, find a list of conferences with the theme of your subject. If you talk about Python, maybe all the pyConfs, but also dev-related conferences like Voxxeddays or DevConfs, all the React conferences, Javascript Conferences, and so on. Follow them on social media, follow the organizers, and engage with them.
+Then, find a list of conferences with the theme of your subject. If you talk about Python, maybe all the pyConfs, but also dev-related conferences like Techorama or Voxxed Days, all the React conferences, Javascript Conferences, and so on. Follow them on social media, follow the organizers, and engage with them.
 
-Once the conference date is approaching, the conference will typically open its CFP (call for papers), where speakers can submit their proposals. The CFP is usually a Google Form or a page on a speaker submission platform. 
+Once the event date is approaching, the conference will typically open its CFP (call for papers), where speakers can submit their proposals. The CFP is usually a Google Form or a page on a speaker submission platform. 
 
 ## Quick intro on Sessionize
 
-There are speaker platforms like Sessionize and Papercall, where you create a profile, create your talks, and, based on your topics, they will recommend conferences to you.
+There are speaker platforms like <a target="_blank" href="https://sessionize.com">Sessionize</a> and <a target="_blank" href="https://papercall.com">Papercall<a/>, where you create a profile, create your talks, and, based on your topics, they will recommend conferences to you.
 
 Now, I recommend not applying directly and blindly. I would usually reach out to the organizers and wait a bit before the end date of the CFP. I would then introduce myself to the organizers (if I don't know them already) and ask them what topics they are missing, what subjects they have in mind, and what sort of audience will be at the conference. 
 
-A little side note: This is the exact methodology my company, CareerOS, advocates when trying to land your dream job. Read more about CareerOS here.  
+A little side note: This is the exact methodology my company, <a target="_blank" href="https://thecareeros.com">CareerOS</a>, advocates when trying to land your dream job.
 
 Based on this feedback, I would then submit 2-3 talks.
 
@@ -41,7 +39,7 @@ I recommend keeping the title fun and engaging and not using chatGPT or other LL
 
 You will start with 5-6 ideas for your talks, and usually 1-2 are accepted yearly. By the time you have done this for 3 or 4 years, you will have an excellent portfolio of presentations to submit to conferences.
 
-Once you get accepted, congratulations! Whether it's your first time or you're a seasoned conference speaker, now it's time to start working on your talk.
+Once you get accepted, congratulations! Now it's time to start working on your talk.
 
 Usually, the conference will give you a timeslot for the length of the talk. Typically, lightning talks are 15 minutes long, normal talks 30 minutes long, and longer ones 45 minutes long. Keynotes might take 1 hour.
 
