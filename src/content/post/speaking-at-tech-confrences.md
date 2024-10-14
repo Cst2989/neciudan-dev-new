@@ -9,9 +9,9 @@ readTime: '9 min read'
 
 ## How to be a speaker
 
-Recently a friend got accepted to speak at a popular tech conference and asked me for some advice. I started writing this advice for him and it got bigger and bigger until this article came to be. It contains a quick how-to and all the guidance I can think of for first-time speakers or people who want to try it.
+Recently a friend got accepted to speak at a popular tech conference and asked me for some advice. I started writing some quick notes for him and it got bigger and bigger until this article came to be. It contains a how-to and all the guidance I can think of for first-time speakers or people who want to try it.
 
-Many people think that speakers are usually invited by the conference organizers, which happens with big names like Framework creators or Open source maintainers, but in truth, people actually apply to speak at conferences, and I will discuss this later. 
+Many people think that speakers are usually invited by the conference organizers, which happens with big names like Framework creators or Open source maintainers, but in truth, people actually have to apply to speak at conferences, and I will explain how you can do this later. 
 
 First, find your passion. What do you care about? Where do you bring most to the table? Is it Javascript skills? Hard tech skills like automated testing?
 
