@@ -2,7 +2,7 @@
 title: 'Speaking at Tech Conferences - How to get started'
 excerpt: 'Speaking at tech conferences is a great way to share your knowledge and experience with the community. Here are some tips on how to get started.'
 publishDate: 2024-10-13
-image: '/images/articles/book-rec.webp'
+image: '/images/articles/speaking.avif'
 category: 'Public Speaking'
 readTime: '9 min read'
 ---
