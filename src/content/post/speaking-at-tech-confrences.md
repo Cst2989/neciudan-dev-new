@@ -23,6 +23,8 @@ Then, find a list of conferences with the theme of your subject. If you talk abo
 
 Once the event date is approaching, the conference will typically open its CFP (call for papers), where speakers can submit their proposals. The CFP is usually a Google Form or a page on a speaker submission platform. 
 
+The most comprehensive list of conferences and their CFPs can be found on <a target="_blank" href="https://confs.tech/">Confs.tech</a>.
+
 ## Quick intro on Sessionize
 
 There are speaker platforms like <a target="_blank" href="https://sessionize.com">Sessionize</a> and <a target="_blank" href="https://papercall.com">Papercall<a/>, where you create a profile, create your talks, and, based on your topics, they will recommend conferences to you.
