@@ -27,7 +27,7 @@ The most comprehensive list of conferences and their CFPs can be found on <a tar
 
 ## Quick intro on Sessionize
 
-There are speaker platforms like <a target="_blank" href="https://sessionize.com">Sessionize</a> and <a target="_blank" href="https://papercall.com">Papercall<a/>, where you create a profile, create your talks, and, based on your topics, they will recommend conferences to you.
+There are speaker platforms like <a target="_blank" href="https://sessionize.com">Sessionize</a> and <a target="_blank" href="https://papercall.com">Papercall</a>, where you create a profile, create your talks, and, based on your topics, they will recommend conferences to you.
 
 Now, I recommend not applying directly and blindly. I would usually reach out to the organizers and wait a bit before the end date of the CFP. I would then introduce myself to the organizers (if I don't know them already) and ask them what topics they are missing, what subjects they have in mind, and what sort of audience will be at the conference. 
 
