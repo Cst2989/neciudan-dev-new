@@ -90,7 +90,7 @@ I would add the script to my notes and start reading, and in every practice sess
 
 A quick tip here is to practice at your talk's exact hour. So if you are the first to talk in the morning, practice in the morning; if you are exactly after lunch, practice after lunch; if you are closing the conference, practice at the exact hour of your talk. This way, your body will be in the right mood when adrenaline strikes.
 
-## What to know before the conference:
+## What to know before the conference
 
 Typically, conferences pay for travel and 1-2 nights of accommodation (depending on the length of the conference). They also have a free speaker dinner, and some might have some extra activities in the city. Some conferences also arrange for airport pickup, and they include the conference ticket and maybe one for a guest as well.
 
@@ -147,6 +147,6 @@ After that, you did it! Take a selfie on stage, thank the organizers, thank Beyo
 
 Go talk to people! Post on social media, mingle, answer questions, and attend the rest of the talks! Don't leave. The organizers love it when speakers mingle with the attendees and will most likely invite you again if you are a good sport.
 
-Welcome to the rockstar life!
+And most importantly, have fun! You are doing this because you love it, and you want to share your knowledge with the world.
 
 <img src="/images/articles/speaker-3.JPG" role="presentational" />
