@@ -47,6 +47,8 @@ Once you get accepted, congratulations! Now it's time to start working on your t
 
 ### How to build a talk
 
+<img src="/images/articles/speaker-4.jpg" role="presentational" />
+
 Usually, the conference will give you a timeslot for the length of the talk. Typically, lightning talks are 15 minutes long, normal talks 30 minutes long, and longer ones 45 minutes long. Keynotes might take 1 hour.
 
 Ask the organizers if you must include time for questions in your slot. If they say 15 minutes is for Q&A and you have a 35' slot, your talk should be around 20 minutes. Quick maths!
@@ -79,7 +81,6 @@ Another way to keep the audience engaged is to ask them questions. How many of y
 
 <img src="/images/articles/speaker-2.JPG" role="presentational" />
 
-
 After you finish building your 50' to 1-hour talk, it is time to practice, practice, and practice.
 
 First, I would read the script in my head, imagining how it would sound on stage, including the jokes and the questions, and timing myself to measure how long each part would take.
@@ -107,7 +108,6 @@ I have personally been accepted to conferences in Utah two times. To Utah Js and
 Now you made it to the conference! It's game day.
 
 
-
 ## Welcome to the conference 
 
 What you should do, and I can't stress this enough, Is Go to the speaker dinner and talk to people. If you have a conference Slack or a Whatsup channel, reach out to people to get dinner! Network!
@@ -123,9 +123,9 @@ Try not to speak too much or too loud before your presentation. Speak, but save 
 
 Fun Fact: I usually get very, very nervous around 30 minutes before my talk and have to pee every 5 minutes. So you might see me go to the bathroom every 7 minutes. 
 
-<img src="/images/articles/speaker-4.HEIC" role="presentational" />
-
 But once I am on stage, it's show time, and all my nerves go away.
+
+<img src="/images/articles/speaker-5.jpg" role="presentational" />
 
 Before I walk on stage, I do 20 seconds of breathing exercises, and If I am able, I give a massive shout or yell at the end to pump me up ( I learned this from the movie Coco )
 
