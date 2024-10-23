@@ -85,7 +85,7 @@ After you finish building your 50' to 1-hour talk, it is time to practice, pract
 
 First, I would read the script in my head, imagining how it would sound on stage, including the jokes and the questions, and timing myself to measure how long each part would take.
 
-Finally, I would start practicing with my laptop and presentation in front of me as I would on stage. 
+Later, I would start practicing with my laptop and presentation in front of me as I would on stage. 
 I would add the script to my notes and start reading, and in every practice session, I try to read a little less until I have it memorized.
 
 A quick tip here is to practice at your talk's exact hour. So if you are the first to talk in the morning, practice in the morning; if you are exactly after lunch, practice after lunch; if you are closing the conference, practice at the exact hour of your talk. This way, your body will be in the right mood when adrenaline strikes.
