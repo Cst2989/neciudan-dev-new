@@ -23,15 +23,17 @@ Then, find a list of conferences with the theme of your subject. If you talk abo
 
 Once the event date is approaching, the conference will typically open its CFP (call for papers), where speakers can submit their proposals. The CFP is usually a Google Form or a page on a speaker submission platform. 
 
+<img src="/images/articles/speaker-1.png" role="presentational" /> 
+
 The most comprehensive list of conferences and their CFPs can be found on <a target="_blank" href="https://confs.tech/">Confs.tech</a>.
 
-## Quick intro on Sessionize
+## How to apply
 
 There are speaker platforms like <a target="_blank" href="https://sessionize.com">Sessionize</a> and <a target="_blank" href="https://papercall.com">Papercall</a>, where you create a profile, create your talks, and, based on your topics, they will recommend conferences to you.
 
 Now, I recommend not applying directly and blindly. I would usually reach out to the organizers and wait a bit before the end date of the CFP. I would then introduce myself to the organizers (if I don't know them already) and ask them what topics they are missing, what subjects they have in mind, and what sort of audience will be at the conference. 
 
-A little side note: This is the exact methodology my company, <a target="_blank" href="https://thecareeros.com">CareerOS</a>, advocates when trying to land your dream job.
+A little side note: This is the exact methodology my company: <a target="_blank" href="https://thecareeros.com">CareerOS</a>, advocates when trying to land your dream job.
 
 Based on this feedback, I would then submit 2-3 talks.
 
@@ -42,6 +44,8 @@ I recommend keeping the title fun and engaging and not using chatGPT or other LL
 You will start with 5-6 ideas for your talks, and usually 1-2 are accepted yearly. By the time you have done this for 3 or 4 years, you will have an excellent portfolio of presentations to submit to conferences.
 
 Once you get accepted, congratulations! Now it's time to start working on your talk.
+
+### How to build a talk
 
 Usually, the conference will give you a timeslot for the length of the talk. Typically, lightning talks are 15 minutes long, normal talks 30 minutes long, and longer ones 45 minutes long. Keynotes might take 1 hour.
 
@@ -60,7 +64,7 @@ Start with the title and abstract, then create an outline with the talking point
 
 Then, I will add a time slot for each specific point. For example, the introduction should be 7 minutes, the conclusion 3 minutes, the first point 12 minutes, the second 10 minutes, and the last 13 minutes. You can have four talking points, but I would not recommend more than that.
 
-Then, in each section, also break them down into :
+In each section, also break them down into :
 - Setup
 - Content and examples
 - The point this section is trying to make
@@ -70,6 +74,11 @@ Then, I fill each section with my script -- the exact content I would say on sta
 All three or four talking points should take the audience on a journey with the same big conclusion. I would also recommend adding personal anecdotes and examples from your professional experience, plus a joke here and there. I personally like to start with a joke as part of the introduction.
 
 Another way to keep the audience engaged is to ask them questions. How many of you know this? Who here uses this framework? Who here thinks this is wrong and this is right? Ask them to raise their hands, or better yet, have a Kahoot game that actively engages the audience. But make sure to keep it light and don't overuse it. One question per talking point is enough.
+
+### Getting ready 
+
+<img src="/images/articles/speaker-2.JPG" role="presentational" />
+
 
 After you finish building your 50' to 1-hour talk, it is time to practice, practice, and practice.
 
@@ -97,6 +106,8 @@ I have personally been accepted to conferences in Utah two times. To Utah Js and
 
 Now you made it to the conference! It's game day.
 
+
+
 ## Welcome to the conference 
 
 What you should do, and I can't stress this enough, Is Go to the speaker dinner and talk to people. If you have a conference Slack or a Whatsup channel, reach out to people to get dinner! Network!
@@ -111,6 +122,8 @@ Especially avoid alcohol until your talk is finished.
 Try not to speak too much or too loud before your presentation. Speak, but save your voice.
 
 Fun Fact: I usually get very, very nervous around 30 minutes before my talk and have to pee every 5 minutes. So you might see me go to the bathroom every 7 minutes. 
+
+<img src="/images/articles/speaker-4.HEIC" role="presentational" />
 
 But once I am on stage, it's show time, and all my nerves go away.
 
@@ -135,3 +148,5 @@ After that, you did it! Take a selfie on stage, thank the organizers, thank Beyo
 Go talk to people! Post on social media, mingle, answer questions, and attend the rest of the talks! Don't leave. The organizers love it when speakers mingle with the attendees and will most likely invite you again if you are a good sport.
 
 Welcome to the rockstar life!
+
+<img src="/images/articles/speaker-3.JPG" role="presentational" />
