@@ -2,7 +2,7 @@
 title: 'Magic Release Notes'
 excerpt: 'Just merge your PRs without worrying about release notes. Let GitHub Actions do the work for you.'
 publishDate: 2025-01-18
-image: '/images/articles/releases.svg'
+image: '/images/articles/magic-release-bg.png'
 category: 'deployment'
 readTime: '5 min read'
 ---
