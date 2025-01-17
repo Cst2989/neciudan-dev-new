@@ -1,6 +1,6 @@
 ---
 title: 'Magic Release Notes'
-excerpt: 'Just merge your PRs without worrying about release notes. Let GitHub Actions do the work for you.'
+excerpt: 'Just merge your PRs without worrying about release notes. Let GitHub Actions do the work for you by creating a Draft Release and then push to production by clicking a button and get notified on Slack.'
 publishDate: 2025-01-18
 image: '/images/articles/magic-release-bg.png'
 category: 'deployment'
