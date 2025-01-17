@@ -1,43 +1,72 @@
 ---
 import merge from 'lodash.merge';
-import type { ImageMetadata } from 'astro';
 import Layout from '~/layouts/PageLayout.astro';
 import SinglePost from '~/components/blog/SinglePost.astro';
 import ToBlogLink from '~/components/blog/ToBlogLink.astro';
+import type { MetaData, MetaDataImage } from '~/types';
 
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
-import { findImage } from '~/utils/images';
 
 export const prerender = true;
 
-export async function getStaticPaths () {
+export async function getStaticPaths() {
   return await getStaticPathsBlogPost();
 }
 
 const { post } = Astro.props;
-
 const url = getCanonical(getPermalink(post.permalink, 'post'));
-const image = (await findImage(post.image)) as ImageMetadata | undefined;
 
-const metadata = merge(
-  {
-    title: post.title,
-    description: post.excerpt,
-    robots: {
-      index: blogPostRobots?.index,
-      follow: blogPostRobots?.follow,
-    },
-    openGraph: {
-      type: 'article',
-      ...(image ? { images: [{ url: image, width: image?.width, height: image?.height }] } : {}),
-    },
+// Get the full URL for the image
+const getFullImageUrl = (imagePath: string): string => {
+  if (!imagePath) return '';
+  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+    return imagePath;
+  }
+  // Remove leading slash if it exists to avoid double slashes
+  const cleanImagePath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
+  return new URL(cleanImagePath, Astro.site).toString();
+};
+
+const imageUrl = post.image ? getFullImageUrl(post.image) : '';
+
+// Prepare the image object according to MetaDataImage interface
+const ogImage: MetaDataImage = {
+  url: imageUrl,
+  width: 1200,
+  height: 630
+};
+
+// Base metadata object that matches MetaData interface
+const baseMetadata: MetaData = {
+  title: post.title,
+  description: post.excerpt,
+  canonical: url.toString(),
+  robots: {
+    index: blogPostRobots?.index || true,
+    follow: blogPostRobots?.follow || true,
   },
-  { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
+  openGraph: {
+    type: 'article',
+    url: url.toString(),
+    images: imageUrl ? [ogImage] : undefined,
+    siteName: 'Neciu Dan'
+  },
+  twitter: {
+    cardType: imageUrl ? 'summary_large_image' : 'summary',
+    site: '@neciudan',
+    handle: '@neciudan'
+  }
+};
+
+// Merge with any additional metadata from the post
+const metadata = merge(
+  baseMetadata,
+  post?.metadata || {}
 );
 ---
 
 <Layout metadata={metadata}>
-  <SinglePost post={{ ...post, image: image }} url={url} />
+  <SinglePost post={{ ...post, image: imageUrl }} url={url} />
   <ToBlogLink />
 </Layout>
