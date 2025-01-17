@@ -37,7 +37,7 @@ Sometimes, the annoyance grows and becomes a real problem. I might forget to ann
 
 After several times when it became a problem and people complained about it,  I finally got around to automating this process. 
 
-Here is what I needed: 
+Here is what I need from this feature: 
 - Semver versioning 
 - Github Action that adds the title of PR and content to the changelog  when the PR is merged
 - A button that creates a new release tag gets everything in the changelog and sets it as the description for the release 
@@ -65,7 +65,7 @@ There you have it, SemVer explained. We want this for our release notes; let's s
 
 ## Magic Github Action
 
-When I worked at a previous company, our team used this fantastic thing called GitHub Actions. Have you ever had those repetitive tasks you do whenever you merge code? GitHub Actions solves those problems. Instead of manually creating tags, updating changelogs, and writing release notes, you set up a workflow file and let GitHub handle it.
+Have you ever had those repetitive tasks you do whenever you merge code? GitHub Actions solves those problems. Instead of manually creating tags, updating changelogs, and writing release notes, you set up a workflow file and let GitHub handle it.
 
 It's like having a tiny dev that sits there watching your repository 24/7, ready to jump in whenever you merge code. Here's how I configured ours:
 
@@ -74,12 +74,13 @@ feat(COM-1000): this is a new feature
 fix(COM-666): fixed an annoying bug 
 chore(COM-123): updates the README file 
 major(COM-1444): this is a major breaking change that requires both frontend and backend to be carefully deployed, or else we have a problem
+
 The next step was to use this title somewhere, and I knew just the place. GitHub already integrates releases based on tags; the problem is that you have to write the release description yourself. 
 
 I decided to write a GitHub Actions script that does the following when you merge a PR: 
-Creates a "Draft Release" or takes the one that already exists 
-The next version is calculated based on the PR title and the previous tag version, and a tag is created.
-It does this at every PR merge as long you have yet to release it and keeps adding the titles to the Draft Release. 
+- Creates a "Draft Release" or takes the one that already exists 
+- The next version is calculated based on the PR title and the previous tag version, and a tag is created.
+- It does this at every PR merge as long you have yet to release it and keeps adding the titles to the Draft Release. 
 Here is what the flow would look like. 
 
 We just released version 2.10 in Production yesterday, and today, we're merging three tickets:
@@ -102,7 +103,7 @@ on:
       - main
 ```
 
-This code tells our tiny dev, "Hey, only wake up when someone merges a PR to main." Why? because that's when we want to update our release notes.
+This code tells our tiny dev, "Hey, only wake up when someone merges a PR to main." Because that's when we want to update our release notes.
 
 ```
 jobs:
@@ -112,6 +113,7 @@ jobs:
     permissions:
       contents: write
 ```
+
 The if condition is crucial here - we don't want to create release notes for PRs that were closed without merging. That would be messy. And we need contents: write permission because, well, we're going to be creating tags and messing with releases.
 
 ```
@@ -122,11 +124,11 @@ steps:
       fetch-depth: 0
       token: ${{ secrets.GITHUB_TOKEN }}
 ```
-Steps in GitHub Actions are sequential tasks that run one after another. Think of them as recipes—each step needs to be completed successfully before proceeding to the next one. The uses: actions/checkout@v3 tells GitHub to use version 3 of the official checkout action, a pre-built action that handles git clone operations.
+Steps in GitHub Actions are sequential tasks that run one after another. Think of them as recipes—each step needs to be completed successfully before proceeding to the next one. The `uses: actions/checkout@v3` tells GitHub to use version 3 of the official checkout action, a pre-built action that handles git clone operations.
 
 The checkout step clones our repository into the GitHub Actions runner. The workflow needs access to our code to process tags and create releases, which is where the GITHUB_TOKEN comes in - it's an automatically generated token that GitHub creates for each workflow run with the permissions we specified earlier.
 
-Setting fetch-depth: 0 is crucial here. GitHub Actions fetches the latest commit by default to save time and bandwidth. But for versioning, we need the complete git history, including all tags. That's what fetch-depth: 0 does - it tells git to fetch everything.
+GitHub Actions fetches the latest commit by default to save time and bandwidth. But for versioning, we need the complete git history, including all tags. That's what fetch-depth: 0 does - it tells git to fetch everything.
 
 Then we get in the meat of our business: first, it fetches the latest version tag:
 
@@ -190,6 +192,8 @@ Of course, you can do it manually by publishing the draft release, but I wanted 
 
 Remember semantic versioning? I want the GitHub Action to get the latest tag and name the release with that tag. Then, I want to change the version in our package.json file to that specific version. Finally, I want our GitHub Action to create a release branch from our main branch, which we can use to deploy to Production automatically. 
 
+Let's implement this new flow.
+
 First, we create another workflow called `publish-release.yml` in our workflows folder. This one is a little different, as we don't want it to run automatically; we have to specify its manual: 
 
 ```
@@ -204,9 +208,9 @@ This code will create a nice green button in the GitHub Actions tab that, when p
 <img src="/images/articles/run-workflow.png" alt="Run Workflow image in Github" /> 
 
 We break our workflow into three main steps: 
-prepare step
-create-release-branch
-publish-release
+- prepare step
+- create-release-branch
+- publish-release
 
 Our `prepare` step is pretty standard. It gets the code from our code repository, declares our output, and sets the GitHub token to allow our workflow to push changes to it. Finally, it gets the latest tag of our repo and stores it as a variable for later usage.
 
@@ -304,19 +308,17 @@ And now, finally, if the previous two jobs were successful, we can publish our r
 
 ```
 
-There you have it—click a button, and magic happens. This will publish the release to the latest version so you can see it in the releases tab on GitHub and start again with more PR merges. 
+There you have it: click a button, and magic happens. This will publish the release to the latest version so you can see it in the releases tab on GitHub and start again with more PR merges. 
 
 ## Getting Notified
 
 The final piece of the puzzle was getting these release notes to where people actually hang out - Slack. You know how it goes, you can have the most beautiful documentation in the world, but if people need to actively go looking for it, they probably won't.
 
-Let me tell you about the easiest integration I've ever done. GitHub and Slack already considered this problem and created a solution that takes literally two minutes to set up.
+Let me tell you about the easiest integration I've ever done.
 
 First, head over to https://slack.github.com/ and install the GitHub-Slack app. It's the official app, so you know it's safe and well-maintained.
 
 Next, you'll want to create some dedicated channels for these notifications. In our case, we created two: #frontend-releases and #backend-releases. 
-
-Why separate channels? Nobody likes a noisy Slack channel; this way, frontend devs don't have to wade through backend releases and vice versa.
 
 Finally, here's the magic part. Go to your new channel and type this command:
 
