@@ -38,11 +38,12 @@ Sometimes, the annoyance grows and becomes a real problem. I might forget to ann
 After several times when it became a problem and people complained about it,  I finally got around to automating this process. 
 
 Here is what I needed: 
- Semver versioning 
- Github Action that adds the title of PR and content to the changelog  when the PR is merged
- A button that creates a new release tag gets everything in the changelog and sets it as the description for the release 
- Sends Slack notifications to a specific channel with release notes
-Let's get started. 
+- Semver versioning 
+- Github Action that adds the title of PR and content to the changelog  when the PR is merged
+- A button that creates a new release tag gets everything in the changelog and sets it as the description for the release 
+- Sends Slack notifications to a specific channel with release notes
+
+Let's get pull up our sleeves and get to work.
 
 ## Semantic versioning (aka SemVer)
 
