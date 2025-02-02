@@ -8,6 +8,7 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
+import vercel from '@astrojs/vercel/serverless';
 import tasks from './src/utils/tasks';
 
 import { readingTimeRemarkPlugin } from './src/utils/frontmatter.mjs';
@@ -29,6 +30,7 @@ export default defineConfig({
   trailingSlash: SITE.trailingSlash ? 'always' : 'never',
 
   output: 'hybrid',
+  adapter: vercel(),
 
   integrations: [
     tailwind({

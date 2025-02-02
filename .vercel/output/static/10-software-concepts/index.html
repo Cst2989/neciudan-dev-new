@@ -1,0 +1,340 @@
+<!DOCTYPE html><html lang="en" dir="ltr" class="2xl:text-[20px]"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><link rel="shortcut icon" href="/_astro/favicon.b5768cb3.ico"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.9678378b.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.185f8d05.png"><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.0b2d4200.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#8D46E7"><meta name="msapplication-TileColor" content="#8D46E7"><meta name="theme-color" content="#8D46E7"><style is:global>
+  :root {
+    --aw-font-sans: 'Inter Variable';
+    --aw-font-serif: var(--aw-font-sans);
+    --aw-font-heading: var(--aw-font-sans);
+
+    --aw-color-primary: rgb(30 64 175);
+    --aw-color-secondary: rgb(30 58 138);
+    --aw-color-accent: rgb(109 40 217);
+
+    --aw-color-text-heading: rgb(0 0 0); 
+    --aw-color-text-default: rgb(16 16 16);
+    --aw-color-text-muted: rgb(16 16 16 / 66%);
+    --aw-color-bg-page: rgb(255 255 255);
+    --main-color: hsl(37deg, 92%, 64%);
+    --main-color-darker: hsl(28deg, 80%, 58%);
+    --link: #dd42dd;
+    --heading: 'AllianceNo2';
+    --aw-color-bg-page-dark: #13151F;
+  }
+
+  .dark {
+    --aw-font-sans: 'Inter Variable';
+    --aw-font-serif: var(--aw-font-sans);
+    --aw-font-heading: var(--aw-font-sans);
+
+    --aw-color-primary: rgb(30 64 175);
+    --aw-color-secondary: rgb(30 58 138);
+    --aw-color-accent: rgb(109 40 217);
+
+    --aw-color-text-heading: rgb(0 0 0); 
+    --aw-color-text-default: rgb(229 236 246);
+    --aw-color-text-muted: rgb(229 236 246 / 66%);
+    --aw-color-bg-page: var(--aw-color-bg-page-dark);
+  }
+</style><script>(function(){const defaultTheme = "system";
+
+  function applyTheme(theme) {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    const matches = document.querySelectorAll("[data-aw-toggle-color-scheme] > input");
+
+    if (matches && matches.length) {
+      matches.forEach((elem) => {
+        elem.checked = theme !== "dark";
+      });
+    }
+  }
+
+  if ((defaultTheme && defaultTheme.endsWith(":only")) || (!localStorage.theme && defaultTheme !== "system")) {
+    applyTheme(defaultTheme.replace(":only", ""));
+  } else if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    applyTheme("dark");
+  } else {
+    applyTheme("light");
+  }
+})();</script><title>10 Software concepts I learned in 2022 — Neciu Dan</title>
+<meta name="description" content="Software Engineers commit to a lifetime habit of learning. Here are 10 things I learned this year that made me a better Frontend Engineer." />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://neciudan.dev/10-software-concepts" />
+<meta property="og:title" content="10 Software concepts I learned in 2022" />
+<meta property="og:description" content="Software Engineers commit to a lifetime habit of learning. Here are 10 things I learned this year that made me a better Frontend Engineer." />
+<meta property="og:url" content="https://neciudan.dev/10-software-concepts" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://neciudan.dev/images/articles/soft-concepts.jpeg" />
+
+<meta property="og:locale" content="en" />
+<meta property="og:site_name" content="Neciu Dan" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@neciudan" />
+<meta name="twitter:creator" content="@neciudan" /><meta name="google-site-verification" content="orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M"><script async src="https://www.googletagmanager.com/gtag/js?id=G-WG98014QQ3" type="text/partytown"></script><script type="text/partytown">(function(){const id = "G-WG98014QQ3";
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    window.dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", id);
+})();</script><script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/3fef6c340be89145a26492f67/6c8cb2c70a677df4ef1ff62d2.js");</script><meta name="author" content="Neciu Dan"><link rel="stylesheet" href="/_astro/privacy.50b42608.css" />
+<style type="text/css">.logo-link[data-astro-cid-tvrurpns]{text-decoration:none;padding-left:20px}.logo-link[data-astro-cid-tvrurpns]:hover .logo[data-astro-cid-tvrurpns]{background-size:130%;background-position:center}.logo[data-astro-cid-tvrurpns]{width:40px;height:40px;border-radius:50%;background-color:var(--main-color);position:relative;display:inline-block;top:17px;left:0;background-image:url(/images/logo.png);background-size:100%;background-position:center;transition:all .4s ease-in-out;position:absolute}
+#overlay[data-astro-cid-f5qiv4ni]{position:fixed;inset:0;background:rgba(0,0,0,0);transition:background-color .15s linear;z-index:50;pointer-events:none}#dialog[data-astro-cid-f5qiv4ni]{position:fixed;left:50%;bottom:0;width:90%;max-width:500px;background:#1e2432;padding:2rem;border-radius:8px;color:#fff;transform:translate(-50%,100%);transition:transform .15s cubic-bezier(.25,.46,.45,.94);z-index:51}#close[data-astro-cid-f5qiv4ni]{position:absolute;right:1rem;top:1rem;background:none;border:none;color:#64748b;cursor:pointer;padding:.5rem;font-size:1.25rem}.content[data-astro-cid-f5qiv4ni]{text-align:center}.content[data-astro-cid-f5qiv4ni] img[data-astro-cid-f5qiv4ni]{width:2.5rem;height:2.5rem;border-radius:50%;margin:0 auto 1rem}.content[data-astro-cid-f5qiv4ni] h2[data-astro-cid-f5qiv4ni]{font-size:1.25rem;font-weight:700;margin-bottom:.5rem}.description[data-astro-cid-f5qiv4ni]{color:#94a3b8;margin-bottom:1rem}.subscribers[data-astro-cid-f5qiv4ni]{color:#64748b;font-size:.875rem;margin-bottom:1.5rem}form[data-astro-cid-f5qiv4ni]{margin:1.5rem 0}input[data-astro-cid-f5qiv4ni]{width:100%;padding:.75rem 1rem;background:#1a1f2c;border:none;border-radius:8px;color:#fff;margin-bottom:1rem;font-size:1rem}input[data-astro-cid-f5qiv4ni]:focus{outline:none;box-shadow:0 0 0 2px #3b82f680}button[data-astro-cid-f5qiv4ni][type=submit]{width:100%;padding:.75rem;background:#3b82f6;border:none;border-radius:8px;color:#fff;cursor:pointer;font-size:1rem;font-weight:500;transition:background-color .2s}button[data-astro-cid-f5qiv4ni][type=submit]:hover{background:#2563eb}#continue[data-astro-cid-f5qiv4ni]{background:none;border:none;color:#64748b;cursor:pointer;font-size:.875rem}
+</style><script type="module">class i{static container;static initialize(){this.container||(this.container=document.createElement("div"),this.container.className="fixed bottom-4 right-4 z-50 flex flex-col gap-2",document.body.appendChild(this.container))}static show(s,e="success"){this.initialize();const t=document.createElement("div");t.className=`
+      transform transition-all duration-300 ease-out translate-x-full
+      px-4 py-2 rounded-lg shadow-lg
+      ${e==="success"?"bg-blue-600 text-white":"bg-red-600 text-white"}
+    `,t.textContent=s,this.container.appendChild(t),setTimeout(()=>{t.classList.remove("translate-x-full")},10),setTimeout(()=>{t.classList.add("translate-x-full"),t.classList.add("opacity-0"),setTimeout(()=>{this.container.removeChild(t)},300)},3e3)}}const o=document.getElementById("overlay"),a=document.getElementById("dialog");let l=!1;window.addEventListener("scroll",()=>{if(l||localStorage.getItem("newsletterSubscribed")==="true")return;const r=window.scrollY-1e3,s=77+64,e=(window.innerHeight-s)*.3;if(r<0)o.style.backgroundColor="rgba(0,0,0,0)",a.style.transform="translate(-50%, 100%)";else if(r<e){const t=r/e;o.style.backgroundColor=`rgba(0,0,0,${t*.9})`;const u=100-t*150;a.style.transform=`translate(-50%, ${u}%)`}else o.style.backgroundColor="rgba(0,0,0,0.9)",a.style.transform=`translate(-50%, -${(window.innerHeight-s)*.25}px)`,o.style.pointerEvents="auto"});const b=document.getElementById("close"),m=document.getElementById("continue");function n(){o.style.backgroundColor="rgba(0,0,0,0)",a.style.transform="translate(-50%, 100%)",o.style.pointerEvents="none",l=!0}b.addEventListener("click",n);m.addEventListener("click",n);o.addEventListener("click",n);const w=document.getElementById("subscribeForm"),g=localStorage.getItem("newsletterSubscribed")==="true";g&&n();w.addEventListener("submit",async r=>{r.preventDefault();const s=new FormData(r.target);try{const e=await fetch("/api/subscribe",{method:"POST",body:s});if(!e.ok){const t=await e.json();throw new Error(t.error||"Subscription failed")}localStorage.setItem("newsletterSubscribed","true"),window.dispatchEvent(new CustomEvent("newsletter:subscribed")),n(),i.show("Thank you for subscribing! 🎉")}catch(e){console.error("Subscription error:",e),i.show("Sorry, there was an error. Please try again later.","error")}});const d=document.getElementById("inlineSubscribeForm"),c=()=>{d.style.display="none"},h=localStorage.getItem("newsletterSubscribed")==="true";h&&c();window.addEventListener("newsletter:subscribed",c);d.addEventListener("submit",async r=>{r.preventDefault();const s=new FormData(r.target);try{const e=await fetch("/api/subscribe",{method:"POST",body:s});if(!e.ok){const t=await e.json();throw new Error(t.error||"Subscription failed")}localStorage.setItem("newsletterSubscribed","true"),window.dispatchEvent(new CustomEvent("newsletter:subscribed")),c(),i.show("Thank you for subscribing! 🎉")}catch(e){console.error("Subscription error:",e),i.show("Sorry, there was an error. Please try again later.","error")}});
+</script>
+<script>!(function(w,p,f,c){c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push"])})(window,'partytown','forward');/* Partytown 0.8.0 - MIT builder.io */
+!function(t,e,n,i,r,o,a,d,s,c,l,p){function u(){p||(p=1,"/"==(a=(o.lib||"/~partytown/")+(o.debug?"debug/":""))[0]&&(s=e.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(f,1e4),e.addEventListener("pt0",w),r?h(1):n.serviceWorker?n.serviceWorker.register(a+(o.swPath||"partytown-sw.js"),{scope:a}).then((function(t){t.active?h():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&h()}))}),console.error):f())))}function h(t){c=e.createElement(t?"script":"iframe"),t||(c.setAttribute("style","display:block;width:0;height:0;border:0;visibility:hidden"),c.setAttribute("aria-hidden",!0)),c.src=a+"partytown-"+(t?"atomics.js?v=0.8.0":"sandbox-sw.html?"+Date.now()),e.querySelector(o.sandboxParent||"body").appendChild(c)}function f(n,r){for(w(),i==t&&(o.forward||[]).map((function(e){delete t[e.split(".")[0]]})),n=0;n<s.length;n++)(r=e.createElement("script")).innerHTML=s[n].innerHTML,e.head.appendChild(r);c&&c.parentNode.removeChild(c)}function w(){clearTimeout(d)}o=t.partytown||{},i==t&&(o.forward||[]).map((function(e){l=t,e.split(".").map((function(e,n,i){l=l[i[n]]=n+1<i.length?"push"==i[n+1]?[]:l[i[n]]||{}:function(){(t._ptf=t._ptf||[]).push(i,arguments)}}))})),"complete"==e.readyState?u():(t.addEventListener("DOMContentLoaded",u),t.addEventListener("load",u))}(window,document,navigator,top,window.crossOriginIsolated);</script></head><body class="antialiased text-default bg-page tracking-tight"><header class="sticky top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out" id="header"><div class="absolute inset-0"></div><div class="relative text-default py-3 px-3 md:px-6 mx-auto w-full md:flex md:justify-between max-w-7xl"><div class="flex justify-between"><a class="flex items-center" href="/"><span class="logo-link self-center ml-2 rtl:ml-0 rtl:mr-2 text2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white" data-astro-cid-tvrurpns><div class="logo" data-astro-cid-tvrurpns></div>Neciu Dan</span></a><div class="flex items-center md:hidden"><button type="button" class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition" aria-label="Toggle Menu" data-aw-toggle-menu><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6" data-icon="tabler:menu"><symbol id="ai:tabler:menu"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/></symbol><use  xlink:href="#ai:tabler:menu"></use></svg></button></div></div><nav class="items-center w-full md:w-auto hidden md:flex text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:mx-5" aria-label="Main navigation"><ul class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium"><li class=""><a class="hover:text-link dark:hover:text-white px-4 py-3 flex items-centers" href="/about">About</a></li><li class=""><a class="hover:text-link dark:hover:text-white px-4 py-3 flex items-centers" href="/blog">Blog</a></li><li class=""><a class="hover:text-link dark:hover:text-white px-4 py-3 flex items-centers" href="https://www.youtube.com/@NeciuDan/videos">Videos</a></li></ul></nav><div class="hidden md:self-center flex md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-3 md:p-0"><div class="items-center flex justify-between w-full md:w-auto"><div class="flex"><button type="button" class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Toggle between Dark and Light mode" data-aw-toggle-color-scheme><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 md:w-5 md:h-5 md:inline-block" data-icon="tabler:sun"><symbol id="ai:tabler:sun"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0m-5 0h1m8-9v1m8 8h1m-9 8v1M5.6 5.6l.7.7m12.1-.7l-.7.7m0 11.4l.7.7m-12.1-.7l-.7.7"/></symbol><use  xlink:href="#ai:tabler:sun"></use></svg></button><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="RSS Feed" href="/rss.xml"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:rss"><symbol id="ai:tabler:rss"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 19a1 1 0 1 0 2 0a1 1 0 1 0-2 0M4 4a16 16 0 0 1 16 16M4 11a9 9 0 0 1 9 9"/></symbol><use  xlink:href="#ai:tabler:rss"></use></svg></a></div><span class="ml-4 rtl:ml-0 rtl:mr-4"><a class="btn ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm" href="https://mailchi.mp/3b72b47614e8/subscribe">Subscribe</a></span></div></div></div></header><main><section class="py-8 sm:py-16 lg:py-20 mx-auto"><article><header class=""><div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center"><p><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-4 h-4 inline-block -mt-0.5 mr-0.5 dark:text-gray-400" data-icon="tabler:clock"><symbol id="ai:tabler:clock"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0"/><path d="M12 7v5l3 3"/></g></symbol><use  xlink:href="#ai:tabler:clock"></use></svg><time datetime="Thu Jan 05 2023 01:00:00 GMT+0100 (Central European Standard Time)" class="inline-block">Jan 5, 2023</time> 
+· <a class="capitalize hover:underline inline-block" href="/category/software-development">software development</a> · 11 min read</p></div><h1 class="px-4 sm:px-6 max-w-3xl mx-auto text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading">10 Software concepts I learned in 2022</h1><p class="max-w-3xl mx-auto mt-4 mb-8 px-4 sm:px-6 text-xl md:text-2xl text-muted dark:text-slate-400 text-justify">Software Engineers commit to a lifetime habit of learning. Here are 10 things I learned this year that made me a better Frontend Engineer.</p><div class="max-w-3xl mx-auto px-4 sm:px-6 flex flex-col gap-0"><div class="flex items-center gap-4"><img src="https://neciudan.dev/images/logo.png" width="48" height="48" sizes="(min-width: 48px) 48px, 100vw" style="object-fit: cover; object-position: center; max-width: 48px; max-height: 48px; aspect-ratio: 1; width: 100%;" alt="Neciu Dan" class="w-12 h-12 rounded-full" loading="eager" decoding="async"><div><h2 class="font-bold">Neciu Dan</h2><time datetime="2023-01-05T00:00:00.000Z" class="text-sm text-gray-500 dark:text-gray-400">Jan 5, 2023</time></div></div><p class="text-lg italic text-gray-700 dark:text-gray-300 mt-2 border-t border-b py-4">
+Hi there, it's Dan. As a technical co-founder of an ed-tech startup, I'm here to share insights on combining
+    technology and education to solve real problems. I write about startup challenges, tech innovations, and the future
+    of learning. Subscribe to join me on this journey of transforming education through technology. Want to discuss
+    ed-tech or startup life? <a href="https://www.linkedin.com/in/neciudan/" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300" target="_blank">Let's connect.</a></p><div class="border-b"><form id="inlineSubscribeForm" class="flex flex-col sm:flex-row gap-2 py-6"><input type="email" name="email" placeholder="Type your email..." class="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#1e2432] dark:bg-gray-800" required><button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+Subscribe
+</button></form></div><div class="flex gap-2 items-center text-gray-500 py-4"><div class="flex gap-4"><div class="dark:text-slate-600"><span class="align-super font-bold text-gray-400 dark:text-slate-400">Share:</span><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Twitter Share" data-aw-social-share="twitter" data-aw-url="https://neciudan.dev/10-software-concepts" data-aw-text="10 Software concepts I learned in 2022"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-x"><use  xlink:href="#ai:tabler:brand-x"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Facebook Share" data-aw-social-share="facebook" data-aw-url="https://neciudan.dev/10-software-concepts"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-facebook"><use  xlink:href="#ai:tabler:brand-facebook"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Linkedin Share" data-aw-social-share="linkedin" data-aw-url="https://neciudan.dev/10-software-concepts" data-aw-text="10 Software concepts I learned in 2022"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-linkedin"><use  xlink:href="#ai:tabler:brand-linkedin"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Whatsapp Share" data-aw-social-share="whatsapp" data-aw-url="https://neciudan.dev/10-software-concepts" data-aw-text="10 Software concepts I learned in 2022"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-whatsapp"><use  xlink:href="#ai:tabler:brand-whatsapp"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Email Share" data-aw-social-share="mail" data-aw-url="https://neciudan.dev/10-software-concepts" data-aw-text="10 Software concepts I learned in 2022"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:mail"><use  xlink:href="#ai:tabler:mail"></use></svg></button></div></div></div></div><img src="https://neciudan.dev/images/articles/soft-concepts.jpeg" width="900" height="506" sizes="(max-width: 900px) 400px, 900px" style="object-fit: cover; object-position: center; max-width: 900px; max-height: 506px; aspect-ratio: 1.7786561264822134; width: 100%;" class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700" alt="Software Engineers commit to a lifetime habit of learning. Here are 10 things I learned this year that made me a better Frontend Engineer." loading="eager" decoding="async"></header><div class="mx-auto px-6 sm:px-6 max-w-3xl prose prose-lg lg:prose-xl dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-primary dark:prose-a:text-blue-400 prose-img:rounded-md prose-img:shadow-lg mt-8 prose-headings:scroll-mt-[80px]"><p>This year was without a doubt a year full of learning, from learning to Snowboard to How to Traverse a Graph and even trying and failing to learn how to whistle.</p>
+<p>And while not everything I learned can be applied in my career as a Frontend Engineer, let me share with you the lessons that I believe made me better at my job, and in turn, it may help you as well.</p>
+<h2 id="1-margin-block-and-gaps">1. Margin Block and Gaps</h2>
+<p>As soon as I started coding, the first CSS properties I learned about were margins and paddings.</p>
+<p>Color me surprised when I learned there exists a different but similar property called margin-block.</p>
+<p>For you and me margin-block-start is the same as margin-top and margin-inline-start the same as margin-left. But if you switch the language of the Browser from English to Arabic the vertical and horizontal axes will be reversed and Users will start reading from right to left.</p>
+<p>Why use these alternatives? Because not all languages are left-to-right, top-to-bottom.</p>
+<p>By using margin-block you will basically create the same UX design for both reading experiences.</p>
+<p>It’s not just margin: there are properties for padding, border, and overflow as well.</p>
+<p>The main selling point for logical properties is internationalization. If you want your product to be available in a left-to-right language like English and a right-to-left language like Arabic, you can save yourself a lot of trouble by using logical properties.</p>
+<p>Both flexbox and grid layouts have a common property called gap. It basically adds spacing between columns and/or rows.</p>
+<p>It comes with specific properties as well: column-gap and row-gap.</p>
+<p>Before, I used to either justify-content with flex-start or flex-end and then use a combination of margins and padding to get the desired result.</p>
+<p>Now a quick column-gap: 20px solves the problem.</p>
+<h2 id="2-dynamic-programming">2. Dynamic Programming</h2>
+<p>Dynamic programming is a method for solving problems by breaking them down into smaller subproblems and storing the solutions to these subproblems in a table so that they can be reused (instead of recomputing them).</p>
+<p>Let’s think of a common exercise where this can be applied. Imagine you are a world-class thief and you are alone in a store with a bag that can handle 4 kg of products.</p>
+<p>In front of you are the following items:</p>
+<p>A laptop worth 2000$ and a weight of 3kg
+An electric guitar worth 1500$ and a weight of 1kg
+A stereo system worth 3000$ with a weight of 4kg
+To steal the maximum amount of money you have to go through each item and create a number of sub-sets to calculate the maximum amount. For 3 items this is easy — you have to calculate 8 possible sets, but for each item, you add the number of sets doubles.</p>
+<p>This algorithm works in O(2^n) time, which is very very slow.</p>
+<p>Dynamic Programming, on the other hand, creates a table and breaks the problem into sub-problems. So instead of the 4kg limit that we have in our bag, we try to find the best possible solution for 1kg, then for 2kg, 3kg, and finally for 4.</p>
+<p>Our table will look like this:</p>
+<p>For each item row you have to answer the question, is this item the best option to steal at this cell and moment in time?</p>
+<p>The first row checks if the Guitar is the best solution, without knowing about the other items, on the second row the Stereo does not fit into the small bags only when it reaches the 4kg limit does it become the optimal solution.</p>
+<p>In the last row, for the 3kg bag, the laptop is the best solution, but once it reaches the 4kg it has to compare the previous solution (3000$) or put the laptop which is (2000$) and it sees that it has 1kg left and takes the value from the first column that we calculated all along.</p>
+<p>The actual formula used for this is more complicated, and it’s a story for another time.</p>
+<h2 id="3-git-bisect">3. Git bisect</h2>
+<p>git bisect is a useful tool for quickly identifying the commit that introduced a bug in your code. It can save you a lot of time compared to manually searching through the commit history.</p>
+<p>Here’s how to use it to find the commit that introduced a bug:</p>
+<p>Start the bisect process by running git bisect start.
+Identify a commit that is known to be “good”, and run git bisect good <commit>.
+Identify a commit that is known to be “bad”, and run git bisect bad <commit>.
+Git will then check out a commit that is halfway between the good and bad commits.
+Run your script to determine whether the current commit is good or bad. If it is good, run git bisect good. If it is bad, run git bisect bad.
+Repeat this process until git bisect finds the commit that introduced the bug.
+When git bisect has found the commit, it will output the commit hash and message.
+Run git bisect reset to stop the bisect process and return to the HEAD commit.</commit></commit></p>
+<h2 id="4-domain-driven-design-concepts">4. Domain Driven Design concepts</h2>
+<p>DDD is a way to build your software to ensure as little coupling between modules as possible. It is very popular in the micro-service world and it introduces concepts to help you design your software, such as:</p>
+<p>Ubiquitous language. A vocabulary shared by everyone involved in a project, from domain experts to stakeholders, to project managers, to developers</p>
+<p>Bounded Context. A boundary within a domain where a particular domain model applies.</p>
+<p>Entities. An entity is an object with a unique identity that persists over time.</p>
+<p>Value objects. A value object has no identity. It is defined only by the values of its attributes. Value objects are also immutable.</p>
+<p>Domain Driven Design is really powerful and can create beautiful clean architecture and communication between domains is very straightforward.</p>
+<h2 id="5-javascript-on-the-edge">5. Javascript on the Edge</h2>
+<p>A content delivery network (CDN) is a distributed network of servers that are used to deliver content to users based on their geographic location. A CDN stores copies of content in multiple locations, and when a user requests content, the CDN delivers it from the server that is closest to the user.</p>
+<p>This helps to reduce the distance that the content must travel, and can improve the performance and reliability of a website.</p>
+<p>We have taken this a step further, while we stored static content like images, fonts, and files on CDNs for a while, recently we started to move complex functionality on the server as well.</p>
+<p>Lambda functions have existed for a while, but in the Frontend World we just started to move pure functions, network requests and parsers and all sorts of complex stateless functionality to “the edge” as we call it.</p>
+<p>Basically, remove the bloat of these functions from the main javascript bundle and keep it in servers close to the users so they run very fast and can be cached.</p>
+<h2 id="6-how-important-observability-is">6. How important Observability is</h2>
+<p>Since we started coding, for every website we build, we always had to add to it different tracking scripts. The most common of course is Google Analytics.</p>
+<p>But the usage of these tracking tools was used mainly to measure clicks, conversion rate, and page views. And it was used primarily by marketing or more recently by Data analysts.</p>
+<p>But new tools in the industry like DataDog or Sentry have added another layer to track. They started measuring errors and combining logs, and you can send as many metrics as you desire to observe the interactions of your piece of software with the users.</p>
+<p>An undeniable fact in programming is that software has bugs, and at Scale, errors are plenty and vary in size and how they affect the user.</p>
+<p>Using DataDog, we can group issues, see which are handled, and break the errors by Browser, OS, or any number of attributes we can deduce about the user.</p>
+<p>For example, we figured out that a particularly devastating Hydration Error inside a Scoped Slot in our Vue Application was only happening on a version of Safari. And using this browser ourselves we could reproduce and debug the issue.</p>
+<h2 id="7-typescript-concepts">7. Typescript Concepts</h2>
+<p>I always knew the basics, and how to make types work but I did not understand how Typescript works behind the scenes and what it does.</p>
+<p>Here are some examples that were new to me and helped me move forward when using Typescript.</p>
+<p>Types are not sealed. If a function has a param type Shape with height and width you can pass it a different type like Cube that has height width and length.
+Types and interfaces are mostly the same. Types can create unions and interfaces can be augmented
+If your function does not modify its parameters then declare them read-only. This makes its contract clearer and prevents inadvertent mutations in its implementation.
+TypeScript gives you a few ways to control the process of widening. One is const. If you declare a variable with const instead of let, it gets a narrower type.
+When you write as const after a value, TypeScript will infer the narrowest possible type for it. There is no widening. For true constants, this is typically what you want.
+Evolving any! It happens when you don’t declare it as any.</p>
+<p>For example result = [] as you push in the array it changes the type from any[] to number[]</p>
+<p>While TypeScript types typically only refine, implicit any and any[] types are allowed to evolve. You should be able to recognize and understand this construct where it occurs.
+For better error checking, consider providing an explicit type annotation instead of using evolving any
+The evolving array is tripped up by iterators like forEach</p>
+<h2 id="8-the-new-project-razor">8. The New Project Razor</h2>
+<p>When deciding whether to take on a new project, follow a simple two-step approach:</p>
+<p>Is this a “hell yes!” opportunity? If not, say no. If yes, proceed to Step 2.</p>
+<p>Imagine that this is going to take 2x as long and be 1/2 as profitable as you expect. Do you still want to do it? If no, say no. If yes, take on the project.</p>
+<p>Using this approach will force you to say no much more often — you’ll only say yes to projects you are extremely excited about, which are ultimately those that drive asymmetric rewards in your life.</p>
+<h2 id="9-moores-task-and-shortest-process-time">9. Moores Task and Shortest Process Time</h2>
+<p>Consider you have four tasks A, B, C, and D.</p>
+<p>Task A is estimated at 4h, B at 9h, C at 12h, and D at 18h.</p>
+<p>Doing all these tasks will take above the desired deadline and that deadline cannot be broken.</p>
+<p>Moore’s Law says to throw away the longest-taking task. In our case D.</p>
+<p>Work and repeat at scale.</p>
+<p>Shortest Process Time:</p>
+<p>Say you have two projects: one takes 4 days for Client A and one takes 1 day For client B.</p>
+<p>If you do the big one first and the small one last the total waiting time of your clients combined is 9 days: Client B waits 5 days, and Client A waits 4 days.</p>
+<p>Doing it in reverse makes it 6 days: Client B waits 1 day, and client A waits 5 days</p>
+<p>Here you are optimizing for client happiness while still taking one week for your work.</p>
+<h2 id="10-how-to-listen">10. How to Listen</h2>
+<p>While this is not frontend specific, I believe that taking the time to actually listen to what people around me are saying, helped me become a better programmer.</p>
+<p>Usually, I would either pick up on the topic and if it was not interesting to me I would normally tune it out, and this was the best-case scenario.</p>
+<p>Sometimes I would be on my phone and not pay attention at all to my teammates during meetings or even when something tech-related was discussed.</p>
+<p>But the worst of it was when I would react too fast. Usually by assuming, wrongly, that I know what the person is talking about and that I could, again wrongly, explain it better.</p>
+<p>By doing this I would just add confusion to the topic and complicate it further.</p>
+<p>And even when receiving feedback or being told a piece of information, my first instinct was always to react, to show I know about it, or I know something similar but never to listen and assimilate that piece of knowledge.</p>
+<p>Being aware of this and taking time to pay attention, listen, and be more mindful of my working environment has helped me learn most of the items iterated in this article.</p>
+<p>So if you can take just one thing from this article, let it be this point.</p>
+<p>We all are actively looking for new knowledge by reading, browsing the internet, and exploring new tech. But Actively Listening to what people around us are saying can give us so much information that will pique our curiosity and trigger a domino effect on our learning path.</p>
+<p>If you liked this article, don’t forget to follow me on Medium or on Twitter to connect and exchange ideas.</p>
+<p>I write mostly about Testing, Frontend Engineering, or Productivity. Here you can also check out my youtube channel.</p>
+<p>Here are a couple of articles I’ve also written:</p>
+<p>Testing Practices you should have in your CI/CD pipeline
+Tech Books you have to read to be a better Engineer
+Javascript Component Patterns to Scale up
+The Bowling Kata
+5 Tips to Solve Common Pitfalls With React Native
+CSS: The !important parts</p></div><div class="mx-auto px-6 sm:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row"><ul class="mr-5 rtl:mr-0 rtl:ml-5"></ul><div class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600"><span class="align-super font-bold text-gray-400 dark:text-slate-400">Share:</span><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Twitter Share" data-aw-social-share="twitter" data-aw-url="https://neciudan.dev/10-software-concepts" data-aw-text="10 Software concepts I learned in 2022"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-x"><use  xlink:href="#ai:tabler:brand-x"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Facebook Share" data-aw-social-share="facebook" data-aw-url="https://neciudan.dev/10-software-concepts"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-facebook"><symbol id="ai:tabler:brand-facebook"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 10v4h3v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3V3h-3a5 5 0 0 0-5 5v2H7"/></symbol><use  xlink:href="#ai:tabler:brand-facebook"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Linkedin Share" data-aw-social-share="linkedin" data-aw-url="https://neciudan.dev/10-software-concepts" data-aw-text="10 Software concepts I learned in 2022"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-linkedin"><use  xlink:href="#ai:tabler:brand-linkedin"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Whatsapp Share" data-aw-social-share="whatsapp" data-aw-url="https://neciudan.dev/10-software-concepts" data-aw-text="10 Software concepts I learned in 2022"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-whatsapp"><symbol id="ai:tabler:brand-whatsapp"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></g></symbol><use  xlink:href="#ai:tabler:brand-whatsapp"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Email Share" data-aw-social-share="mail" data-aw-url="https://neciudan.dev/10-software-concepts" data-aw-text="10 Software concepts I learned in 2022"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:mail"><symbol id="ai:tabler:mail"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><path d="m3 7l9 6l9-6"/></g></symbol><use  xlink:href="#ai:tabler:mail"></use></svg></button></div></div></article><div id="overlay" data-astro-cid-f5qiv4ni></div><div id="dialog" data-astro-cid-f5qiv4ni><button id="close" data-astro-cid-f5qiv4ni>✕</button><div class="content" data-astro-cid-f5qiv4ni><img src="/images/logo.png" alt="Author" data-astro-cid-f5qiv4ni><h2 data-astro-cid-f5qiv4ni>Discover more from The Neciu Dan Newsletter</h2><p class="description" data-astro-cid-f5qiv4ni>A weekly column on Tech & Education, startup building and occasional hot takes.</p><p class="subscribers" data-astro-cid-f5qiv4ni>Over 1,000 subscribers</p><form id="subscribeForm" data-astro-cid-f5qiv4ni><input type="email" name="email" placeholder="Type your email..." required data-astro-cid-f5qiv4ni><button type="submit" data-astro-cid-f5qiv4ni>Subscribe</button></form><button id="continue" data-astro-cid-f5qiv4ni>Continue reading</button></div></div></section><div class="mx-auto px-6 sm:px-6 max-w-3xl pt-8 md:pt-4 pb-12 md:pb-20"><a class="btn btn-ghost px-3 md:px-3" href="/blog"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5 mr-1 -ml-1.5 rtl:-mr-1.5 rtl:ml-1" data-icon="tabler:chevron-left"><symbol id="ai:tabler:chevron-left"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 6l-6 6l6 6"/></symbol><use  xlink:href="#ai:tabler:chevron-left"></use></svg> Back to Blog</a></div></main><footer class="relative border-t border-gray-200 dark:border-slate-800 not-prose"><div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div><div class="relative max-w-7xl mx-auto px-4 sm:px-6 dark:text-slate-300"><div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12"><div class="col-span-12 lg:col-span-4"><div class="mb-2"><a class="inline-block font-bold text-xl" href="/">Neciu Dan</a></div><div class="text-sm text-muted"><a class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out mr-2 rtl:mr-0 rtl:ml-2" href="/terms">Terms</a><a class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out mr-2 rtl:mr-0 rtl:ml-2" href="/privacy">Privacy Policy</a></div></div></div><div class="md:flex md:items-center md:justify-between py-6 md:py-8"><ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4"><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="X" href="https://twitter.com/neciudan"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-x"><symbol id="ai:tabler:brand-x"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 4l11.733 16H20L8.267 4zm0 16l6.768-6.768m2.46-2.46L20 4"/></symbol><use  xlink:href="#ai:tabler:brand-x"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Instagram" href="https://instagram.com/neciudev"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-instagram"><symbol id="ai:tabler:brand-instagram"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m7.5-4.5v.01"/></g></symbol><use  xlink:href="#ai:tabler:brand-instagram"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Tiktok" href="https://www.tiktok.com/@neciudan"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-tiktok"><symbol id="ai:tabler:brand-tiktok"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 7.917v4.034A9.948 9.948 0 0 1 16 10v4.5a6.5 6.5 0 1 1-8-6.326V12.5a2.5 2.5 0 1 0 4 2V3h4.083A6.005 6.005 0 0 0 21 7.917z"/></symbol><use  xlink:href="#ai:tabler:brand-tiktok"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Linkedin" href="https://www.linkedin.com/in/neciudan/"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-linkedin"><symbol id="ai:tabler:brand-linkedin"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm4 5v5m0-8v.01M12 16v-5"/><path d="M16 16v-3a2 2 0 0 0-4 0"/></g></symbol><use  xlink:href="#ai:tabler:brand-linkedin"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Youtube" href="https://www.youtube.com/@NeciuDan/"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-youtube"><symbol id="ai:tabler:brand-youtube"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 8a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><path d="m10 9l5 3l-5 3z"/></g></symbol><use  xlink:href="#ai:tabler:brand-youtube"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="RSS" href="/rss.xml"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:rss"><use  xlink:href="#ai:tabler:rss"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Github" href="https://github.com/Cst2989"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-github"><symbol id="ai:tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2c2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2a4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6c-.6.6-.6 1.2-.5 2V21"/></symbol><use  xlink:href="#ai:tabler:brand-github"></use></svg></a></li></ul><div class="text-sm mr-4 dark:text-slate-400">
+    <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"></span>
+    Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://onwidget.com/"> onWidget</a> · All rights reserved.
+  </div></div></div></footer><script>(function(){const defaultTheme = "system";
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+
+  if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
+    applyTheme(defaultTheme.replace(':only', ''));
+  } else if (
+    localStorage.theme === 'dark' ||
+    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    applyTheme('dark');
+  } else {
+    applyTheme('light');
+  }
+
+  function attachEvent(selector, event, fn) {
+    const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
+    if (matches && matches.length) {
+      matches.forEach((elem) => {
+        elem.addEventListener(event, (e) => fn(e, elem), false);
+      });
+    }
+  }
+
+  window.onload = function () {
+    let lastKnownScrollPosition = window.scrollY;
+    let ticking = true;
+
+    attachEvent('#header nav', 'click', function () {
+      document.querySelector("[data-aw-toggle-menu]")?.classList.remove("expanded");
+      document.body.classList.remove("overflow-hidden");
+      document.getElementById("header")?.classList.remove("h-screen");
+      document.getElementById("header")?.classList.remove("expanded");
+      document.getElementById("header")?.classList.remove("bg-page");
+      document.querySelector("#header nav")?.classList.add("hidden");
+      document.querySelector("#header > div > div:last-child")?.classList.add("hidden");
+    });
+
+    attachEvent('[data-aw-toggle-menu]', 'click', function () {
+      document.body.classList.toggle("overflow-hidden");
+      document.getElementById("header")?.classList.toggle("h-screen");
+      document.getElementById("header")?.classList.toggle("expanded");
+      document.getElementById("header")?.classList.toggle("bg-page");
+      document.querySelector("#header nav")?.classList.toggle("hidden");
+      document.querySelector("#header > div > div:last-child")?.classList.toggle("hidden");
+    });
+
+    attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
+      if (defaultTheme.endsWith(':only')) {
+        return;
+      }
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    });
+
+    attachEvent('[data-aw-social-share]', 'click', function (_, elem) {
+      const network = elem.getAttribute('data-aw-social-share');
+      const url = encodeURIComponent(elem.getAttribute('data-aw-url'));
+      const text = encodeURIComponent(elem.getAttribute('data-aw-text'));
+
+      let href;
+      switch (network) {
+        case 'facebook':
+          href = `https://www.facebook.com/sharer.php?u=${url}`;
+          break;
+        case 'twitter':
+          href = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+          break;
+        case 'linkedin':
+          href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${text}`;
+          break;
+        case 'whatsapp':
+          href = `https://wa.me/?text=${text}%20${url}`;
+          break;
+        case 'mail':
+          href = `mailto:?subject=%22${text}%22&body=${text}%20${url}`;
+          break;
+
+        default:
+          return;
+      }
+
+      const newlink = document.createElement('a');
+      newlink.target = '_blank';
+      newlink.href = href;
+      newlink.click();
+    });
+
+    function appyHeaderStylesOnScroll() {
+      const header = document.getElementById('header');
+      if (lastKnownScrollPosition > 60 && !header.classList.contains('scroll')) {
+        document.getElementById('header').classList.add('scroll');
+      } else if (lastKnownScrollPosition <= 60 && header.classList.contains('scroll')) {
+        document.getElementById('header').classList.remove('scroll');
+      }
+      ticking = false;
+    }
+    appyHeaderStylesOnScroll();
+
+    attachEvent([document], 'scroll', function () {
+      lastKnownScrollPosition = window.scrollY;
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          appyHeaderStylesOnScroll();
+        });
+        ticking = true;
+      }
+    });
+  };
+
+  window.onpageshow = function () {
+    document.documentElement.classList.add('motion-safe:scroll-smooth');
+    const elem = document.querySelector('[data-aw-toggle-menu]');
+    if (elem) {
+      elem.classList.remove('expanded');
+    }
+    document.body.classList.remove("overflow-hidden");
+    document.getElementById("header")?.classList.remove("h-screen");
+    document.getElementById("header")?.classList.remove("expanded");
+    document.querySelector("#header nav")?.classList.add("hidden");
+  };
+})();</script></body></html>

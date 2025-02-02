@@ -1,0 +1,340 @@
+<!DOCTYPE html><html lang="en" dir="ltr" class="2xl:text-[20px]"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><link rel="shortcut icon" href="/_astro/favicon.b5768cb3.ico"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.9678378b.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.185f8d05.png"><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.0b2d4200.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#8D46E7"><meta name="msapplication-TileColor" content="#8D46E7"><meta name="theme-color" content="#8D46E7"><style is:global>
+  :root {
+    --aw-font-sans: 'Inter Variable';
+    --aw-font-serif: var(--aw-font-sans);
+    --aw-font-heading: var(--aw-font-sans);
+
+    --aw-color-primary: rgb(30 64 175);
+    --aw-color-secondary: rgb(30 58 138);
+    --aw-color-accent: rgb(109 40 217);
+
+    --aw-color-text-heading: rgb(0 0 0); 
+    --aw-color-text-default: rgb(16 16 16);
+    --aw-color-text-muted: rgb(16 16 16 / 66%);
+    --aw-color-bg-page: rgb(255 255 255);
+    --main-color: hsl(37deg, 92%, 64%);
+    --main-color-darker: hsl(28deg, 80%, 58%);
+    --link: #dd42dd;
+    --heading: 'AllianceNo2';
+    --aw-color-bg-page-dark: #13151F;
+  }
+
+  .dark {
+    --aw-font-sans: 'Inter Variable';
+    --aw-font-serif: var(--aw-font-sans);
+    --aw-font-heading: var(--aw-font-sans);
+
+    --aw-color-primary: rgb(30 64 175);
+    --aw-color-secondary: rgb(30 58 138);
+    --aw-color-accent: rgb(109 40 217);
+
+    --aw-color-text-heading: rgb(0 0 0); 
+    --aw-color-text-default: rgb(229 236 246);
+    --aw-color-text-muted: rgb(229 236 246 / 66%);
+    --aw-color-bg-page: var(--aw-color-bg-page-dark);
+  }
+</style><script>(function(){const defaultTheme = "system";
+
+  function applyTheme(theme) {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    const matches = document.querySelectorAll("[data-aw-toggle-color-scheme] > input");
+
+    if (matches && matches.length) {
+      matches.forEach((elem) => {
+        elem.checked = theme !== "dark";
+      });
+    }
+  }
+
+  if ((defaultTheme && defaultTheme.endsWith(":only")) || (!localStorage.theme && defaultTheme !== "system")) {
+    applyTheme(defaultTheme.replace(":only", ""));
+  } else if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    applyTheme("dark");
+  } else {
+    applyTheme("light");
+  }
+})();</script><title>CSS: The !Important Parts — Neciu Dan</title>
+<meta name="description" content="Struggling with CSS is a common practice, here we explain how it works and common problems that can appear in your code." />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://neciudan.dev/css-the-important-parts" />
+<meta property="og:title" content="CSS: The !Important Parts" />
+<meta property="og:description" content="Struggling with CSS is a common practice, here we explain how it works and common problems that can appear in your code." />
+<meta property="og:url" content="https://neciudan.dev/css-the-important-parts" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://neciudan.dev/images/articles/css-is-awesome.webp" />
+
+<meta property="og:locale" content="en" />
+<meta property="og:site_name" content="Neciu Dan" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@neciudan" />
+<meta name="twitter:creator" content="@neciudan" /><meta name="google-site-verification" content="orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M"><script async src="https://www.googletagmanager.com/gtag/js?id=G-WG98014QQ3" type="text/partytown"></script><script type="text/partytown">(function(){const id = "G-WG98014QQ3";
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    window.dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", id);
+})();</script><script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/3fef6c340be89145a26492f67/6c8cb2c70a677df4ef1ff62d2.js");</script><meta name="author" content="Neciu Dan"><link rel="stylesheet" href="/_astro/privacy.50b42608.css" />
+<style type="text/css">.logo-link[data-astro-cid-tvrurpns]{text-decoration:none;padding-left:20px}.logo-link[data-astro-cid-tvrurpns]:hover .logo[data-astro-cid-tvrurpns]{background-size:130%;background-position:center}.logo[data-astro-cid-tvrurpns]{width:40px;height:40px;border-radius:50%;background-color:var(--main-color);position:relative;display:inline-block;top:17px;left:0;background-image:url(/images/logo.png);background-size:100%;background-position:center;transition:all .4s ease-in-out;position:absolute}
+#overlay[data-astro-cid-f5qiv4ni]{position:fixed;inset:0;background:rgba(0,0,0,0);transition:background-color .15s linear;z-index:50;pointer-events:none}#dialog[data-astro-cid-f5qiv4ni]{position:fixed;left:50%;bottom:0;width:90%;max-width:500px;background:#1e2432;padding:2rem;border-radius:8px;color:#fff;transform:translate(-50%,100%);transition:transform .15s cubic-bezier(.25,.46,.45,.94);z-index:51}#close[data-astro-cid-f5qiv4ni]{position:absolute;right:1rem;top:1rem;background:none;border:none;color:#64748b;cursor:pointer;padding:.5rem;font-size:1.25rem}.content[data-astro-cid-f5qiv4ni]{text-align:center}.content[data-astro-cid-f5qiv4ni] img[data-astro-cid-f5qiv4ni]{width:2.5rem;height:2.5rem;border-radius:50%;margin:0 auto 1rem}.content[data-astro-cid-f5qiv4ni] h2[data-astro-cid-f5qiv4ni]{font-size:1.25rem;font-weight:700;margin-bottom:.5rem}.description[data-astro-cid-f5qiv4ni]{color:#94a3b8;margin-bottom:1rem}.subscribers[data-astro-cid-f5qiv4ni]{color:#64748b;font-size:.875rem;margin-bottom:1.5rem}form[data-astro-cid-f5qiv4ni]{margin:1.5rem 0}input[data-astro-cid-f5qiv4ni]{width:100%;padding:.75rem 1rem;background:#1a1f2c;border:none;border-radius:8px;color:#fff;margin-bottom:1rem;font-size:1rem}input[data-astro-cid-f5qiv4ni]:focus{outline:none;box-shadow:0 0 0 2px #3b82f680}button[data-astro-cid-f5qiv4ni][type=submit]{width:100%;padding:.75rem;background:#3b82f6;border:none;border-radius:8px;color:#fff;cursor:pointer;font-size:1rem;font-weight:500;transition:background-color .2s}button[data-astro-cid-f5qiv4ni][type=submit]:hover{background:#2563eb}#continue[data-astro-cid-f5qiv4ni]{background:none;border:none;color:#64748b;cursor:pointer;font-size:.875rem}
+</style><script type="module">class i{static container;static initialize(){this.container||(this.container=document.createElement("div"),this.container.className="fixed bottom-4 right-4 z-50 flex flex-col gap-2",document.body.appendChild(this.container))}static show(s,e="success"){this.initialize();const t=document.createElement("div");t.className=`
+      transform transition-all duration-300 ease-out translate-x-full
+      px-4 py-2 rounded-lg shadow-lg
+      ${e==="success"?"bg-blue-600 text-white":"bg-red-600 text-white"}
+    `,t.textContent=s,this.container.appendChild(t),setTimeout(()=>{t.classList.remove("translate-x-full")},10),setTimeout(()=>{t.classList.add("translate-x-full"),t.classList.add("opacity-0"),setTimeout(()=>{this.container.removeChild(t)},300)},3e3)}}const o=document.getElementById("overlay"),a=document.getElementById("dialog");let l=!1;window.addEventListener("scroll",()=>{if(l||localStorage.getItem("newsletterSubscribed")==="true")return;const r=window.scrollY-1e3,s=77+64,e=(window.innerHeight-s)*.3;if(r<0)o.style.backgroundColor="rgba(0,0,0,0)",a.style.transform="translate(-50%, 100%)";else if(r<e){const t=r/e;o.style.backgroundColor=`rgba(0,0,0,${t*.9})`;const u=100-t*150;a.style.transform=`translate(-50%, ${u}%)`}else o.style.backgroundColor="rgba(0,0,0,0.9)",a.style.transform=`translate(-50%, -${(window.innerHeight-s)*.25}px)`,o.style.pointerEvents="auto"});const b=document.getElementById("close"),m=document.getElementById("continue");function n(){o.style.backgroundColor="rgba(0,0,0,0)",a.style.transform="translate(-50%, 100%)",o.style.pointerEvents="none",l=!0}b.addEventListener("click",n);m.addEventListener("click",n);o.addEventListener("click",n);const w=document.getElementById("subscribeForm"),g=localStorage.getItem("newsletterSubscribed")==="true";g&&n();w.addEventListener("submit",async r=>{r.preventDefault();const s=new FormData(r.target);try{const e=await fetch("/api/subscribe",{method:"POST",body:s});if(!e.ok){const t=await e.json();throw new Error(t.error||"Subscription failed")}localStorage.setItem("newsletterSubscribed","true"),window.dispatchEvent(new CustomEvent("newsletter:subscribed")),n(),i.show("Thank you for subscribing! 🎉")}catch(e){console.error("Subscription error:",e),i.show("Sorry, there was an error. Please try again later.","error")}});const d=document.getElementById("inlineSubscribeForm"),c=()=>{d.style.display="none"},h=localStorage.getItem("newsletterSubscribed")==="true";h&&c();window.addEventListener("newsletter:subscribed",c);d.addEventListener("submit",async r=>{r.preventDefault();const s=new FormData(r.target);try{const e=await fetch("/api/subscribe",{method:"POST",body:s});if(!e.ok){const t=await e.json();throw new Error(t.error||"Subscription failed")}localStorage.setItem("newsletterSubscribed","true"),window.dispatchEvent(new CustomEvent("newsletter:subscribed")),c(),i.show("Thank you for subscribing! 🎉")}catch(e){console.error("Subscription error:",e),i.show("Sorry, there was an error. Please try again later.","error")}});
+</script>
+<script>!(function(w,p,f,c){c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push"])})(window,'partytown','forward');/* Partytown 0.8.0 - MIT builder.io */
+!function(t,e,n,i,r,o,a,d,s,c,l,p){function u(){p||(p=1,"/"==(a=(o.lib||"/~partytown/")+(o.debug?"debug/":""))[0]&&(s=e.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(f,1e4),e.addEventListener("pt0",w),r?h(1):n.serviceWorker?n.serviceWorker.register(a+(o.swPath||"partytown-sw.js"),{scope:a}).then((function(t){t.active?h():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&h()}))}),console.error):f())))}function h(t){c=e.createElement(t?"script":"iframe"),t||(c.setAttribute("style","display:block;width:0;height:0;border:0;visibility:hidden"),c.setAttribute("aria-hidden",!0)),c.src=a+"partytown-"+(t?"atomics.js?v=0.8.0":"sandbox-sw.html?"+Date.now()),e.querySelector(o.sandboxParent||"body").appendChild(c)}function f(n,r){for(w(),i==t&&(o.forward||[]).map((function(e){delete t[e.split(".")[0]]})),n=0;n<s.length;n++)(r=e.createElement("script")).innerHTML=s[n].innerHTML,e.head.appendChild(r);c&&c.parentNode.removeChild(c)}function w(){clearTimeout(d)}o=t.partytown||{},i==t&&(o.forward||[]).map((function(e){l=t,e.split(".").map((function(e,n,i){l=l[i[n]]=n+1<i.length?"push"==i[n+1]?[]:l[i[n]]||{}:function(){(t._ptf=t._ptf||[]).push(i,arguments)}}))})),"complete"==e.readyState?u():(t.addEventListener("DOMContentLoaded",u),t.addEventListener("load",u))}(window,document,navigator,top,window.crossOriginIsolated);</script></head><body class="antialiased text-default bg-page tracking-tight"><header class="sticky top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out" id="header"><div class="absolute inset-0"></div><div class="relative text-default py-3 px-3 md:px-6 mx-auto w-full md:flex md:justify-between max-w-7xl"><div class="flex justify-between"><a class="flex items-center" href="/"><span class="logo-link self-center ml-2 rtl:ml-0 rtl:mr-2 text2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white" data-astro-cid-tvrurpns><div class="logo" data-astro-cid-tvrurpns></div>Neciu Dan</span></a><div class="flex items-center md:hidden"><button type="button" class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition" aria-label="Toggle Menu" data-aw-toggle-menu><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6" data-icon="tabler:menu"><symbol id="ai:tabler:menu"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/></symbol><use  xlink:href="#ai:tabler:menu"></use></svg></button></div></div><nav class="items-center w-full md:w-auto hidden md:flex text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:mx-5" aria-label="Main navigation"><ul class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium"><li class=""><a class="hover:text-link dark:hover:text-white px-4 py-3 flex items-centers" href="/about">About</a></li><li class=""><a class="hover:text-link dark:hover:text-white px-4 py-3 flex items-centers" href="/blog">Blog</a></li><li class=""><a class="hover:text-link dark:hover:text-white px-4 py-3 flex items-centers" href="https://www.youtube.com/@NeciuDan/videos">Videos</a></li></ul></nav><div class="hidden md:self-center flex md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-3 md:p-0"><div class="items-center flex justify-between w-full md:w-auto"><div class="flex"><button type="button" class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Toggle between Dark and Light mode" data-aw-toggle-color-scheme><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 md:w-5 md:h-5 md:inline-block" data-icon="tabler:sun"><symbol id="ai:tabler:sun"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0m-5 0h1m8-9v1m8 8h1m-9 8v1M5.6 5.6l.7.7m12.1-.7l-.7.7m0 11.4l.7.7m-12.1-.7l-.7.7"/></symbol><use  xlink:href="#ai:tabler:sun"></use></svg></button><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="RSS Feed" href="/rss.xml"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:rss"><symbol id="ai:tabler:rss"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 19a1 1 0 1 0 2 0a1 1 0 1 0-2 0M4 4a16 16 0 0 1 16 16M4 11a9 9 0 0 1 9 9"/></symbol><use  xlink:href="#ai:tabler:rss"></use></svg></a></div><span class="ml-4 rtl:ml-0 rtl:mr-4"><a class="btn ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm" href="https://mailchi.mp/3b72b47614e8/subscribe">Subscribe</a></span></div></div></div></header><main><section class="py-8 sm:py-16 lg:py-20 mx-auto"><article><header class=""><div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center"><p><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-4 h-4 inline-block -mt-0.5 mr-0.5 dark:text-gray-400" data-icon="tabler:clock"><symbol id="ai:tabler:clock"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0"/><path d="M12 7v5l3 3"/></g></symbol><use  xlink:href="#ai:tabler:clock"></use></svg><time datetime="Fri Jul 22 2022 02:00:00 GMT+0200 (Central European Summer Time)" class="inline-block">Jul 22, 2022</time> 
+· <a class="capitalize hover:underline inline-block" href="/category/css">css</a> · 9 min read</p></div><h1 class="px-4 sm:px-6 max-w-3xl mx-auto text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading">CSS: The !Important Parts</h1><p class="max-w-3xl mx-auto mt-4 mb-8 px-4 sm:px-6 text-xl md:text-2xl text-muted dark:text-slate-400 text-justify">Struggling with CSS is a common practice, here we explain how it works and common problems that can appear in your code.</p><div class="max-w-3xl mx-auto px-4 sm:px-6 flex flex-col gap-0"><div class="flex items-center gap-4"><img src="https://neciudan.dev/images/logo.png" width="48" height="48" sizes="(min-width: 48px) 48px, 100vw" style="object-fit: cover; object-position: center; max-width: 48px; max-height: 48px; aspect-ratio: 1; width: 100%;" alt="Neciu Dan" class="w-12 h-12 rounded-full" loading="eager" decoding="async"><div><h2 class="font-bold">Neciu Dan</h2><time datetime="2022-07-22T00:00:00.000Z" class="text-sm text-gray-500 dark:text-gray-400">Jul 22, 2022</time></div></div><p class="text-lg italic text-gray-700 dark:text-gray-300 mt-2 border-t border-b py-4">
+Hi there, it's Dan. As a technical co-founder of an ed-tech startup, I'm here to share insights on combining
+    technology and education to solve real problems. I write about startup challenges, tech innovations, and the future
+    of learning. Subscribe to join me on this journey of transforming education through technology. Want to discuss
+    ed-tech or startup life? <a href="https://www.linkedin.com/in/neciudan/" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300" target="_blank">Let's connect.</a></p><div class="border-b"><form id="inlineSubscribeForm" class="flex flex-col sm:flex-row gap-2 py-6"><input type="email" name="email" placeholder="Type your email..." class="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#1e2432] dark:bg-gray-800" required><button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+Subscribe
+</button></form></div><div class="flex gap-2 items-center text-gray-500 py-4"><div class="flex gap-4"><div class="dark:text-slate-600"><span class="align-super font-bold text-gray-400 dark:text-slate-400">Share:</span><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Twitter Share" data-aw-social-share="twitter" data-aw-url="https://neciudan.dev/css-the-important-parts" data-aw-text="CSS: The !Important Parts"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-x"><use  xlink:href="#ai:tabler:brand-x"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Facebook Share" data-aw-social-share="facebook" data-aw-url="https://neciudan.dev/css-the-important-parts"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-facebook"><use  xlink:href="#ai:tabler:brand-facebook"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Linkedin Share" data-aw-social-share="linkedin" data-aw-url="https://neciudan.dev/css-the-important-parts" data-aw-text="CSS: The !Important Parts"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-linkedin"><use  xlink:href="#ai:tabler:brand-linkedin"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Whatsapp Share" data-aw-social-share="whatsapp" data-aw-url="https://neciudan.dev/css-the-important-parts" data-aw-text="CSS: The !Important Parts"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-whatsapp"><use  xlink:href="#ai:tabler:brand-whatsapp"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Email Share" data-aw-social-share="mail" data-aw-url="https://neciudan.dev/css-the-important-parts" data-aw-text="CSS: The !Important Parts"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:mail"><use  xlink:href="#ai:tabler:mail"></use></svg></button></div></div></div></div><img src="https://neciudan.dev/images/articles/css-is-awesome.webp" width="900" height="506" sizes="(max-width: 900px) 400px, 900px" style="object-fit: cover; object-position: center; max-width: 900px; max-height: 506px; aspect-ratio: 1.7786561264822134; width: 100%;" class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700" alt="Struggling with CSS is a common practice, here we explain how it works and common problems that can appear in your code." loading="eager" decoding="async"></header><div class="mx-auto px-6 sm:px-6 max-w-3xl prose prose-lg lg:prose-xl dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-primary dark:prose-a:text-blue-400 prose-img:rounded-md prose-img:shadow-lg mt-8 prose-headings:scroll-mt-[80px]"><p>CSS (Cascading Style Sheets) is a language used for describing the presentational layout of a document. More specifically it is used together with HTML to create beautiful and user-friendly websites or apps.</p>
+<p>But since the first version of CSS came out in 1996, the language has evolved into a tool used to create really awesome things. Like the <a href="http://pattle.github.io/simpsons-in-css/">entire cast of The Simpsons using just CSS</a> or a <a href="https://codepen.io/42EG4M1/pen/wBYmMK">CSS-only Game Boy</a> or a <a href="https://codepen.io/seanseansean/pen/JdMMdG">pretty cool starry night</a> and so much more.</p>
+<p>Pretty amazing, right?</p>
+<p>In this article, we will highlight how CSS works under the hood, what are the rules CSS uses to evaluate blocks of code, and some tips and tricks that can help you reach the next level in your journey to CSS Mastery.</p>
+<h2 id="how-does-css-actually-work">How Does CSS actually work?</h2>
+<p>When you start writing HTML, without adding CSS, the browser will render your elements in normal layout flow. Even after adding some CSS to your elements, if you do not change the display or position property, they will still be rendered in the normal flow.</p>
+<p>What does that even mean?</p>
+<p><strong>The layout model</strong> dictates how your element behaves by default, and what CSS properties your element has access to.</p>
+<p>Here are the available layout models:</p>
+<ul>
+<li>Normal Flow</li>
+<li>Positioned Layout (absolute, block)</li>
+<li>Flex</li>
+<li>Grid</li>
+<li>Table</li>
+</ul>
+<p>Have you not noticed that z-index does not work if you do not apply the position property to your element? Well, this is the reason. The property is not available in the normal flow, or in some of the other layouts as well.</p>
+<p>Adding position:absolute will switch your element from the normal layout module to the positioned one. In this layout model you have access to extra properties, like z-index.</p>
+<p>z-index for example, determines the layout order of elements. If you have two elements in the same position and you want to stack them, the one with the higher z-index value will be on the top.</p>
+<p>If you want to send an element to the bottom of the stack, just set it’s z-index value to a negative number.</p>
+<p>A very important detail to remember is that z-index is only useful in the same stacking context.</p>
+<p>A stacking context is the collection of child elements inside a parent element. So for example, if we have <code>.parent1 { z-index: 1; }</code> and inside we have <code>.child1 { z-index: 999; }</code> the child element will not be stacked against other elements outside of the parent.</p>
+<p><a href="https://codepen.io/cst2989/pen/ZExJBKw?editors=1100">Here is a concrete example</a> to see this in action:</p>
+<p style="text-align: center;">
+<img src="/images/articles/stacking.webp" alt="Stacking context example"> 
+</p>
+<p>As you can see above, it does not matter that child1 has <code>z-index:999</code> and child2 has <code>z-index:-1</code> because we compare their stacking context.</p>
+<p>So each layout model has its own properties and rules. And it shares some common ones as well. For example, both flex and grid contain the gap property to set the spacing between the items.</p>
+<p>From this, it’s only a matter of figuring out what properties are implemented in which layout model, and then you will have fewer problems with CSS behaving differently from one context to another.</p>
+<h2 id="specificity-rules-are-made-to-be-followed">Specificity. Rules are made to be followed</h2>
+<p>It took me a while to understand how specificity worked in CSS. It seemed unimportant (ironically) because everything just worked.</p>
+<p>So what if sometimes I had to add a few <code>!important</code> here and there. Or move some code blocks lower in the CSS file to make sure they are applied last. Or worst-case scenario, duplicate some code for different classes. In the end, it worked and that was what mattered at the time.</p>
+<p>I realized how wasteful I was when I had to write optimized code for web applications visited by millions of users. And how hard to debug my code actually was, and little by little I started to understand the rules the Browser Gods act upon us mortals.</p>
+<p>So what is specificity and how does CSS work? Here is the definition from <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity">Mozilla Developer Network</a>:</p>
+<blockquote>
+<p>Specificity is the means by which a browser decides which CSS property values are the most relevant to an element and therefore will be applied. Specificity is only based on the matching rules which are composed of CSS selectors of different sorts.</p>
+</blockquote>
+<p>Basically, the Browser looks at your CSS rule and gives it a score. Actually 4 scores.</p>
+<p>Four numbers separated by a comma <code>0, 0, 0, 0</code></p>
+<p>Then when you have two colliding CSS rules it goes through the first digit and compares them if there is no clear winner it goes to the second digit and so on.</p>
+<p>If all columns are equal, the browser will pick the rule based on the order. Here is where the Cascade name comes into place. It takes the one closer to the bottom.</p>
+<p>Here is the breakdown of the four digits:</p>
+<p>The first digit represents if the element has inline styles.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">&#x3C;p style="color:red">Hello World&#x3C;/p></span></span></code></pre>
+<p>The second digit represents the number of #ids in your CSS rule.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">&#x3C;p id="myParagraph">Hello World&#x3C;/p></span></span></code></pre>
+<p>or</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">#myParagraph {</span></span>
+<span class="line"><span style="color: #e1e4e8">  color: blue;</span></span>
+<span class="line"><span style="color: #e1e4e8">}</span></span></code></pre>
+<p>The third digit is the number of classes, pseudo-classes, and attributes your CSS rule has.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">&#x3C;style></span></span>
+<span class="line"><span style="color: #e1e4e8">.myParagraphClass {</span></span>
+<span class="line"><span style="color: #e1e4e8">  color: green;</span></span>
+<span class="line"><span style="color: #e1e4e8">}</span></span>
+<span class="line"><span style="color: #e1e4e8">&#x3C;/style></span></span></code></pre>
+<p>And lastly, we have the number of elements and pseudo-elements.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">&#x3C;p>Hello World&#x3C;/p></span></span>
+<span class="line"><span style="color: #e1e4e8">&#x3C;style></span></span>
+<span class="line"><span style="color: #e1e4e8">p {</span></span>
+<span class="line"><span style="color: #e1e4e8">  color: yellow;</span></span>
+<span class="line"><span style="color: #e1e4e8">}</span></span>
+<span class="line"><span style="color: #e1e4e8">&#x3C;/style></span></span></code></pre>
+<p>So for each rule in each column, we increase the score of that column.</p>
+<p>Now you may have read that inline-styles give you a score of 1000, ids of 100, and so forth. This is not true.</p>
+<p>For example. Let’s say we have an element with 102 classes and just one ID. Like the following code:</p>
+<p style="text-align: center;">
+<img src="/images/articles/code.png" alt="Stacking context example"> 
+</p>
+<p>If you would follow the rule recommended by some articles and w3school, the ID should have a score of 100, and the class should have a score of 103 resulting in a blue <code>Hello World</code> text. But if you check this in your browser it’s actually red.</p>
+<p>Browsers do not compare apples with oranges. The browser first checks if we have conflicting rules at the inline-style level and applies the score there, then goes to IDs and so on and so forth.</p>
+<p>Another example would be:</p>
+<p style="text-align: center;">
+<img src="/images/articles/code2.png" alt="Stacking context example"> 
+</p>
+<p>The <code>#test { color: red; }</code> has a specificity score of <code>0,1,0,0</code>. While the second CSS rule <code>.test-1-parent #test { color: yellow; }</code> has a specificity score of <code>0,1,1,0</code>. The first column is equal, so the Browser moves to the second column where both have a value of 1.</p>
+<p>Then we move to the third column where color:yellow is the winner.</p>
+<h2 id="collapsing-margins">Collapsing Margins</h2>
+<blockquote>
+<p>“In CSS, the adjoining margins of two or more boxes (which might or might not be siblings) can combine to form a single margin. Margins that combine this way are said to collapse, and the resulting combined margin is called a collapsed margin.“ — W3C</p>
+</blockquote>
+<p>I am ashamed to admit this, but in my second to the third year as a professional developer, I did not know about collapsing margins. Even worse than that, in my ignorance, I would argue with designers that complained that the spacing between elements was off.</p>
+<p>I would open the DevTools and show them, margin-top:50px see? And they would nod, in that I-see-it-but-I-don’t-believe-it way.</p>
+<p>For this, I want to formally apologize to all designers that I did this to or to all designers that suffer from this because of ignorant developers like me.</p>
+<p>Hopefully, I can make amends with this article and educate other poor ignorant frontend developers and you will never have to go through this again.</p>
+<p>As you can imagine, collapsing margins, are the reason even though we had margin-top:50px; on the element the margin could be different. And here is why.</p>
+<p>When two vertical margins (top and bottom) interact with one another, CSS has a weird rule, it makes them duke it out and the bigger one wins.</p>
+<p>For example two HTML elements on the same level in the DOM, <code>.div1 { margin-bottom: 30px; }</code> and <code>.div2 { margin-top: 20px; }</code> , you would expect the distance to be the sum of the margins. But in fact, the collapsing margin rule comes into effect, and we only have 30px (the bigger margin from .div1) between them.</p>
+<p>On the other hand, if one of the elements has a negative margin, <code>.div2 { margin-top: -20px; }</code> then it behaves as you expect. And the margin between them is the sum of 10px.</p>
+<p>More mind-blowing though is when both elements have negative margins. For example, <code>.div1 { margin-bottom: -50px; }</code> and <code>.div2 { margin-top: -20px; }</code> you would expect again, either the sum or the biggest in mathematical terms to be the result, as we know -20 is bigger than -50 because it’s closer to zero, but NO who invented CSS said no to proper maths and the margin between them is -50px. Amazing!</p>
+<p><a href="https://codepen.io/cst2989/pen/eYMRQwE">Here is a Codepen</a> to simulate all examples:</p>
+<p style="text-align: center;">
+<img src="/images/articles/collapsing.webp" alt="Collapsing margin example"> 
+</p>
+<p>One more thing to take into consideration is the parent-child relationship between elements where again collapsing margins can cause trouble.</p>
+<p>If the parent element has a margin, let’s say .parent { margin-top: 50px; } and the first child of this element also has a margin .child-1 { margin-top: 20px; } the margins will collapse again and we will only see the bigger one.</p>
+<p><a href="https://codepen.io/cst2989/pen/oNqwJgQ">Here is an example</a>:</p>
+<p style="text-align: center;">
+<img src="/images/articles/child-margin.webp" alt="Child margin example"> 
+</p>
+So that’s how collapsin
+g margins work. Now you may be wondering how to stop it. Easily enough, if you apply anything between the margins, like a border-top or a padding-top then the margins will not touch each other and will not collapse at all.
+<p>Think about this physical barrier as the referee that keeps two boxers at bay from fighting each other when the round ends.</p>
+<h2 id="in-conclusion">In Conclusion</h2>
+<p>CSS is hard! It has all sorts of wacky behavior. But if you know on which layout model you are, you have a better chance of figuring it out.</p>
+<p>Specificity rules are there to decide between conflicting CSS properties. Remember the 4 levels and how to count the score.</p>
+<p>And if margins are giving you a problem, remember that the physical barrier between your elements will keep them from fighting each other</p>
+<p>You know what they say, a <code>border-top: 1px solid transparent</code>, keep the collapsing margins away.</p></div><div class="mx-auto px-6 sm:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row"><ul class="mr-5 rtl:mr-0 rtl:ml-5"></ul><div class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600"><span class="align-super font-bold text-gray-400 dark:text-slate-400">Share:</span><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Twitter Share" data-aw-social-share="twitter" data-aw-url="https://neciudan.dev/css-the-important-parts" data-aw-text="CSS: The !Important Parts"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-x"><use  xlink:href="#ai:tabler:brand-x"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Facebook Share" data-aw-social-share="facebook" data-aw-url="https://neciudan.dev/css-the-important-parts"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-facebook"><symbol id="ai:tabler:brand-facebook"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 10v4h3v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3V3h-3a5 5 0 0 0-5 5v2H7"/></symbol><use  xlink:href="#ai:tabler:brand-facebook"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Linkedin Share" data-aw-social-share="linkedin" data-aw-url="https://neciudan.dev/css-the-important-parts" data-aw-text="CSS: The !Important Parts"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-linkedin"><use  xlink:href="#ai:tabler:brand-linkedin"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Whatsapp Share" data-aw-social-share="whatsapp" data-aw-url="https://neciudan.dev/css-the-important-parts" data-aw-text="CSS: The !Important Parts"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-whatsapp"><symbol id="ai:tabler:brand-whatsapp"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></g></symbol><use  xlink:href="#ai:tabler:brand-whatsapp"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Email Share" data-aw-social-share="mail" data-aw-url="https://neciudan.dev/css-the-important-parts" data-aw-text="CSS: The !Important Parts"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:mail"><symbol id="ai:tabler:mail"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><path d="m3 7l9 6l9-6"/></g></symbol><use  xlink:href="#ai:tabler:mail"></use></svg></button></div></div></article><div id="overlay" data-astro-cid-f5qiv4ni></div><div id="dialog" data-astro-cid-f5qiv4ni><button id="close" data-astro-cid-f5qiv4ni>✕</button><div class="content" data-astro-cid-f5qiv4ni><img src="/images/logo.png" alt="Author" data-astro-cid-f5qiv4ni><h2 data-astro-cid-f5qiv4ni>Discover more from The Neciu Dan Newsletter</h2><p class="description" data-astro-cid-f5qiv4ni>A weekly column on Tech & Education, startup building and occasional hot takes.</p><p class="subscribers" data-astro-cid-f5qiv4ni>Over 1,000 subscribers</p><form id="subscribeForm" data-astro-cid-f5qiv4ni><input type="email" name="email" placeholder="Type your email..." required data-astro-cid-f5qiv4ni><button type="submit" data-astro-cid-f5qiv4ni>Subscribe</button></form><button id="continue" data-astro-cid-f5qiv4ni>Continue reading</button></div></div></section><div class="mx-auto px-6 sm:px-6 max-w-3xl pt-8 md:pt-4 pb-12 md:pb-20"><a class="btn btn-ghost px-3 md:px-3" href="/blog"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5 mr-1 -ml-1.5 rtl:-mr-1.5 rtl:ml-1" data-icon="tabler:chevron-left"><symbol id="ai:tabler:chevron-left"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 6l-6 6l6 6"/></symbol><use  xlink:href="#ai:tabler:chevron-left"></use></svg> Back to Blog</a></div></main><footer class="relative border-t border-gray-200 dark:border-slate-800 not-prose"><div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div><div class="relative max-w-7xl mx-auto px-4 sm:px-6 dark:text-slate-300"><div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12"><div class="col-span-12 lg:col-span-4"><div class="mb-2"><a class="inline-block font-bold text-xl" href="/">Neciu Dan</a></div><div class="text-sm text-muted"><a class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out mr-2 rtl:mr-0 rtl:ml-2" href="/terms">Terms</a><a class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out mr-2 rtl:mr-0 rtl:ml-2" href="/privacy">Privacy Policy</a></div></div></div><div class="md:flex md:items-center md:justify-between py-6 md:py-8"><ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4"><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="X" href="https://twitter.com/neciudan"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-x"><symbol id="ai:tabler:brand-x"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 4l11.733 16H20L8.267 4zm0 16l6.768-6.768m2.46-2.46L20 4"/></symbol><use  xlink:href="#ai:tabler:brand-x"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Instagram" href="https://instagram.com/neciudev"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-instagram"><symbol id="ai:tabler:brand-instagram"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m7.5-4.5v.01"/></g></symbol><use  xlink:href="#ai:tabler:brand-instagram"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Tiktok" href="https://www.tiktok.com/@neciudan"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-tiktok"><symbol id="ai:tabler:brand-tiktok"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 7.917v4.034A9.948 9.948 0 0 1 16 10v4.5a6.5 6.5 0 1 1-8-6.326V12.5a2.5 2.5 0 1 0 4 2V3h4.083A6.005 6.005 0 0 0 21 7.917z"/></symbol><use  xlink:href="#ai:tabler:brand-tiktok"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Linkedin" href="https://www.linkedin.com/in/neciudan/"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-linkedin"><symbol id="ai:tabler:brand-linkedin"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm4 5v5m0-8v.01M12 16v-5"/><path d="M16 16v-3a2 2 0 0 0-4 0"/></g></symbol><use  xlink:href="#ai:tabler:brand-linkedin"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Youtube" href="https://www.youtube.com/@NeciuDan/"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-youtube"><symbol id="ai:tabler:brand-youtube"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 8a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><path d="m10 9l5 3l-5 3z"/></g></symbol><use  xlink:href="#ai:tabler:brand-youtube"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="RSS" href="/rss.xml"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:rss"><use  xlink:href="#ai:tabler:rss"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Github" href="https://github.com/Cst2989"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-github"><symbol id="ai:tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2c2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2a4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6c-.6.6-.6 1.2-.5 2V21"/></symbol><use  xlink:href="#ai:tabler:brand-github"></use></svg></a></li></ul><div class="text-sm mr-4 dark:text-slate-400">
+    <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"></span>
+    Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://onwidget.com/"> onWidget</a> · All rights reserved.
+  </div></div></div></footer><script>(function(){const defaultTheme = "system";
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+
+  if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
+    applyTheme(defaultTheme.replace(':only', ''));
+  } else if (
+    localStorage.theme === 'dark' ||
+    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    applyTheme('dark');
+  } else {
+    applyTheme('light');
+  }
+
+  function attachEvent(selector, event, fn) {
+    const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
+    if (matches && matches.length) {
+      matches.forEach((elem) => {
+        elem.addEventListener(event, (e) => fn(e, elem), false);
+      });
+    }
+  }
+
+  window.onload = function () {
+    let lastKnownScrollPosition = window.scrollY;
+    let ticking = true;
+
+    attachEvent('#header nav', 'click', function () {
+      document.querySelector("[data-aw-toggle-menu]")?.classList.remove("expanded");
+      document.body.classList.remove("overflow-hidden");
+      document.getElementById("header")?.classList.remove("h-screen");
+      document.getElementById("header")?.classList.remove("expanded");
+      document.getElementById("header")?.classList.remove("bg-page");
+      document.querySelector("#header nav")?.classList.add("hidden");
+      document.querySelector("#header > div > div:last-child")?.classList.add("hidden");
+    });
+
+    attachEvent('[data-aw-toggle-menu]', 'click', function () {
+      document.body.classList.toggle("overflow-hidden");
+      document.getElementById("header")?.classList.toggle("h-screen");
+      document.getElementById("header")?.classList.toggle("expanded");
+      document.getElementById("header")?.classList.toggle("bg-page");
+      document.querySelector("#header nav")?.classList.toggle("hidden");
+      document.querySelector("#header > div > div:last-child")?.classList.toggle("hidden");
+    });
+
+    attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
+      if (defaultTheme.endsWith(':only')) {
+        return;
+      }
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    });
+
+    attachEvent('[data-aw-social-share]', 'click', function (_, elem) {
+      const network = elem.getAttribute('data-aw-social-share');
+      const url = encodeURIComponent(elem.getAttribute('data-aw-url'));
+      const text = encodeURIComponent(elem.getAttribute('data-aw-text'));
+
+      let href;
+      switch (network) {
+        case 'facebook':
+          href = `https://www.facebook.com/sharer.php?u=${url}`;
+          break;
+        case 'twitter':
+          href = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+          break;
+        case 'linkedin':
+          href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${text}`;
+          break;
+        case 'whatsapp':
+          href = `https://wa.me/?text=${text}%20${url}`;
+          break;
+        case 'mail':
+          href = `mailto:?subject=%22${text}%22&body=${text}%20${url}`;
+          break;
+
+        default:
+          return;
+      }
+
+      const newlink = document.createElement('a');
+      newlink.target = '_blank';
+      newlink.href = href;
+      newlink.click();
+    });
+
+    function appyHeaderStylesOnScroll() {
+      const header = document.getElementById('header');
+      if (lastKnownScrollPosition > 60 && !header.classList.contains('scroll')) {
+        document.getElementById('header').classList.add('scroll');
+      } else if (lastKnownScrollPosition <= 60 && header.classList.contains('scroll')) {
+        document.getElementById('header').classList.remove('scroll');
+      }
+      ticking = false;
+    }
+    appyHeaderStylesOnScroll();
+
+    attachEvent([document], 'scroll', function () {
+      lastKnownScrollPosition = window.scrollY;
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          appyHeaderStylesOnScroll();
+        });
+        ticking = true;
+      }
+    });
+  };
+
+  window.onpageshow = function () {
+    document.documentElement.classList.add('motion-safe:scroll-smooth');
+    const elem = document.querySelector('[data-aw-toggle-menu]');
+    if (elem) {
+      elem.classList.remove('expanded');
+    }
+    document.body.classList.remove("overflow-hidden");
+    document.getElementById("header")?.classList.remove("h-screen");
+    document.getElementById("header")?.classList.remove("expanded");
+    document.querySelector("#header nav")?.classList.add("hidden");
+  };
+})();</script></body></html>

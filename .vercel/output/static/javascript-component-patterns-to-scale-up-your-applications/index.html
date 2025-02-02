@@ -1,0 +1,403 @@
+<!DOCTYPE html><html lang="en" dir="ltr" class="2xl:text-[20px]"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><link rel="shortcut icon" href="/_astro/favicon.b5768cb3.ico"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.9678378b.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.185f8d05.png"><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.0b2d4200.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#8D46E7"><meta name="msapplication-TileColor" content="#8D46E7"><meta name="theme-color" content="#8D46E7"><style is:global>
+  :root {
+    --aw-font-sans: 'Inter Variable';
+    --aw-font-serif: var(--aw-font-sans);
+    --aw-font-heading: var(--aw-font-sans);
+
+    --aw-color-primary: rgb(30 64 175);
+    --aw-color-secondary: rgb(30 58 138);
+    --aw-color-accent: rgb(109 40 217);
+
+    --aw-color-text-heading: rgb(0 0 0); 
+    --aw-color-text-default: rgb(16 16 16);
+    --aw-color-text-muted: rgb(16 16 16 / 66%);
+    --aw-color-bg-page: rgb(255 255 255);
+    --main-color: hsl(37deg, 92%, 64%);
+    --main-color-darker: hsl(28deg, 80%, 58%);
+    --link: #dd42dd;
+    --heading: 'AllianceNo2';
+    --aw-color-bg-page-dark: #13151F;
+  }
+
+  .dark {
+    --aw-font-sans: 'Inter Variable';
+    --aw-font-serif: var(--aw-font-sans);
+    --aw-font-heading: var(--aw-font-sans);
+
+    --aw-color-primary: rgb(30 64 175);
+    --aw-color-secondary: rgb(30 58 138);
+    --aw-color-accent: rgb(109 40 217);
+
+    --aw-color-text-heading: rgb(0 0 0); 
+    --aw-color-text-default: rgb(229 236 246);
+    --aw-color-text-muted: rgb(229 236 246 / 66%);
+    --aw-color-bg-page: var(--aw-color-bg-page-dark);
+  }
+</style><script>(function(){const defaultTheme = "system";
+
+  function applyTheme(theme) {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    const matches = document.querySelectorAll("[data-aw-toggle-color-scheme] > input");
+
+    if (matches && matches.length) {
+      matches.forEach((elem) => {
+        elem.checked = theme !== "dark";
+      });
+    }
+  }
+
+  if ((defaultTheme && defaultTheme.endsWith(":only")) || (!localStorage.theme && defaultTheme !== "system")) {
+    applyTheme(defaultTheme.replace(":only", ""));
+  } else if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    applyTheme("dark");
+  } else {
+    applyTheme("light");
+  }
+})();</script><title>Javascript Component Patterns to Scale up your Web Application — Neciu Dan</title>
+<meta name="description" content="The Web has evolved. We are now building web applications that can handle millions of users per second. Here are the best component patterns to help you scale." />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://neciudan.dev/javascript-component-patterns-to-scale-up-your-applications" />
+<meta property="og:title" content="Javascript Component Patterns to Scale up your Web Application" />
+<meta property="og:description" content="The Web has evolved. We are now building web applications that can handle millions of users per second. Here are the best component patterns to help you scale." />
+<meta property="og:url" content="https://neciudan.dev/javascript-component-patterns-to-scale-up-your-applications" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://neciudan.dev/images/articles/javascript-patterns.webp" />
+
+<meta property="og:locale" content="en" />
+<meta property="og:site_name" content="Neciu Dan" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@neciudan" />
+<meta name="twitter:creator" content="@neciudan" /><meta name="google-site-verification" content="orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M"><script async src="https://www.googletagmanager.com/gtag/js?id=G-WG98014QQ3" type="text/partytown"></script><script type="text/partytown">(function(){const id = "G-WG98014QQ3";
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    window.dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", id);
+})();</script><script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/3fef6c340be89145a26492f67/6c8cb2c70a677df4ef1ff62d2.js");</script><meta name="author" content="Neciu Dan"><link rel="stylesheet" href="/_astro/privacy.50b42608.css" />
+<style type="text/css">.logo-link[data-astro-cid-tvrurpns]{text-decoration:none;padding-left:20px}.logo-link[data-astro-cid-tvrurpns]:hover .logo[data-astro-cid-tvrurpns]{background-size:130%;background-position:center}.logo[data-astro-cid-tvrurpns]{width:40px;height:40px;border-radius:50%;background-color:var(--main-color);position:relative;display:inline-block;top:17px;left:0;background-image:url(/images/logo.png);background-size:100%;background-position:center;transition:all .4s ease-in-out;position:absolute}
+#overlay[data-astro-cid-f5qiv4ni]{position:fixed;inset:0;background:rgba(0,0,0,0);transition:background-color .15s linear;z-index:50;pointer-events:none}#dialog[data-astro-cid-f5qiv4ni]{position:fixed;left:50%;bottom:0;width:90%;max-width:500px;background:#1e2432;padding:2rem;border-radius:8px;color:#fff;transform:translate(-50%,100%);transition:transform .15s cubic-bezier(.25,.46,.45,.94);z-index:51}#close[data-astro-cid-f5qiv4ni]{position:absolute;right:1rem;top:1rem;background:none;border:none;color:#64748b;cursor:pointer;padding:.5rem;font-size:1.25rem}.content[data-astro-cid-f5qiv4ni]{text-align:center}.content[data-astro-cid-f5qiv4ni] img[data-astro-cid-f5qiv4ni]{width:2.5rem;height:2.5rem;border-radius:50%;margin:0 auto 1rem}.content[data-astro-cid-f5qiv4ni] h2[data-astro-cid-f5qiv4ni]{font-size:1.25rem;font-weight:700;margin-bottom:.5rem}.description[data-astro-cid-f5qiv4ni]{color:#94a3b8;margin-bottom:1rem}.subscribers[data-astro-cid-f5qiv4ni]{color:#64748b;font-size:.875rem;margin-bottom:1.5rem}form[data-astro-cid-f5qiv4ni]{margin:1.5rem 0}input[data-astro-cid-f5qiv4ni]{width:100%;padding:.75rem 1rem;background:#1a1f2c;border:none;border-radius:8px;color:#fff;margin-bottom:1rem;font-size:1rem}input[data-astro-cid-f5qiv4ni]:focus{outline:none;box-shadow:0 0 0 2px #3b82f680}button[data-astro-cid-f5qiv4ni][type=submit]{width:100%;padding:.75rem;background:#3b82f6;border:none;border-radius:8px;color:#fff;cursor:pointer;font-size:1rem;font-weight:500;transition:background-color .2s}button[data-astro-cid-f5qiv4ni][type=submit]:hover{background:#2563eb}#continue[data-astro-cid-f5qiv4ni]{background:none;border:none;color:#64748b;cursor:pointer;font-size:.875rem}
+</style><script type="module">class i{static container;static initialize(){this.container||(this.container=document.createElement("div"),this.container.className="fixed bottom-4 right-4 z-50 flex flex-col gap-2",document.body.appendChild(this.container))}static show(s,e="success"){this.initialize();const t=document.createElement("div");t.className=`
+      transform transition-all duration-300 ease-out translate-x-full
+      px-4 py-2 rounded-lg shadow-lg
+      ${e==="success"?"bg-blue-600 text-white":"bg-red-600 text-white"}
+    `,t.textContent=s,this.container.appendChild(t),setTimeout(()=>{t.classList.remove("translate-x-full")},10),setTimeout(()=>{t.classList.add("translate-x-full"),t.classList.add("opacity-0"),setTimeout(()=>{this.container.removeChild(t)},300)},3e3)}}const o=document.getElementById("overlay"),a=document.getElementById("dialog");let l=!1;window.addEventListener("scroll",()=>{if(l||localStorage.getItem("newsletterSubscribed")==="true")return;const r=window.scrollY-1e3,s=77+64,e=(window.innerHeight-s)*.3;if(r<0)o.style.backgroundColor="rgba(0,0,0,0)",a.style.transform="translate(-50%, 100%)";else if(r<e){const t=r/e;o.style.backgroundColor=`rgba(0,0,0,${t*.9})`;const u=100-t*150;a.style.transform=`translate(-50%, ${u}%)`}else o.style.backgroundColor="rgba(0,0,0,0.9)",a.style.transform=`translate(-50%, -${(window.innerHeight-s)*.25}px)`,o.style.pointerEvents="auto"});const b=document.getElementById("close"),m=document.getElementById("continue");function n(){o.style.backgroundColor="rgba(0,0,0,0)",a.style.transform="translate(-50%, 100%)",o.style.pointerEvents="none",l=!0}b.addEventListener("click",n);m.addEventListener("click",n);o.addEventListener("click",n);const w=document.getElementById("subscribeForm"),g=localStorage.getItem("newsletterSubscribed")==="true";g&&n();w.addEventListener("submit",async r=>{r.preventDefault();const s=new FormData(r.target);try{const e=await fetch("/api/subscribe",{method:"POST",body:s});if(!e.ok){const t=await e.json();throw new Error(t.error||"Subscription failed")}localStorage.setItem("newsletterSubscribed","true"),window.dispatchEvent(new CustomEvent("newsletter:subscribed")),n(),i.show("Thank you for subscribing! 🎉")}catch(e){console.error("Subscription error:",e),i.show("Sorry, there was an error. Please try again later.","error")}});const d=document.getElementById("inlineSubscribeForm"),c=()=>{d.style.display="none"},h=localStorage.getItem("newsletterSubscribed")==="true";h&&c();window.addEventListener("newsletter:subscribed",c);d.addEventListener("submit",async r=>{r.preventDefault();const s=new FormData(r.target);try{const e=await fetch("/api/subscribe",{method:"POST",body:s});if(!e.ok){const t=await e.json();throw new Error(t.error||"Subscription failed")}localStorage.setItem("newsletterSubscribed","true"),window.dispatchEvent(new CustomEvent("newsletter:subscribed")),c(),i.show("Thank you for subscribing! 🎉")}catch(e){console.error("Subscription error:",e),i.show("Sorry, there was an error. Please try again later.","error")}});
+</script>
+<script>!(function(w,p,f,c){c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push"])})(window,'partytown','forward');/* Partytown 0.8.0 - MIT builder.io */
+!function(t,e,n,i,r,o,a,d,s,c,l,p){function u(){p||(p=1,"/"==(a=(o.lib||"/~partytown/")+(o.debug?"debug/":""))[0]&&(s=e.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(f,1e4),e.addEventListener("pt0",w),r?h(1):n.serviceWorker?n.serviceWorker.register(a+(o.swPath||"partytown-sw.js"),{scope:a}).then((function(t){t.active?h():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&h()}))}),console.error):f())))}function h(t){c=e.createElement(t?"script":"iframe"),t||(c.setAttribute("style","display:block;width:0;height:0;border:0;visibility:hidden"),c.setAttribute("aria-hidden",!0)),c.src=a+"partytown-"+(t?"atomics.js?v=0.8.0":"sandbox-sw.html?"+Date.now()),e.querySelector(o.sandboxParent||"body").appendChild(c)}function f(n,r){for(w(),i==t&&(o.forward||[]).map((function(e){delete t[e.split(".")[0]]})),n=0;n<s.length;n++)(r=e.createElement("script")).innerHTML=s[n].innerHTML,e.head.appendChild(r);c&&c.parentNode.removeChild(c)}function w(){clearTimeout(d)}o=t.partytown||{},i==t&&(o.forward||[]).map((function(e){l=t,e.split(".").map((function(e,n,i){l=l[i[n]]=n+1<i.length?"push"==i[n+1]?[]:l[i[n]]||{}:function(){(t._ptf=t._ptf||[]).push(i,arguments)}}))})),"complete"==e.readyState?u():(t.addEventListener("DOMContentLoaded",u),t.addEventListener("load",u))}(window,document,navigator,top,window.crossOriginIsolated);</script></head><body class="antialiased text-default bg-page tracking-tight"><header class="sticky top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out" id="header"><div class="absolute inset-0"></div><div class="relative text-default py-3 px-3 md:px-6 mx-auto w-full md:flex md:justify-between max-w-7xl"><div class="flex justify-between"><a class="flex items-center" href="/"><span class="logo-link self-center ml-2 rtl:ml-0 rtl:mr-2 text2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white" data-astro-cid-tvrurpns><div class="logo" data-astro-cid-tvrurpns></div>Neciu Dan</span></a><div class="flex items-center md:hidden"><button type="button" class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition" aria-label="Toggle Menu" data-aw-toggle-menu><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6" data-icon="tabler:menu"><symbol id="ai:tabler:menu"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/></symbol><use  xlink:href="#ai:tabler:menu"></use></svg></button></div></div><nav class="items-center w-full md:w-auto hidden md:flex text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:mx-5" aria-label="Main navigation"><ul class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium"><li class=""><a class="hover:text-link dark:hover:text-white px-4 py-3 flex items-centers" href="/about">About</a></li><li class=""><a class="hover:text-link dark:hover:text-white px-4 py-3 flex items-centers" href="/blog">Blog</a></li><li class=""><a class="hover:text-link dark:hover:text-white px-4 py-3 flex items-centers" href="https://www.youtube.com/@NeciuDan/videos">Videos</a></li></ul></nav><div class="hidden md:self-center flex md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-3 md:p-0"><div class="items-center flex justify-between w-full md:w-auto"><div class="flex"><button type="button" class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Toggle between Dark and Light mode" data-aw-toggle-color-scheme><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 md:w-5 md:h-5 md:inline-block" data-icon="tabler:sun"><symbol id="ai:tabler:sun"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0m-5 0h1m8-9v1m8 8h1m-9 8v1M5.6 5.6l.7.7m12.1-.7l-.7.7m0 11.4l.7.7m-12.1-.7l-.7.7"/></symbol><use  xlink:href="#ai:tabler:sun"></use></svg></button><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="RSS Feed" href="/rss.xml"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:rss"><symbol id="ai:tabler:rss"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 19a1 1 0 1 0 2 0a1 1 0 1 0-2 0M4 4a16 16 0 0 1 16 16M4 11a9 9 0 0 1 9 9"/></symbol><use  xlink:href="#ai:tabler:rss"></use></svg></a></div><span class="ml-4 rtl:ml-0 rtl:mr-4"><a class="btn ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm" href="https://mailchi.mp/3b72b47614e8/subscribe">Subscribe</a></span></div></div></div></header><main><section class="py-8 sm:py-16 lg:py-20 mx-auto"><article><header class=""><div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center"><p><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-4 h-4 inline-block -mt-0.5 mr-0.5 dark:text-gray-400" data-icon="tabler:clock"><symbol id="ai:tabler:clock"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0"/><path d="M12 7v5l3 3"/></g></symbol><use  xlink:href="#ai:tabler:clock"></use></svg><time datetime="Tue Sep 13 2022 02:00:00 GMT+0200 (Central European Summer Time)" class="inline-block">Sep 13, 2022</time> 
+· <a class="capitalize hover:underline inline-block" href="/category/design-patterns">design patterns</a> · 12 min read</p></div><h1 class="px-4 sm:px-6 max-w-3xl mx-auto text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading">Javascript Component Patterns to Scale up your Web Application</h1><p class="max-w-3xl mx-auto mt-4 mb-8 px-4 sm:px-6 text-xl md:text-2xl text-muted dark:text-slate-400 text-justify">The Web has evolved. We are now building web applications that can handle millions of users per second. Here are the best component patterns to help you scale.</p><div class="max-w-3xl mx-auto px-4 sm:px-6 flex flex-col gap-0"><div class="flex items-center gap-4"><img src="https://neciudan.dev/images/logo.png" width="48" height="48" sizes="(min-width: 48px) 48px, 100vw" style="object-fit: cover; object-position: center; max-width: 48px; max-height: 48px; aspect-ratio: 1; width: 100%;" alt="Neciu Dan" class="w-12 h-12 rounded-full" loading="eager" decoding="async"><div><h2 class="font-bold">Neciu Dan</h2><time datetime="2022-09-13T00:00:00.000Z" class="text-sm text-gray-500 dark:text-gray-400">Sep 13, 2022</time></div></div><p class="text-lg italic text-gray-700 dark:text-gray-300 mt-2 border-t border-b py-4">
+Hi there, it's Dan. As a technical co-founder of an ed-tech startup, I'm here to share insights on combining
+    technology and education to solve real problems. I write about startup challenges, tech innovations, and the future
+    of learning. Subscribe to join me on this journey of transforming education through technology. Want to discuss
+    ed-tech or startup life? <a href="https://www.linkedin.com/in/neciudan/" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300" target="_blank">Let's connect.</a></p><div class="border-b"><form id="inlineSubscribeForm" class="flex flex-col sm:flex-row gap-2 py-6"><input type="email" name="email" placeholder="Type your email..." class="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#1e2432] dark:bg-gray-800" required><button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+Subscribe
+</button></form></div><div class="flex gap-2 items-center text-gray-500 py-4"><div class="flex gap-4"><div class="dark:text-slate-600"><span class="align-super font-bold text-gray-400 dark:text-slate-400">Share:</span><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Twitter Share" data-aw-social-share="twitter" data-aw-url="https://neciudan.dev/javascript-component-patterns-to-scale-up-your-applications" data-aw-text="Javascript Component Patterns to Scale up your Web Application"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-x"><use  xlink:href="#ai:tabler:brand-x"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Facebook Share" data-aw-social-share="facebook" data-aw-url="https://neciudan.dev/javascript-component-patterns-to-scale-up-your-applications"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-facebook"><use  xlink:href="#ai:tabler:brand-facebook"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Linkedin Share" data-aw-social-share="linkedin" data-aw-url="https://neciudan.dev/javascript-component-patterns-to-scale-up-your-applications" data-aw-text="Javascript Component Patterns to Scale up your Web Application"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-linkedin"><use  xlink:href="#ai:tabler:brand-linkedin"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Whatsapp Share" data-aw-social-share="whatsapp" data-aw-url="https://neciudan.dev/javascript-component-patterns-to-scale-up-your-applications" data-aw-text="Javascript Component Patterns to Scale up your Web Application"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-whatsapp"><use  xlink:href="#ai:tabler:brand-whatsapp"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Email Share" data-aw-social-share="mail" data-aw-url="https://neciudan.dev/javascript-component-patterns-to-scale-up-your-applications" data-aw-text="Javascript Component Patterns to Scale up your Web Application"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:mail"><use  xlink:href="#ai:tabler:mail"></use></svg></button></div></div></div></div><img src="https://neciudan.dev/images/articles/javascript-patterns.webp" width="900" height="506" sizes="(max-width: 900px) 400px, 900px" style="object-fit: cover; object-position: center; max-width: 900px; max-height: 506px; aspect-ratio: 1.7786561264822134; width: 100%;" class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700" alt="The Web has evolved. We are now building web applications that can handle millions of users per second. Here are the best component patterns to help you scale." loading="eager" decoding="async"></header><div class="mx-auto px-6 sm:px-6 max-w-3xl prose prose-lg lg:prose-xl dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-primary dark:prose-a:text-blue-400 prose-img:rounded-md prose-img:shadow-lg mt-8 prose-headings:scroll-mt-[80px]"><p style="text-align: center;">
+<img src="/images/articles/js-patterns.webp" alt="Javascript Patterns"> 
+</p>
+<p>Many people don’t realize this, but the biggest enemy of software engineering is change.</p>
+<p>Changing your code over and over again opens the door for a myriad of bugs to sneak in. But this is the industry we live in, we have to build, deploy and measure very fast, and thinking at the beginning of all the possibilities your feature can take has the downside of slowing you down.</p>
+<p>So how do you choose? Which features should be over-engineered from the start because they would have many changes, and which features are ok to go as fast as possible?</p>
+<p>And after choosing, how do you build your components, in such a way they are resilient to bugs, follow SOLID Principles, are as extensible, and easy to test as you can make them?</p>
+<p>In this article, we will talk about different component patterns, how to build them and when to use them.</p>
+<p>If you prefer video format, I also talked about this subject Vue-Roadtrip Barcelona Conference, and <a href="https://www.youtube.com/watch?t=23734&#x26;v=MZbDrmgpqcc&#x26;feature=youtu.be&#x26;ab_channel=JSWORLDConference">you can watch the video here</a>.</p>
+<br>
+<hr>
+<br>
+A common problem in middle to big-sized applications is the number of teams that are continuously modifying code. A solution for this is to give ownership to components at the team level.
+<p>But even then, you will still have teams with horizontal ownership, like teams working on Performance, SEO, or other cross-app features.</p>
+<p>Let’s assume that we live in the perfect world, and you and you’re team has strict ownership of a business domain and all the components associated with that domain.</p>
+<p>The next step is to break down all the features that you own and split them into three categories:</p>
+<ul>
+<li>Core Features</li>
+<li>Support Features
+= Generic Features</li>
+</ul>
+<p>These categories will determine how you build your components. If your feature is a money-making feature for your app, a core functionality that makes your business stand out against your competitors then you can categorize it as a Core Feature.</p>
+<p><em>Core Features</em> tend to change, a lot, so you have to apply extra care when building and modifying the underline components to keep them readable and extensible.</p>
+<p>If your Feature is more of a utility function, or something similar, then you can classify it as a Support Feature. This category rarely changes, once you build it and unit test it, odds are you will never touch it again—for example, the Base Modal in your app that extends all the other modals.</p>
+<p><em>Generic Features</em> on the hand, are features that every app has, like Authentication and Login, the Shopping Cart in an e-commerce application, etc. These features are in the middle of the might change spectrum.</p>
+<p>So when we start a new feature or modify an existing one, take some time to categorize it and try to apply the component pattern that works better with it.</p>
+<p>This way, you may save your future self and colleagues a lot of hassle in the future.</p>
+<h2 id="container--presentational-pattern">Container — Presentational Pattern</h2>
+<p style="text-align: center;">
+<img src="/images/articles/cp-pattern.png" alt="Container Presentational Workflow"> 
+</p>
+<p>One of the most popular component patterns there is, and a lot of people are using it without knowing its name or its benefits. It was made popular by Dan Abramov <a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0">in a blog post in 2015</a>, since then he has repented and no longer promotes this pattern, especially in React Applications.</p>
+<p>But I still believe it has its merits when you properly scope your feature in the correct context.</p>
+<p>The basic idea is to split your feature into container components and presentational components — just like the title says.</p>
+<p>Presentational components:</p>
+<ul>
+<li>Are responsible to present something on the screen</li>
+<li>They have no logic of their own, that’s why they are playfully called dumb</li>
+<li>They emit events when interacted upon.</li>
+<li>Are decoupled from the rest of the application logic</li>
+</ul>
+<p>The last one means that you don’t use inside them, 3rd party libraries or redux libraries, they just receive data as props, make that data look pretty for the user, and emit events when users are interacting with the component.</p>
+<p>Container Components on the other hand:</p>
+<ul>
+<li>Are responsible for getting the data that we pass to our Presentational Components</li>
+<li>They listen for events from the child components and handle the logic needed for those events</li>
+<li>They can have multiple presentational / container components as children.</li>
+<li>But they should have only one domain responsibility.</li>
+</ul>
+<p>The reason for the last bullet point is it can get very easy to add more and more logic to a container component. Because that’s where the logic is supposed to be and that would transform our component into a God Object.</p>
+<p>So keep your responsibilities clear, split your container component into multiple container components if needed and make sure your component is readable and testable.</p>
+<p>Here is an example of this pattern in practice:</p>
+<p style="text-align: center;">
+<img src="/images/articles/cp-example.webp" alt="Container Presentational Example"> 
+</p>
+<h2 id="base--variant-pattern">Base — Variant Pattern</h2>
+<p style="text-align: center;">
+<img src="/images/articles/mutation-tests.png" alt="Base - Variant joke"> 
+</p>
+<p>This pattern is pretty simple in theory and very useful in practice.</p>
+<p>Imagine you have a ButtonComponent, a nice shiny red button, that triggers an alert when clicked.</p>
+<p style="text-align: center;">
+<img src="/images/articles/base1.webp" alt="Button Component example"> 
+</p>
+<p>Now, you want to have a disabled state which means we want the background to be greyed out, and when the button is clicked nothing to happen.</p>
+<p>Easily enough! We can just pass another prop with our disabled flag and modify the component to suit our new behavior.</p>
+<p style="text-align: center;">
+<img src="/images/articles/base2.webp" alt="Button Component example"> 
+</p>
+<p>Now, seeing these two amazing buttons, your PM wants another button that has an icon and when clicked opens an Information Modal.</p>
+<p>Being the good developer you are, you grind your teeth and add another prop for this flag and change the logic and style to accommodate this new request.</p>
+<p style="text-align: center;">
+<img src="/images/articles/base3.webp" alt="Button Component example"> 
+</p>
+<p>I think we can all see where this is going… there will always be another button, and another modification and our ButtonComponent will grow to such levels that it will be impossible to read what is happening inside.</p>
+<p>This is often the case for Support features: Modals, Buttons, Dialogs, and other components typically found in a Design System.</p>
+<p>The Base — Variant Pattern guides us to encapsulate all the core functionality of our component in a Base component and <em>never touch it again.</em></p>
+<p>Instead, every time there is a need for a new modification, we create a wrapper component around our BaseComponent with the new functionality and design. This is a very good example of the <em>Open / Closed Principle in S.O.L.I.D.</em></p>
+<p>Here is how our BaseButtonComponent will look, it has the HTML button semantics, it has the click event, and the base CSS styles.</p>
+<p style="text-align: center;">
+<img src="/images/articles/base3.webp" alt="Button Component example"> 
+</p>
+<p>Now, when our PM wants us to build our Disabled Button Feature. We create a new component DisabledButtonComponent, our first Variant, that wraps around BaseButton and has the desired functionality.</p>
+<p style="text-align: center;">
+<img src="/images/articles/base5.webp" alt="Button Component example"> 
+</p>
+<p>We proceed in the same fashion with the InfoButtonComponent and any other number of variants we want to build. The heart of what makes a button remains encapsulated in our BaseButtonComponent, and we don’t have to worry about changes to our core functionality.</p>
+<p>One thing to mention, it’s important for your codebase, to never use the BaseButton directly in your files. That way you completely isolate the core functionality from the implementation details.</p>
+<p>In our entire project we want only variants, the original is safe and sound, never to be touched again.</p>
+<h2 id="the-factory-pattern">The Factory Pattern</h2>
+<p style="text-align: center;">
+<img src="/images/articles/factory.png" alt="An Actual Factory"> 
+</p>
+<blockquote>
+<p>The Factory pattern is a creational pattern that uses factory methods to deal with the problem of creating components without having to specify the exact component that will be created.</p>
+</blockquote>
+<p>Sounds complicated, right?</p>
+<p>The use-case for this pattern is when you want to render multiple components, but you don’t know what components exactly. So you delegate that purpose to a factory.</p>
+<p>The factory component takes an array of data and based on a type property it renders the corresponding component with the needed data as props.</p>
+<p>One way to use this pattern is in a <a href="https://www.youtube.com/watch?v=Ir8lq4rSyyc">Server Driven UI architecture</a>. Made popular by Airbnb, this design pattern is very useful when you have one API for multiple clients. For example one web application and two mobile apps (iOS and Android).</p>
+<p>It’s very expensive and it takes a lot of time to deploy something to the store apps. For example, you have to wait for the review of the respective stores which usually takes 2–3 days, and all you wanted to do was move one button from the left side to the right.</p>
+<p>Server Driven UI gives that responsibility to the API, which sends a big response that basically paints the content in the app. It usually is an array of elements and each element has a type + the data necessary for that element.</p>
+<p>Here is an example of a response:</p>
+<p style="text-align: center;">
+<img src="/images/articles/response-ex.png" alt="Example of a response"> 
+</p>
+<p>Now the job of the frontend is to iterate through the elements and create the corresponding component. The component itself was in the codebase from the start, if the element type is something we don’t have in our factory Enumarables we should default to a basic component.</p>
+<p>While this pattern is extremely useful and clean and has the immense advantage to bring consistency across all your platforms, it also has some big disadvantages.</p>
+<p>The skeleton for this takes a long time to build, especially the backend. You also need to already have a pretty good component library in your application that shares the same Design System with your apps.</p>
+<p>Another big con is how hard it is to implement tracking for all your user actions. Because rendering the content is only half the battle. For every user interaction (button, link, input), we have to make the request to the API again and ask: <em>How should the content look now?</em></p>
+<p>As you can imagine this is not ideal when you care about performance.</p>
+<p>We found that the perfect utility for this pattern is when rendering a list of components that their main action keeps the same design or takes you to another page. For example banners, products in an e-commerce listing, etc.</p>
+<p>If your feature is a core business domain, this pattern could be useful, because once implemented it is very easy to change.</p>
+<h2 id="composable-components-pattern">Composable Components Pattern</h2>
+<p style="text-align: center;">
+<img src="/images/articles/composable.jpeg" alt="Lego Bricks"> 
+</p>
+<p>From my experience, this pattern gives you the most flexibility when implementing features that have a high degree of change.</p>
+<p>The goal of this pattern is to break your feature into atoms. Some are purely logic components and some are just presentational.</p>
+<p>Technically it is a combination of the previous patterns, plus a little extra in the form of data providers. But we’re getting ahead of ourselves, let’s start with the basics.</p>
+<p>First, you have to split your components into three types:</p>
+<ul>
+<li>Layout Components (responsible of the layout of the feature)</li>
+<li>Composables (responsible with the logic of the feature)</li>
+<li>Renderless Components. (responsible with mixing and matching the other two types of componenets)</li>
+</ul>
+<p>Let’s go through each of them.</p>
+<h3 id="layout-components">Layout Components</h3>
+<p>Going back to the container/presentation pattern, imagine you are building your feature, but you don’t know if you have the best design + functionality for your users.</p>
+<p>Some users prefer a more minimalistic design with fewer features, while others need more information and a design that captures their attention.</p>
+<p>Let’s build an imaginary feature.</p>
+<p>Think of an input that adds your address in your favorite food delivery app. You have a button that opens a modal with a map and you can select your location. You also have a text input where you can write your address.</p>
+<p>We want to A/B test variations of this input, design-wise but also logic-wise. In one variation we want the input with the location button and in another with more text and without this button.</p>
+<p>Here are some screenshots of what we want:</p>
+<p style="text-align: center;">
+<img src="/images/articles/screenshots.webp" alt="Mobile Screenshots"> 
+</p>
+<p>Now, you might think the best solution is just to create two separate container components using the same presentational component. And in theory, we are doing just that, but we also want to separate the design part from the logic.</p>
+<p>Because tomorrow, a new design may want to be implemented for our feature, and we don’t want to have multiple containers with the same logic inside. <em>DRY = Don’t Repeat Yourself is our motto.</em></p>
+<h3 id="composables--hooks">Composables / Hooks</h3>
+<p>Here is where the logic resides. Instead of having logic and layout in the same Container component, we split them into different types of components.</p>
+<p>For each feature logic we have, we create composables or hooks in the React world.</p>
+<p>These are pieces of logic, encapsulated, and reusable that do not return any HTML.</p>
+<p>Keeping with our Address Input Feature, we identify 3 distinct logical components:</p>
+<ul>
+<li>The logic where we get the user’s current location based on the Browser location data.</li>
+<li>The logic where we open the Location Modal once the user taps the button</li>
+<li>The logic to render the input, if the user already has an address or not.</li>
+<li>The logic of deciding when the input becomes sticky in the header.</li>
+</ul>
+<p>We extract each of them into their own composable. For example:</p>
+<p style="text-align: center;">
+<img src="/images/articles/composable1.webp" alt="Composable Example"> 
+</p>
+<p>Another example of a composable, is data providers. Maybe inside your feature you need access to some piece of data, either from a redux store or from another part of the application.</p>
+<p>To not pollute our feature component with props that some part of the feature might not use or pass props around from child to parent, we create a ProviderComponent that gets the data and pass it along to the interested component.</p>
+<p>Here is an example of a data provider:</p>
+<p style="text-align: center;">
+<img src="/images/articles/composable2.webp" alt="Composable Example"> 
+</p>
+<h3 id="renderless-container-components">Renderless Container Components</h3>
+<p>It’s important to think of Composables and Layout components as our lego bricks. And it’s time to put everything together.</p>
+<p>Using Renderless Container Components, we can mix and match as many layouts with the necessary logic, and provide information using data providers.</p>
+<p>The end result is a feature that is split into tiny atomic particles that can be mixed and matched as much as possible.</p>
+<p>Even better, if you need in the future to change your component, you do not modify the original. You just create a new variant, using either another layout, or adding another composable and so on…</p>
+<p>There are downsides of course….</p>
+<p style="text-align: center;">
+<img src="/images/articles/downside.png" alt="Component Hell"> 
+</p>
+<p>You would most certainly end up with something like this. The end result is not pretty but it is sure as hell very powerful.</p>
+<p>When building a core business feature, take this pattern into account. It could save you a lot of time and resources.</p></div><div class="mx-auto px-6 sm:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row"><ul class="mr-5 rtl:mr-0 rtl:ml-5"></ul><div class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600"><span class="align-super font-bold text-gray-400 dark:text-slate-400">Share:</span><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Twitter Share" data-aw-social-share="twitter" data-aw-url="https://neciudan.dev/javascript-component-patterns-to-scale-up-your-applications" data-aw-text="Javascript Component Patterns to Scale up your Web Application"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-x"><use  xlink:href="#ai:tabler:brand-x"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Facebook Share" data-aw-social-share="facebook" data-aw-url="https://neciudan.dev/javascript-component-patterns-to-scale-up-your-applications"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-facebook"><symbol id="ai:tabler:brand-facebook"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 10v4h3v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3V3h-3a5 5 0 0 0-5 5v2H7"/></symbol><use  xlink:href="#ai:tabler:brand-facebook"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Linkedin Share" data-aw-social-share="linkedin" data-aw-url="https://neciudan.dev/javascript-component-patterns-to-scale-up-your-applications" data-aw-text="Javascript Component Patterns to Scale up your Web Application"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-linkedin"><use  xlink:href="#ai:tabler:brand-linkedin"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Whatsapp Share" data-aw-social-share="whatsapp" data-aw-url="https://neciudan.dev/javascript-component-patterns-to-scale-up-your-applications" data-aw-text="Javascript Component Patterns to Scale up your Web Application"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:brand-whatsapp"><symbol id="ai:tabler:brand-whatsapp"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></g></symbol><use  xlink:href="#ai:tabler:brand-whatsapp"></use></svg></button><button class="ml-2 rtl:ml-0 rtl:mr-2" title="Email Share" data-aw-social-share="mail" data-aw-url="https://neciudan.dev/javascript-component-patterns-to-scale-up-your-applications" data-aw-text="Javascript Component Patterns to Scale up your Web Application"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300" data-icon="tabler:mail"><symbol id="ai:tabler:mail"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><path d="m3 7l9 6l9-6"/></g></symbol><use  xlink:href="#ai:tabler:mail"></use></svg></button></div></div></article><div id="overlay" data-astro-cid-f5qiv4ni></div><div id="dialog" data-astro-cid-f5qiv4ni><button id="close" data-astro-cid-f5qiv4ni>✕</button><div class="content" data-astro-cid-f5qiv4ni><img src="/images/logo.png" alt="Author" data-astro-cid-f5qiv4ni><h2 data-astro-cid-f5qiv4ni>Discover more from The Neciu Dan Newsletter</h2><p class="description" data-astro-cid-f5qiv4ni>A weekly column on Tech & Education, startup building and occasional hot takes.</p><p class="subscribers" data-astro-cid-f5qiv4ni>Over 1,000 subscribers</p><form id="subscribeForm" data-astro-cid-f5qiv4ni><input type="email" name="email" placeholder="Type your email..." required data-astro-cid-f5qiv4ni><button type="submit" data-astro-cid-f5qiv4ni>Subscribe</button></form><button id="continue" data-astro-cid-f5qiv4ni>Continue reading</button></div></div></section><div class="mx-auto px-6 sm:px-6 max-w-3xl pt-8 md:pt-4 pb-12 md:pb-20"><a class="btn btn-ghost px-3 md:px-3" href="/blog"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5 mr-1 -ml-1.5 rtl:-mr-1.5 rtl:ml-1" data-icon="tabler:chevron-left"><symbol id="ai:tabler:chevron-left"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 6l-6 6l6 6"/></symbol><use  xlink:href="#ai:tabler:chevron-left"></use></svg> Back to Blog</a></div></main><footer class="relative border-t border-gray-200 dark:border-slate-800 not-prose"><div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div><div class="relative max-w-7xl mx-auto px-4 sm:px-6 dark:text-slate-300"><div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12"><div class="col-span-12 lg:col-span-4"><div class="mb-2"><a class="inline-block font-bold text-xl" href="/">Neciu Dan</a></div><div class="text-sm text-muted"><a class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out mr-2 rtl:mr-0 rtl:ml-2" href="/terms">Terms</a><a class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out mr-2 rtl:mr-0 rtl:ml-2" href="/privacy">Privacy Policy</a></div></div></div><div class="md:flex md:items-center md:justify-between py-6 md:py-8"><ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4"><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="X" href="https://twitter.com/neciudan"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-x"><symbol id="ai:tabler:brand-x"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 4l11.733 16H20L8.267 4zm0 16l6.768-6.768m2.46-2.46L20 4"/></symbol><use  xlink:href="#ai:tabler:brand-x"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Instagram" href="https://instagram.com/neciudev"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-instagram"><symbol id="ai:tabler:brand-instagram"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m7.5-4.5v.01"/></g></symbol><use  xlink:href="#ai:tabler:brand-instagram"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Tiktok" href="https://www.tiktok.com/@neciudan"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-tiktok"><symbol id="ai:tabler:brand-tiktok"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 7.917v4.034A9.948 9.948 0 0 1 16 10v4.5a6.5 6.5 0 1 1-8-6.326V12.5a2.5 2.5 0 1 0 4 2V3h4.083A6.005 6.005 0 0 0 21 7.917z"/></symbol><use  xlink:href="#ai:tabler:brand-tiktok"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Linkedin" href="https://www.linkedin.com/in/neciudan/"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-linkedin"><symbol id="ai:tabler:brand-linkedin"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm4 5v5m0-8v.01M12 16v-5"/><path d="M16 16v-3a2 2 0 0 0-4 0"/></g></symbol><use  xlink:href="#ai:tabler:brand-linkedin"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Youtube" href="https://www.youtube.com/@NeciuDan/"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-youtube"><symbol id="ai:tabler:brand-youtube"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 8a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><path d="m10 9l5 3l-5 3z"/></g></symbol><use  xlink:href="#ai:tabler:brand-youtube"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="RSS" href="/rss.xml"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:rss"><use  xlink:href="#ai:tabler:rss"></use></svg></a></li><li><a class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center" aria-label="Github" href="https://github.com/Cst2989"><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-5 h-5" data-icon="tabler:brand-github"><symbol id="ai:tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2c2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2a4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6c-.6.6-.6 1.2-.5 2V21"/></symbol><use  xlink:href="#ai:tabler:brand-github"></use></svg></a></li></ul><div class="text-sm mr-4 dark:text-slate-400">
+    <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"></span>
+    Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://onwidget.com/"> onWidget</a> · All rights reserved.
+  </div></div></div></footer><script>(function(){const defaultTheme = "system";
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+
+  if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
+    applyTheme(defaultTheme.replace(':only', ''));
+  } else if (
+    localStorage.theme === 'dark' ||
+    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    applyTheme('dark');
+  } else {
+    applyTheme('light');
+  }
+
+  function attachEvent(selector, event, fn) {
+    const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
+    if (matches && matches.length) {
+      matches.forEach((elem) => {
+        elem.addEventListener(event, (e) => fn(e, elem), false);
+      });
+    }
+  }
+
+  window.onload = function () {
+    let lastKnownScrollPosition = window.scrollY;
+    let ticking = true;
+
+    attachEvent('#header nav', 'click', function () {
+      document.querySelector("[data-aw-toggle-menu]")?.classList.remove("expanded");
+      document.body.classList.remove("overflow-hidden");
+      document.getElementById("header")?.classList.remove("h-screen");
+      document.getElementById("header")?.classList.remove("expanded");
+      document.getElementById("header")?.classList.remove("bg-page");
+      document.querySelector("#header nav")?.classList.add("hidden");
+      document.querySelector("#header > div > div:last-child")?.classList.add("hidden");
+    });
+
+    attachEvent('[data-aw-toggle-menu]', 'click', function () {
+      document.body.classList.toggle("overflow-hidden");
+      document.getElementById("header")?.classList.toggle("h-screen");
+      document.getElementById("header")?.classList.toggle("expanded");
+      document.getElementById("header")?.classList.toggle("bg-page");
+      document.querySelector("#header nav")?.classList.toggle("hidden");
+      document.querySelector("#header > div > div:last-child")?.classList.toggle("hidden");
+    });
+
+    attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
+      if (defaultTheme.endsWith(':only')) {
+        return;
+      }
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    });
+
+    attachEvent('[data-aw-social-share]', 'click', function (_, elem) {
+      const network = elem.getAttribute('data-aw-social-share');
+      const url = encodeURIComponent(elem.getAttribute('data-aw-url'));
+      const text = encodeURIComponent(elem.getAttribute('data-aw-text'));
+
+      let href;
+      switch (network) {
+        case 'facebook':
+          href = `https://www.facebook.com/sharer.php?u=${url}`;
+          break;
+        case 'twitter':
+          href = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+          break;
+        case 'linkedin':
+          href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${text}`;
+          break;
+        case 'whatsapp':
+          href = `https://wa.me/?text=${text}%20${url}`;
+          break;
+        case 'mail':
+          href = `mailto:?subject=%22${text}%22&body=${text}%20${url}`;
+          break;
+
+        default:
+          return;
+      }
+
+      const newlink = document.createElement('a');
+      newlink.target = '_blank';
+      newlink.href = href;
+      newlink.click();
+    });
+
+    function appyHeaderStylesOnScroll() {
+      const header = document.getElementById('header');
+      if (lastKnownScrollPosition > 60 && !header.classList.contains('scroll')) {
+        document.getElementById('header').classList.add('scroll');
+      } else if (lastKnownScrollPosition <= 60 && header.classList.contains('scroll')) {
+        document.getElementById('header').classList.remove('scroll');
+      }
+      ticking = false;
+    }
+    appyHeaderStylesOnScroll();
+
+    attachEvent([document], 'scroll', function () {
+      lastKnownScrollPosition = window.scrollY;
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          appyHeaderStylesOnScroll();
+        });
+        ticking = true;
+      }
+    });
+  };
+
+  window.onpageshow = function () {
+    document.documentElement.classList.add('motion-safe:scroll-smooth');
+    const elem = document.querySelector('[data-aw-toggle-menu]');
+    if (elem) {
+      elem.classList.remove('expanded');
+    }
+    document.body.classList.remove("overflow-hidden");
+    document.getElementById("header")?.classList.remove("h-screen");
+    document.getElementById("header")?.classList.remove("expanded");
+    document.querySelector("#header nav")?.classList.add("hidden");
+  };
+})();</script></body></html>
