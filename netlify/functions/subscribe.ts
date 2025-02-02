@@ -2,6 +2,7 @@ import type { Handler } from '@netlify/functions';
 
 export const handler: Handler = async (event) => {
   if (event.httpMethod !== 'POST') {
+    console.log('Method not allowed:', event.httpMethod);
     return {
       statusCode: 405,
       body: JSON.stringify({ error: 'Method not allowed' }),
@@ -10,6 +11,10 @@ export const handler: Handler = async (event) => {
 
   try {
     let email: string | null = null;
+
+    // Log the content type and body
+    console.log('Content-Type:', event.headers['content-type']);
+    console.log('Request body:', event.body);
 
     // Parse the body based on content type
     if (event.headers['content-type']?.includes('application/json')) {
@@ -21,6 +26,7 @@ export const handler: Handler = async (event) => {
     }
 
     if (!email) {
+      console.log('Email missing from request');
       return {
         statusCode: 400,
         body: JSON.stringify({ error: 'Email is required' }),
@@ -28,6 +34,7 @@ export const handler: Handler = async (event) => {
     }
 
     console.log('Sending request to:', process.env.PUBLIC_GOOGLE_SCRIPT_URL);
+    console.log('Email:', email);
     
     // Send request to Google Apps Script
     await fetch(
@@ -40,6 +47,7 @@ export const handler: Handler = async (event) => {
       }
     ).catch(error => {
       console.log('Google Apps Script request error:', error);
+      throw error; // Re-throw to be caught by outer try-catch
     });
 
     return {
@@ -50,7 +58,7 @@ export const handler: Handler = async (event) => {
     console.error('Subscription error:', error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to subscribe' }),
+      body: JSON.stringify({ error: String(error) }),
     };
   }
 }; 
