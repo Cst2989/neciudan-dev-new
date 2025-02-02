@@ -97,7 +97,7 @@ const { author, date, url, post } = Astro.props;
     const formData = new FormData(e.target as HTMLFormElement);
 
     try {
-      const response = await fetch('/api/subscribe', {
+      const response = await fetch('/.netlify/functions/subscribe', {
         method: 'POST',
         body: formData,
       });
