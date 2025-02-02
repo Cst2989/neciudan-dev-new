@@ -45,7 +45,7 @@ export const handler: Handler = async (event) => {
     console.log('Email found:', email);
     
     // Send request to Google Apps Script
-    await fetch(
+    fetch(
       `${process.env.PUBLIC_GOOGLE_SCRIPT_URL}` + 
       '?email=' + encodeURIComponent(email) +
       '&callback=?',
@@ -53,11 +53,10 @@ export const handler: Handler = async (event) => {
         method: 'GET',
         mode: 'no-cors'
       }
-    ).catch(error => {
-      console.log('Google Apps Script request error:', error);
-      throw error; // Re-throw to be caught by outer try-catch
-    });
+    );
 
+    // Don't wait for or check the response from Google Apps Script
+    // Just return success if we got this far
     return {
       statusCode: 200,
       body: JSON.stringify({ message: 'Subscribed successfully' }),
