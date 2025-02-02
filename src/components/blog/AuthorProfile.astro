@@ -60,8 +60,15 @@ const { author, date, url, post } = Astro.props;
         class="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#1e2432] dark:bg-gray-800"
         required
       />
-      <button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-        Subscribe
+      <button type="submit" class="submit-btn px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+        <span class="normal-text">Subscribe</span>
+        <span class="loading-text hidden">
+          <svg class="animate-spin h-5 w-5 inline mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          Subscribing...
+        </span>
       </button>
     </form>
   </div>
@@ -93,6 +100,14 @@ const { author, date, url, post } = Astro.props;
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const email = formData.get('email');
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const normalText = submitBtn.querySelector('.normal-text') as HTMLElement;
+    const loadingText = submitBtn.querySelector('.loading-text') as HTMLElement;
+
+    // Disable button and show loading state
+    submitBtn.disabled = true;
+    normalText.classList.add('hidden');
+    loadingText.classList.remove('hidden');
 
     try {
       const response = await fetch('/.netlify/functions/subscribe', {
@@ -108,21 +123,19 @@ const { author, date, url, post } = Astro.props;
         throw new Error(data.error || 'Subscription failed');
       }
 
-      // Store subscription status
       localStorage.setItem('newsletterSubscribed', 'true');
-      
-      // Dispatch custom event for other components
       window.dispatchEvent(new CustomEvent('newsletter:subscribed'));
-      
-      // Hide the form
       form.style.display = 'none';
-      
-      // Show success toast
       Toast.show('Thank you for subscribing! 🎉');
       
     } catch (error) {
       console.error('Subscription error:', error);
       Toast.show('Sorry, there was an error. Please try again later.', 'error');
+      
+      // Reset button state on error
+      submitBtn.disabled = false;
+      normalText.classList.remove('hidden');
+      loadingText.classList.add('hidden');
     }
   });
 </script>
