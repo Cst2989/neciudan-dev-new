@@ -4,11 +4,13 @@ import { Icon } from 'astro-icon/components';
 import Image from '~/components/common/Image.astro';
 import PostTags from '~/components/blog/Tags.astro';
 import SocialShare from '~/components/common/SocialShare.astro';
+import SubscriptionDialog from './SubscriptionDialog.astro';
 
 import { getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/utils';
 
 import type { Post } from '~/types';
+import AuthorProfile from './AuthorProfile.astro';
 
 export interface Props {
   post: Post;
@@ -50,7 +52,17 @@ const { Content } = post;
       >
         {post.excerpt}
       </p>
-
+      <AuthorProfile
+        author={{
+          name: 'Neciu Dan',
+          image: 'https://neciudan.dev/images/logo.png',
+        }}
+        date={post.publishDate}
+        url={url}
+        post={{
+          title: post.title,
+        }}
+      />
       {
         post.image ? (
           <Image
@@ -88,4 +100,5 @@ const { Content } = post;
       <SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600" />
     </div>
   </article>
+  <SubscriptionDialog />
 </section>
