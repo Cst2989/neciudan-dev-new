@@ -78,28 +78,29 @@ const { author, date, url, post } = Astro.props;
 
   const form = document.getElementById('inlineSubscribeForm') as HTMLFormElement;
   
-  // Function to hide the form
-  const hideForm = () => {
-    form.style.display = 'none';
-  };
-  
   // Check if user is already subscribed
   const isSubscribed = localStorage.getItem('newsletterSubscribed') === 'true';
   if (isSubscribed) {
-    hideForm();
+    form.style.display = 'none';
   }
 
   // Listen for subscription events from other components
-  window.addEventListener('newsletter:subscribed', hideForm);
+  window.addEventListener('newsletter:subscribed', () => {
+    form.style.display = 'none';
+  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
+    const email = formData.get('email');
 
     try {
       const response = await fetch('/.netlify/functions/subscribe', {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
       });
 
       if (!response.ok) {
@@ -114,7 +115,7 @@ const { author, date, url, post } = Astro.props;
       window.dispatchEvent(new CustomEvent('newsletter:subscribed'));
       
       // Hide the form
-      hideForm();
+      form.style.display = 'none';
       
       // Show success toast
       Toast.show('Thank you for subscribing! 🎉');
