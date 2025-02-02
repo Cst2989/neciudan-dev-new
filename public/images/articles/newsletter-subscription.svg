@@ -33,10 +33,10 @@
   
   <!-- Text -->
   <text x="600" y="380" font-family="Arial" font-size="64" font-weight="bold" fill="white" text-anchor="middle">
-    Newsletter Subscriptions
+    Custom Subscribe Feature
   </text>
   <text x="600" y="440" font-family="Arial" font-size="32" fill="rgba(255,255,255,0.9)" text-anchor="middle">
-    Build Your Own Substack Alternative
+    Build Your Own Substack-like Alternative
   </text>
   
   <!-- Astro Icon -->
