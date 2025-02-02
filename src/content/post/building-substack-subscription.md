@@ -7,11 +7,19 @@ category: 'Development'
 readTime: '7 min read'
 ---
 
-As a technical founder writing about startup life and ed-tech, I needed a way to keep in touch with my readers. Substack is great, but why pay for a platform when you can build your own subscription system? Let's see how we can create a similar experience using Astro, Netlify Functions, and Google Sheets as our database.
+As a technical founder writing about startup life and ed-tech, I needed a way to keep in touch with my readers. One platform that I admire is Substack, and one thing that always stood out for me is how they encourage users to subscribe. 
+
+In the article's header, on the first screen, the author introduces himself and what his writing is all about, with a subscribe form right below. 
+
+Then, in case you haven't subscribed yet, while you are reading the article, the page gets darker and darker until the only thing visible is a dialog box, which lets the user subscribe or continue reading. 
+
+I loved this feature so much that I tried replicating it as closely as possible using simple database solutions.
+
+Spoiler alert: If you are reading this on my blog, odds are you have already seen the header and the dialog. If you liked it in action, here is how I built it: 
 
 ## The Requirements
 
-Here's what we needed:
+Here's what we need:
 - A subscription form in the author profile section
 - A popup dialog that appears while reading
 - Email storage in Google Sheets
@@ -20,9 +28,13 @@ Here's what we needed:
 
 ## The Implementation
 
+Currently this blog is built on Astro, specifically its using the `astrowind` open source project. You can check it out : <a href="https://github.com/onwidget/astrowind" target="_blank">here</a>
+
+All my code is not Astro specific, it's normal Javascript code with some Server Side Logic behind it. The only thing platform specific is the deployment to Netlify, but I show how you can easily replicate it on Vercel if thats your poison. 
+
 ### 1. The Author Profile Component
 
-The first touchpoint for newsletter subscriptions is the AuthorProfile component. It appears immediately after the article content, making it visible in the first fold when readers finish your post - the perfect moment to capture their interest.
+Let's get started. The first touchpoint for newsletter subscriptions is the AuthorProfile component. It appears immediately after the article content, making it visible in the first fold when readers start your post - the perfect moment to capture their interest.
 
 Here's how we structured it:
 
@@ -38,7 +50,7 @@ Here's how we structured it:
   <button type="submit" class="submit-btn px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
     <span class="normal-text">Subscribe</span>
     <span class="loading-text hidden">
-      <svg class="animate-spin h-5 w-5 inline mr-2"><!-- Loading spinner SVG --></svg>
+      <svg class="animate-spin h-5 w-5 inline mr-2"></svg>
       Subscribing...
     </span>
   </button>
@@ -94,7 +106,7 @@ form.addEventListener('submit', async (e) => {
 
 ### The Toast Notification System
 
-For user feedback, we created a Toast component that shows temporary notifications in the bottom-right corner of the screen. It's crucial for providing immediate feedback about the subscription status:
+For user feedback, we created a Toast component that shows temporary notifications in the bottom-right corner of the screen. 
 
 ```typescript
 class Toast {
@@ -130,14 +142,7 @@ class Toast {
 }
 ```
 
-The Toast system provides several key features:
-1. Slides in from the right with a smooth animation
-2. Different styles for success and error states
-3. Automatically disappears after 3 seconds
-4. Stacks multiple notifications if they appear in quick succession
-5. Cleans up after itself to prevent memory leaks
-
-This immediate feedback is crucial for user experience - users know instantly whether their subscription worked or if they need to try again. The success message confirms their action while the error message provides clarity when something goes wrong.
+We use the Toast to either show a success message or an error message when the user submits their email. If you want to try it out, you can use the form in the header of this page, if you haven't already! 
 
 ### 2. The Subscription Dialog
 
@@ -168,7 +173,7 @@ First, the HTML structure:
 </div>
 ```
 
-The styling is crucial for the smooth transition effect:
+The over 1000 subscriber test is hardcoded and whishfull thinking! Here is how we style the dialog and the overlay:
 
 ```scss
 #overlay {
@@ -205,7 +210,7 @@ The styling is crucial for the smooth transition effect:
 }
 ```
 
-The magic happens in the JavaScript that controls when and how the dialog appears:
+Nothing too fancy, to make it really cool we need a touch of Javascript.
 
 ```javascript
 const dialog = document.getElementById('dialog');
@@ -288,7 +293,8 @@ form.addEventListener('submit', async (e) => {
 });
 ```
 
-The implementation uses several key techniques:
+OK. Maybe a little more than a touch of Javascript. But it's not rocket science. Here is what's happening: 
+
 1. Scroll position tracking with requestAnimationFrame for performance
 2. CSS transforms for smooth animations
 3. Local storage to remember subscribed users
@@ -300,7 +306,9 @@ When a user subscribes, we:
 2. Hide the dialog with a smooth animation
 3. Show a success toast notification
 
-This creates a seamless experience where users only see the subscription prompt once, and all components stay in sync with the subscription status.
+This creates a seamless experience where users only see the subscription prompt once, and all components stay in sync with the subscription status. 
+
+We also want to make sure we are not annoying the user with the dialog. So if they close it we dont open it again in this session. 
 
 ### 3. The Backend with Netlify Functions
 
@@ -330,7 +338,6 @@ import netlify from '@astrojs/netlify/functions';
 export default defineConfig({
   output: 'hybrid',  // Enable server-side rendering
   adapter: netlify(), // Or vercel() if using Vercel
-  // ... rest of your config
 });
 ```
 
@@ -340,7 +347,7 @@ Now let's implement our serverless function...
 
 #### Using Netlify Functions
 
-Create a new file at `netlify/functions/subscribe.ts`:
+Create a new file at `.netlify/functions/subscribe.ts`:
 
 ```typescript
 import type { Handler } from '@netlify/functions';
@@ -409,7 +416,13 @@ Both platforms offer:
 
 Just make sure to add your `PUBLIC_GOOGLE_SCRIPT_URL` to your environment variables in your platform's dashboard. In Netlify, go to Site settings > Build & deploy > Environment. In Vercel, go to Project settings > Environment Variables.
 
+And in your local environment you need to add it your .env file. 
+
 The function is intentionally simple - it takes an email from the request body, forwards it to your Google Sheet, and returns a success or error response. Error handling ensures your users get appropriate feedback if something goes wrong.
+
+The main reason we are using an edge function instead of calling the Google Sheep App directly is that we want to hide the URL of our Google Sheet from the public. 
+
+Same reason why we use a variable in our URL to not expose the Google Sheet URL on Github. 
 
 ### 4. Google Sheets as a Database
 
@@ -479,26 +492,18 @@ To deploy your Apps Script:
    - Click `Deploy`
 4. Copy the Web app URL - this will be your `PUBLIC_GOOGLE_SCRIPT_URL`
 
-The script includes several important features:
-1. Proper error handling if no email is provided
-2. JSONP support through callback parameter
-3. CORS headers for cross-origin requests
-4. Timestamp logging for each subscription
-5. Clean JSON responses for success/error states
-
-When a user subscribes:
-1. The email is sent to this endpoint
-2. The script validates the input
-3. If valid, it adds a new row with timestamp and email
-4. Returns a success/error message that our frontend can handle
-
 This setup gives you a simple but effective database for your newsletter subscriptions, with zero hosting costs and easy export options when you need to migrate to a more robust solution.
 
 Remember to add the Web app URL to your environment variables as `PUBLIC_GOOGLE_SCRIPT_URL` in your deployment platform (Netlify/Vercel).
 
+
 ### 5. Cross-Component Communication
 
-To ensure a consistent experience, we needed components to communicate when a user subscribes. We use localStorage and custom events:
+To ensure a consistent experience, we needed components to communicate when a user subscribes. 
+
+This way, if someone subscribes through the popup, the profile form automatically hides, and vice versa.
+
+We use localStorage and custom events:
 
 ```javascript
 // Store subscription status
@@ -508,19 +513,11 @@ localStorage.setItem('newsletterSubscribed', 'true');
 window.dispatchEvent(new CustomEvent('newsletter:subscribed'));
 ```
 
-This way, if someone subscribes through the popup, the profile form automatically hides, and vice versa.
-
-### 6. User Experience Details
-
-We added several UX improvements:
-- Loading states during submission
-- Error handling with toast notifications
-- Form disable during submission
-- Automatic hiding of forms after successful subscription
-
 ## The Result
 
 The final system provides a clean, professional newsletter subscription experience similar to Substack, but with complete control over the implementation and zero monthly costs. The only limitation is Google Sheets' row limit (10 million rows), but by then, you'll probably want to migrate to a proper database anyway.
+
+Or the relative slowness of the Google Sheets API response. 
 
 ## Conclusion
 
@@ -530,8 +527,8 @@ Building your own subscription system might seem like overengineering when solut
 - Integration with your existing site design
 - Valuable learning experience
 
-The entire implementation took about 3 hours and has been running smoothly for months. Sometimes, the simplest solution is the best one - you don't always need complex infrastructure to solve a straightforward problem.
+The entire implementation took about 3 hours and has been running smoothly. Sometimes, the simplest solution is the best one - you don't always need complex infrastructure to solve a straightforward problem.
 
 Want to see it in action? Try subscribing to my newsletter using any of the forms on this page! 😉
 
-The complete code is available on my GitHub, and you're welcome to use it for your own projects. 
+The complete code is available <a href="https://github.com/Cst2989/neciudan-dev-new/tree/main" target="_blank">on my GitHub</a>, and you're welcome to use it for your own projects. 
