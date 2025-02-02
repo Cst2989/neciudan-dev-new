@@ -25,7 +25,9 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    // Send request to Google Apps Script using env variable
+    console.log('Sending request to:', import.meta.env.PUBLIC_GOOGLE_SCRIPT_URL);
+    
+    // Send request to Google Apps Script
     fetch(
       `${import.meta.env.PUBLIC_GOOGLE_SCRIPT_URL}` + 
       '?email=' + encodeURIComponent(email) +
@@ -35,11 +37,9 @@ export const POST: APIRoute = async ({ request }) => {
         mode: 'no-cors'
       }
     ).catch(error => {
-      // Log but don't throw the error since we can't read the response anyway
       console.log('Google Apps Script request error:', error);
     });
 
-    // Return success immediately after sending the request
     return new Response(JSON.stringify({
       message: 'Subscribed successfully'
     }), {
