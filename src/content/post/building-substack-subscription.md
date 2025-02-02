@@ -1,0 +1,537 @@
+---
+title: 'Building a Substack-like Subscription Feature'
+excerpt: 'Learn how to implement a newsletter subscription system using Astro, Netlify Functions, and Google Sheets - a free alternative to paid newsletter platforms.'
+publishDate: 2025-02-02
+image: '/images/articles/newsletter-subscription.svg'
+category: 'Development'
+readTime: '7 min read'
+---
+
+As a technical founder writing about startup life and ed-tech, I needed a way to keep in touch with my readers. Substack is great, but why pay for a platform when you can build your own subscription system? Let's see how we can create a similar experience using Astro, Netlify Functions, and Google Sheets as our database.
+
+## The Requirements
+
+Here's what we needed:
+- A subscription form in the author profile section
+- A popup dialog that appears while reading
+- Email storage in Google Sheets
+- Loading states and error handling
+- Cross-component communication for subscription status
+
+## The Implementation
+
+### 1. The Author Profile Component
+
+The first touchpoint for newsletter subscriptions is the AuthorProfile component. It appears immediately after the article content, making it visible in the first fold when readers finish your post - the perfect moment to capture their interest.
+
+Here's how we structured it:
+
+```astro
+<form id="inlineSubscribeForm" class="flex flex-col sm:flex-row gap-2 py-6">
+  <input
+    type="email"
+    name="email"
+    placeholder="Type your email..."
+    class="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#1e2432]"
+    required
+  />
+  <button type="submit" class="submit-btn px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+    <span class="normal-text">Subscribe</span>
+    <span class="loading-text hidden">
+      <svg class="animate-spin h-5 w-5 inline mr-2"><!-- Loading spinner SVG --></svg>
+      Subscribing...
+    </span>
+  </button>
+</form>
+```
+
+The form is intentionally simple - just an email input and a submit button. But the magic happens in the interaction details:
+
+1. The form uses a flex layout that stacks vertically on mobile but sits side-by-side on larger screens
+2. The input field expands to take available space while the button maintains a fixed width
+3. The button includes both normal and loading states, with a spinning SVG animation
+
+When a user submits their email, we handle it like this:
+
+```javascript
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target as HTMLFormElement);
+  const email = formData.get('email');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const normalText = submitBtn.querySelector('.normal-text');
+  const loadingText = submitBtn.querySelector('.loading-text');
+
+  // Show loading state
+  submitBtn.disabled = true;
+  normalText.classList.add('hidden');
+  loadingText.classList.remove('hidden');
+
+  try {
+    const response = await fetch('/.netlify/functions/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+
+    if (!response.ok) throw new Error('Subscription failed');
+
+    // Store subscription status
+    localStorage.setItem('newsletterSubscribed', 'true');
+    form.style.display = 'none';
+    Toast.show('Thank you for subscribing! 🎉');
+    
+  } catch (error) {
+    Toast.show('Sorry, there was an error. Please try again later.', 'error');
+    
+    // Reset button state
+    submitBtn.disabled = false;
+    normalText.classList.remove('hidden');
+    loadingText.classList.add('hidden');
+  }
+});
+```
+
+### The Toast Notification System
+
+For user feedback, we created a Toast component that shows temporary notifications in the bottom-right corner of the screen. It's crucial for providing immediate feedback about the subscription status:
+
+```typescript
+class Toast {
+  private static container: HTMLDivElement;
+
+  static show(message: string, type: 'success' | 'error' = 'success') {
+    // Initialize container if needed
+    if (!this.container) {
+      this.container = document.createElement('div');
+      this.container.className = 'fixed bottom-4 right-4 z-50 flex flex-col gap-2';
+      document.body.appendChild(this.container);
+    }
+
+    // Create and style the toast
+    const toast = document.createElement('div');
+    toast.className = `
+      transform transition-all duration-300 ease-out translate-x-full
+      px-4 py-2 rounded-lg shadow-lg
+      ${type === 'success' ? 'bg-blue-600 text-white' : 'bg-red-600 text-white'}
+    `;
+    toast.textContent = message;
+
+    // Add to container and animate in
+    this.container.appendChild(toast);
+    setTimeout(() => toast.classList.remove('translate-x-full'), 10);
+
+    // Remove after delay
+    setTimeout(() => {
+      toast.classList.add('translate-x-full', 'opacity-0');
+      setTimeout(() => this.container.removeChild(toast), 300);
+    }, 3000);
+  }
+}
+```
+
+The Toast system provides several key features:
+1. Slides in from the right with a smooth animation
+2. Different styles for success and error states
+3. Automatically disappears after 3 seconds
+4. Stacks multiple notifications if they appear in quick succession
+5. Cleans up after itself to prevent memory leaks
+
+This immediate feedback is crucial for user experience - users know instantly whether their subscription worked or if they need to try again. The success message confirms their action while the error message provides clarity when something goes wrong.
+
+### 2. The Subscription Dialog
+
+The most distinctive feature of Substack is its subscription dialog that appears as you scroll through an article. The page gracefully dims, and a dialog slides up from the bottom, creating an engaging but non-intrusive prompt for subscription. Let's recreate this effect.
+
+First, the HTML structure:
+
+```astro
+<div id="overlay"></div>
+<div id="dialog">
+  <button id="close">✕</button>
+  <div class="content">
+    <img src="/images/logo.png" alt="Author" />
+    <h2>Discover more from The Neciu Dan Newsletter</h2>
+    <p class="description">A weekly column on Tech & Education, startup building and occasional hot takes.</p>
+    <p class="subscribers">Over 1,000 subscribers</p>
+    <form id="subscribeForm">
+      <input type="email" name="email" placeholder="Type your email..." required />
+      <button type="submit" class="submit-btn">
+        <span class="normal-text">Subscribe</span>
+        <span class="loading-text hidden">
+          <svg class="animate-spin h-5 w-5 inline"><!-- Loading spinner SVG --></svg>
+          Subscribing...
+        </span>
+      </button>
+    </form>
+  </div>
+</div>
+```
+
+The styling is crucial for the smooth transition effect:
+
+```scss
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+  z-index: 40;
+}
+
+#dialog {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 2rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 50;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  
+  &.visible {
+    transform: translateY(0);
+  }
+}
+
+.overlay-visible {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+```
+
+The magic happens in the JavaScript that controls when and how the dialog appears:
+
+```javascript
+const dialog = document.getElementById('dialog');
+const overlay = document.getElementById('overlay');
+const closeBtn = document.getElementById('close');
+
+// Only show if user hasn't subscribed
+if (localStorage.getItem('newsletterSubscribed') !== 'true') {
+  let lastScrollPosition = 0;
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    lastScrollPosition = window.scrollY;
+
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        // Show dialog after scrolling 30% of the article
+        const scrollPercentage = (lastScrollPosition / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        
+        if (scrollPercentage > 30) {
+          dialog.classList.add('visible');
+          overlay.classList.add('overlay-visible');
+        }
+        
+        ticking = false;
+      });
+
+      ticking = true;
+    }
+  });
+}
+
+// Handle close button
+closeBtn.addEventListener('click', () => {
+  dialog.classList.remove('visible');
+  overlay.classList.remove('overlay-visible');
+});
+
+// Handle form submission
+const form = document.getElementById('subscribeForm');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target as HTMLFormElement);
+  const email = formData.get('email');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const normalText = submitBtn.querySelector('.normal-text');
+  const loadingText = submitBtn.querySelector('.loading-text');
+
+  // Show loading state
+  submitBtn.disabled = true;
+  normalText.classList.add('hidden');
+  loadingText.classList.remove('hidden');
+
+  try {
+    const response = await fetch('/.netlify/functions/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+
+    if (!response.ok) throw new Error('Subscription failed');
+
+    // Store subscription status and notify other components
+    localStorage.setItem('newsletterSubscribed', 'true');
+    window.dispatchEvent(new CustomEvent('newsletter:subscribed'));
+    
+    // Hide dialog and show success message
+    dialog.classList.remove('visible');
+    overlay.classList.remove('overlay-visible');
+    Toast.show('Thank you for subscribing! 🎉');
+    
+  } catch (error) {
+    Toast.show('Sorry, there was an error. Please try again later.', 'error');
+    
+    // Reset button state
+    submitBtn.disabled = false;
+    normalText.classList.remove('hidden');
+    loadingText.classList.add('hidden');
+  }
+});
+```
+
+The implementation uses several key techniques:
+1. Scroll position tracking with requestAnimationFrame for performance
+2. CSS transforms for smooth animations
+3. Local storage to remember subscribed users
+4. Custom events to communicate between components
+
+When a user subscribes, we:
+1. Store their subscription status in localStorage
+2. Dispatch a custom event that other components (like AuthorProfile) listen for
+2. Hide the dialog with a smooth animation
+3. Show a success toast notification
+
+This creates a seamless experience where users only see the subscription prompt once, and all components stay in sync with the subscription status.
+
+### 3. The Backend with Netlify Functions
+
+Before we dive into the serverless functions, we need to configure Astro to work with our chosen platform. First, install the appropriate adapter:
+
+For Netlify:
+```bash
+npm install @astrojs/netlify
+```
+
+Or for Vercel:
+```bash
+npm install @astrojs/vercel
+```
+
+Then update your `astro.config.mjs`:
+
+```typescript
+import { defineConfig } from 'astro/config';
+
+// For Netlify
+import netlify from '@astrojs/netlify/functions';
+
+// Or for Vercel
+// import vercel from '@astrojs/vercel/serverless';
+
+export default defineConfig({
+  output: 'hybrid',  // Enable server-side rendering
+  adapter: netlify(), // Or vercel() if using Vercel
+  // ... rest of your config
+});
+```
+
+The `output: 'hybrid'` setting is crucial - it allows us to mix static pages with server-side functionality. This means your blog posts remain static (fast and SEO-friendly) while the subscription functionality runs on the server.
+
+Now let's implement our serverless function...
+
+#### Using Netlify Functions
+
+Create a new file at `netlify/functions/subscribe.ts`:
+
+```typescript
+import type { Handler } from '@netlify/functions';
+
+export const handler: Handler = async (event) => {
+  try {
+    const { email } = JSON.parse(event.body || '{}');
+    
+    // Send to Google Sheets via Apps Script
+    await fetch(
+      `${process.env.PUBLIC_GOOGLE_SCRIPT_URL}?email=${encodeURIComponent(email)}`,
+      { method: 'GET' }
+    );
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: 'Subscribed successfully' }),
+    };
+  } catch (error) {
+    console.error('Subscription error:', error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: String(error) }),
+    };
+  }
+};
+```
+
+#### Using Vercel Edge Functions
+
+Alternatively, if you're hosting on Vercel, create a file at `api/subscribe.ts`:
+
+```typescript
+import type { VercelRequest, VercelResponse } from '@vercel/node';
+
+export default async function handler(
+  request: VercelRequest,
+  response: VercelResponse
+) {
+  try {
+    const { email } = request.body;
+    
+    // Send to Google Sheets via Apps Script
+    await fetch(
+      `${process.env.PUBLIC_GOOGLE_SCRIPT_URL}?email=${encodeURIComponent(email)}`,
+      { method: 'GET' }
+    );
+
+    return response.status(200).json({ message: 'Subscribed successfully' });
+  } catch (error) {
+    console.error('Subscription error:', error);
+    return response.status(500).json({ error: String(error) });
+  }
+}
+```
+
+The only difference in your frontend code would be the endpoint URL:
+- For Netlify: `/.netlify/functions/subscribe`
+- For Vercel: `/api/subscribe`
+
+Both platforms offer:
+- Automatic HTTPS
+- Environment variable management
+- Zero configuration needed
+- Free tier that's more than enough for newsletter subscriptions
+
+Just make sure to add your `PUBLIC_GOOGLE_SCRIPT_URL` to your environment variables in your platform's dashboard. In Netlify, go to Site settings > Build & deploy > Environment. In Vercel, go to Project settings > Environment Variables.
+
+The function is intentionally simple - it takes an email from the request body, forwards it to your Google Sheet, and returns a success or error response. Error handling ensures your users get appropriate feedback if something goes wrong.
+
+### 4. Google Sheets as a Database
+
+For storage, we created a Google Sheet and published it as a web app using Google Apps Script. This gives us a free, simple database that we can easily export or manipulate.
+
+First, create a new Google Sheet with two columns:
+- Timestamp
+- Email
+
+Then, click on `Extensions > Apps Script` to open the script editor. Create a new script with this code:
+
+```javascript
+function doGet(e) {
+  // Add CORS headers
+  const output = ContentService.createTextOutput();
+  output.setMimeType(ContentService.MimeType.JSON);
+  
+  // Get the email parameter
+  const email = e.parameter.email;
+  
+  if (!email) {
+    return output.setContent(JSON.stringify({
+      status: 'error',
+      message: 'No email provided'
+    }));
+  }
+
+  try {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    const timestamp = new Date();
+    sheet.appendRow([timestamp, email]);
+    
+    // Wrap the response in the callback function name if provided
+    const callback = e.parameter.callback;
+    const responseData = JSON.stringify({
+      status: 'success',
+      message: 'Email saved successfully'
+    });
+    
+    return output.setContent(
+      callback ? `${callback}(${responseData})` : responseData
+    );
+    
+  } catch (error) {
+    return output.setContent(JSON.stringify({
+      status: 'error',
+      message: error.toString()
+    }));
+  }
+}
+
+// Add this function to handle CORS preflight requests
+function doOptions(e) {
+  var output = ContentService.createTextOutput();
+  output.setMimeType(ContentService.MimeType.JSON);
+  return output;
+}
+```
+
+To deploy your Apps Script:
+
+1. Click on `Deploy > New deployment`
+2. Click `Select type > Web app`
+3. Configure the deployment:
+   - Execute as: `Me`
+   - Who has access: `Anyone`
+   - Click `Deploy`
+4. Copy the Web app URL - this will be your `PUBLIC_GOOGLE_SCRIPT_URL`
+
+The script includes several important features:
+1. Proper error handling if no email is provided
+2. JSONP support through callback parameter
+3. CORS headers for cross-origin requests
+4. Timestamp logging for each subscription
+5. Clean JSON responses for success/error states
+
+When a user subscribes:
+1. The email is sent to this endpoint
+2. The script validates the input
+3. If valid, it adds a new row with timestamp and email
+4. Returns a success/error message that our frontend can handle
+
+This setup gives you a simple but effective database for your newsletter subscriptions, with zero hosting costs and easy export options when you need to migrate to a more robust solution.
+
+Remember to add the Web app URL to your environment variables as `PUBLIC_GOOGLE_SCRIPT_URL` in your deployment platform (Netlify/Vercel).
+
+### 5. Cross-Component Communication
+
+To ensure a consistent experience, we needed components to communicate when a user subscribes. We use localStorage and custom events:
+
+```javascript
+// Store subscription status
+localStorage.setItem('newsletterSubscribed', 'true');
+
+// Notify other components
+window.dispatchEvent(new CustomEvent('newsletter:subscribed'));
+```
+
+This way, if someone subscribes through the popup, the profile form automatically hides, and vice versa.
+
+### 6. User Experience Details
+
+We added several UX improvements:
+- Loading states during submission
+- Error handling with toast notifications
+- Form disable during submission
+- Automatic hiding of forms after successful subscription
+
+## The Result
+
+The final system provides a clean, professional newsletter subscription experience similar to Substack, but with complete control over the implementation and zero monthly costs. The only limitation is Google Sheets' row limit (10 million rows), but by then, you'll probably want to migrate to a proper database anyway.
+
+## Conclusion
+
+Building your own subscription system might seem like overengineering when solutions like Substack exist. However, it offers several advantages:
+- Complete control over the user experience
+- No monthly fees
+- Integration with your existing site design
+- Valuable learning experience
+
+The entire implementation took about 3 hours and has been running smoothly for months. Sometimes, the simplest solution is the best one - you don't always need complex infrastructure to solve a straightforward problem.
+
+Want to see it in action? Try subscribing to my newsletter using any of the forms on this page! 😉
+
+The complete code is available on my GitHub, and you're welcome to use it for your own projects. 
