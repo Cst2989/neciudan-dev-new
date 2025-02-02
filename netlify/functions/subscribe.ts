@@ -16,17 +16,7 @@ export const handler: Handler = async (event) => {
     console.log('Content-Type:', event.headers['content-type']);
     console.log('Request body:', event.body);
 
-    if (event.headers['content-type']?.includes('multipart/form-data')) {
-      // Parse multipart form data
-      const boundary = event.headers['content-type'].split('boundary=')[1];
-      const parts = event.body!.split(boundary);
-      
-      // Find the email field
-      const emailPart = parts.find(part => part.includes('name="email"'));
-      if (emailPart) {
-        email = emailPart.split('\r\n\r\n')[1].split('\r\n')[0];
-      }
-    } else if (event.headers['content-type']?.includes('application/json')) {
+    if (event.headers['content-type']?.includes('application/json')) {
       const body = JSON.parse(event.body || '{}');
       email = body.email;
     } else {
@@ -44,7 +34,7 @@ export const handler: Handler = async (event) => {
 
     console.log('Email found:', email);
     
-    // Send request to Google Apps Script
+    // Fire and forget the Google Apps Script request
     fetch(
       `${process.env.PUBLIC_GOOGLE_SCRIPT_URL}` + 
       '?email=' + encodeURIComponent(email) +
@@ -53,10 +43,11 @@ export const handler: Handler = async (event) => {
         method: 'GET',
         mode: 'no-cors'
       }
-    );
+    ).catch(error => {
+      console.log('Google Apps Script request error:', error);
+    });
 
-    // Don't wait for or check the response from Google Apps Script
-    // Just return success if we got this far
+    // Return success immediately
     return {
       statusCode: 200,
       body: JSON.stringify({ message: 'Subscribed successfully' }),
