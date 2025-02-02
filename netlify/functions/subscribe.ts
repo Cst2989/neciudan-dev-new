@@ -16,8 +16,17 @@ export const handler: Handler = async (event) => {
     console.log('Content-Type:', event.headers['content-type']);
     console.log('Request body:', event.body);
 
-    // Parse the body based on content type
-    if (event.headers['content-type']?.includes('application/json')) {
+    if (event.headers['content-type']?.includes('multipart/form-data')) {
+      // Parse multipart form data
+      const boundary = event.headers['content-type'].split('boundary=')[1];
+      const parts = event.body!.split(boundary);
+      
+      // Find the email field
+      const emailPart = parts.find(part => part.includes('name="email"'));
+      if (emailPart) {
+        email = emailPart.split('\r\n\r\n')[1].split('\r\n')[0];
+      }
+    } else if (event.headers['content-type']?.includes('application/json')) {
       const body = JSON.parse(event.body || '{}');
       email = body.email;
     } else {
@@ -33,8 +42,7 @@ export const handler: Handler = async (event) => {
       };
     }
 
-    console.log('Sending request to:', process.env.PUBLIC_GOOGLE_SCRIPT_URL);
-    console.log('Email:', email);
+    console.log('Email found:', email);
     
     // Send request to Google Apps Script
     await fetch(
