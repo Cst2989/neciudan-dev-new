@@ -2,7 +2,7 @@
 title: 'Building a Substack-like Subscription Feature'
 excerpt: 'Learn how to implement a newsletter subscription system using Astro, Netlify Functions, and Google Sheets - a free alternative to paid newsletter platforms.'
 publishDate: 2025-02-02
-image: '/images/articles/newsletter-subscription.svg'
+image: '/images/articles/subscribe-feature.png'
 category: 'Development'
 readTime: '7 min read'
 ---
