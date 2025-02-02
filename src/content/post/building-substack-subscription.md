@@ -28,7 +28,7 @@ Here's what we need:
 
 ## The Implementation
 
-Currently this blog is built on Astro, specifically its using the `astrowind` open source project. You can check it out : <a href="https://github.com/onwidget/astrowind" target="_blank">here</a>
+Currently this blog is built on Astro, specifically its using the `astrowind` open source project. You can check it out <a href="https://github.com/onwidget/astrowind" target="_blank">here</a>
 
 All my code is not Astro specific, it's normal Javascript code with some Server Side Logic behind it. The only thing platform specific is the deployment to Netlify, but I show how you can easily replicate it on Vercel if thats your poison. 
 
@@ -104,9 +104,15 @@ form.addEventListener('submit', async (e) => {
 });
 ```
 
+We get the values from the form, show a loading state, and then call the serverless function to store the email in Google Sheets. 
+
+After we receive a response from the serverless function, we store the subscription status in localStorage and hide the form. 
+
+On the right side of the page, a nice looking toast will appear showing our success or error message. 
+
 ### The Toast Notification System
 
-For user feedback, we created a Toast component that shows temporary notifications in the bottom-right corner of the screen. 
+This is the Toast component that shows temporary notifications in the bottom-right corner of the screen. 
 
 ```typescript
 class Toast {
