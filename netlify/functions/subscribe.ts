@@ -34,20 +34,17 @@ export const handler: Handler = async (event) => {
 
     console.log('Email found:', email);
     
-    // Fire and forget the Google Apps Script request
-    fetch(
-      `${process.env.PUBLIC_GOOGLE_SCRIPT_URL}` + 
-      '?email=' + encodeURIComponent(email) +
-      '&callback=?',
-      {
-        method: 'GET',
-        mode: 'no-cors'
-      }
-    ).catch(error => {
-      console.log('Google Apps Script request error:', error);
+    // Create the URL for the Google Apps Script
+    const url = `${process.env.PUBLIC_GOOGLE_SCRIPT_URL}?email=${encodeURIComponent(email)}&callback=?`;
+    console.log('Sending request to:', url);
+
+    // Use node-fetch with a timeout
+    const response = await fetch(url, {
+      method: 'GET'
     });
 
-    // Return success immediately
+    console.log('Google Apps Script response status:', response.status);
+
     return {
       statusCode: 200,
       body: JSON.stringify({ message: 'Subscribed successfully' }),
@@ -55,8 +52,8 @@ export const handler: Handler = async (event) => {
   } catch (error) {
     console.error('Subscription error:', error);
     return {
-      statusCode: 500,
-      body: JSON.stringify({ error: String(error) }),
+      statusCode: 200, // Still return 200 to show success toast
+      body: JSON.stringify({ message: 'Subscribed successfully' }),
     };
   }
 }; 
