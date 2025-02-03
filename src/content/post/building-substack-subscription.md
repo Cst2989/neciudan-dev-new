@@ -11,11 +11,11 @@ I always debated between using a blog platform like Medium or Substack and build
 
 I love the idea of having complete control over the user experience, but I also acknowledge that building a newsletter platform is not an easy task. Plus I actually really enjoy the look and feel Substack has. 
 
-By first showcasingIn the article's header, on the first screen, the authors story and what his writing is all about, with a subscribe form right below. You instantly get the value proposition if you are interested in what he writes.
+By first showcasing on the first screen, the authors story and what his writing is all about, with a subscribe form right below, you instantly get the value proposition if you are interested in what the author writes about.
 
-Then, in case you haven't subscribed yet, while you are reading the article, the page gets darker and darker until the only thing visible is a Subscribedialog box which slowly animates up from the bottom of the page. Very mindful, very demure.
+Then, in case you haven't subscribed yet, while you are reading the article, the page gets darker and darker until the only thing visible is a Subscribe dialog box which slowly animates up from the bottom of the page. Very mindful, very demure.
 
-I loved this feature so much that I tried replicating it as closely as possible using simple database solutions.
+I loved this feature so much that I tried replicating it as closely as possible using a simple database solution: Google Sheets.
 
 Spoiler alert: If you are reading this on my blog, odds are you have already seen the header and the dialog. If you liked it in action, here is how I built it: 
 
