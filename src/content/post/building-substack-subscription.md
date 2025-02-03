@@ -34,7 +34,9 @@ Currently this blog is built on Astro, specifically its using the `astrowind` op
 
 All my code is not Astro specific, it's normal Javascript code with some Server Side Logic behind it. The only thing platform specific is the deployment to Netlify, but I show how you can easily replicate it on Vercel if thats your poison.
 
-A small note: I intentionally wrote the code in a way that it's not Astro specific, so you can easily replicate it on any other framework, by manipulating the DOM directly and using native Javascript methods. Doing it this way makes it easier to understand and more importantly it's easier to replicate in your own project that might use a different framework. 
+A small note: I intentionally wrote the code in a non-declarative style by manipulating the DOM directly and using native Javascript methods. Doing it this way makes it easier to understand and more importantly it's easier to replicate in your own project that might use a different framework. 
+
+Reminds me of the the good old jQuery days. 
 
 ### 1. The Author Profile Component
 
