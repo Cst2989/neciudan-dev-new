@@ -1,5 +1,5 @@
 ---
-title: 'Building a Substack-like Subscription Feature'
+title: 'Building a Substack-like Subscribe Feature'
 excerpt: 'Learn how to implement a newsletter subscription system using Astro, Netlify Functions, and Google Sheets - a free alternative to paid newsletter platforms.'
 publishDate: 2025-02-02
 image: '/images/articles/subscribe-feature.png'
@@ -7,11 +7,13 @@ category: 'Development'
 readTime: '7 min read'
 ---
 
-As a technical founder writing about startup life and ed-tech, I needed a way to keep in touch with my readers. One platform that I admire is Substack, and one thing that always stood out for me is how they encourage users to subscribe. 
+I always debated between using a blog platform like Medium or Substack and building my own. 
 
-In the article's header, on the first screen, the author introduces himself and what his writing is all about, with a subscribe form right below. 
+I love the idea of having complete control over the user experience, but I also acknowledge that building a newsletter platform is not an easy task. Plus I actually really enjoy the look and feel Substack has. 
 
-Then, in case you haven't subscribed yet, while you are reading the article, the page gets darker and darker until the only thing visible is a dialog box, which lets the user subscribe or continue reading. 
+By first showcasingIn the article's header, on the first screen, the authors story and what his writing is all about, with a subscribe form right below. You instantly get the value proposition if you are interested in what he writes.
+
+Then, in case you haven't subscribed yet, while you are reading the article, the page gets darker and darker until the only thing visible is a Subscribedialog box which slowly animates up from the bottom of the page. Very mindful, very demure.
 
 I loved this feature so much that I tried replicating it as closely as possible using simple database solutions.
 
@@ -30,7 +32,9 @@ Here's what we need:
 
 Currently this blog is built on Astro, specifically its using the `astrowind` open source project. You can check it out <a href="https://github.com/onwidget/astrowind" target="_blank">here</a>
 
-All my code is not Astro specific, it's normal Javascript code with some Server Side Logic behind it. The only thing platform specific is the deployment to Netlify, but I show how you can easily replicate it on Vercel if thats your poison. 
+All my code is not Astro specific, it's normal Javascript code with some Server Side Logic behind it. The only thing platform specific is the deployment to Netlify, but I show how you can easily replicate it on Vercel if thats your poison.
+
+A small note: I intentionally wrote the code in a way that it's not Astro specific, so you can easily replicate it on any other framework, by manipulating the DOM directly and using native Javascript methods. Doing it this way makes it easier to understand and more importantly it's easier to replicate in your own project that might use a different framework. 
 
 ### 1. The Author Profile Component
 
@@ -297,6 +301,15 @@ form.addEventListener('submit', async (e) => {
     loadingText.classList.add('hidden');
   }
 });
+```
+
+PS: Make sure you remove the scroll listener when leaving the page. 
+
+```javascript
+// Clean up on page unload
+  document.addEventListener('astro:before-swap', () => {
+    window.removeEventListener('scroll', handleScroll);
+  });
 ```
 
 OK. Maybe a little more than a touch of Javascript. But it's not rocket science. Here is what's happening: 
